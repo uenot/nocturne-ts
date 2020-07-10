@@ -1,0 +1,849 @@
+{
+    "Masakados": {
+        "Moves": [
+            [
+                "Radiance",
+                1
+            ],
+            [
+                "Megidolaon",
+                1
+            ],
+            [
+                "Fire Repel",
+                1
+            ],
+            [
+                "Ice Repel",
+                1
+            ],
+            [
+                "Elec Repel",
+                1
+            ],
+            [
+                "Force Repel",
+                1
+            ],
+            [
+                "Phys Repel",
+                1
+            ]
+        ],
+        "Strength": 10,
+        "Magic": 10,
+        "Vitality": 10,
+        "Agility": 10,
+        "Luck": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [
+            "Phys",
+            "Fire",
+            "Ice",
+            "Elec",
+            "Force",
+            "Expel",
+            "Death",
+            "Curse",
+            "Nerve",
+            "Mind"
+        ],
+        "Resist": [],
+        "Weaknesses": [],
+        "Alignment": "Neutral"
+    },
+    "Kailash": {
+        "Moves": [
+            [
+                "Makarakarn",
+                72
+            ],
+            [
+                "Megido",
+                75
+            ],
+            [
+                "Tetrakarn",
+                78
+            ],
+            [
+                "Freikugel",
+                80
+            ],
+            [
+                "Megidola",
+                84
+            ]
+        ],
+        "Strength": 2,
+        "Magic": 10,
+        "Vitality": 5,
+        "Agility": 1,
+        "Luck": 2,
+        "Alignment": "Neutral"
+    },
+    "Gundari": {
+        "Moves": [
+            [
+                "Wind Cutter",
+                64
+            ],
+            [
+                "Force Drain",
+                66
+            ],
+            [
+                "Spiral Viper",
+                72
+            ]
+        ],
+        "Strength": 4,
+        "Magic": 1,
+        "Vitality": 2,
+        "Agility": 9,
+        "Luck": 3,
+        "Absorb": [
+            "Force"
+        ],
+        "Weaknesses": [
+            "Elec"
+        ],
+        "Alignment": "Dark"
+    },
+    "Gaea": {
+        "Moves": [
+            [
+                "Deathbound",
+                61
+            ],
+            [
+                "Avenge",
+                69
+            ],
+            [
+                "Gaea Rage",
+                74
+            ],
+            [
+                "Attack All",
+                76
+            ]
+        ],
+        "Strength": 10,
+        "Magic": 0,
+        "Vitality": 10,
+        "Agility": 0,
+        "Luck": 0,
+        "Resist": [
+            "Phys"
+        ],
+        "Weaknesses": [
+            "Force",
+            "Death",
+            "Expel"
+        ],
+        "Alignment": "Dark"
+    },
+    "Adama": {
+        "Moves": [
+            [
+                "Bolt Storm",
+                60
+            ],
+            [
+                "Mana Surge",
+                62
+            ],
+            [
+                "Elec Drain",
+                67
+            ]
+        ],
+        "Strength": 3,
+        "Magic": 2,
+        "Vitality": 8,
+        "Agility": 2,
+        "Luck": 2,
+        "Reflect": [
+            "Elec"
+        ],
+        "Resist": [
+            "Expel",
+            "Death"
+        ],
+        "Weaknesses": [
+            "Force"
+        ],
+        "Alignment": "Light"
+    },
+    "Satan": {
+        "Moves": [
+            [
+                "Jive Talk",
+                51
+            ],
+            [
+                "Void Death",
+                55
+            ],
+            [
+                "Mana Aid",
+                58
+            ],
+            [
+                "Charisma",
+                60
+            ],
+            [
+                "Deadly Fury",
+                65
+            ]
+        ],
+        "Strength": 2,
+        "Magic": 8,
+        "Vitality": 1,
+        "Agility": 1,
+        "Luck": 4,
+        "Weaknesses": [
+            "Expel"
+        ],
+        "Void": [
+            "Death"
+        ],
+        "Alignment": "Dark"
+    },
+    "Vimana": {
+        "Moves": [
+            [
+                "Endure",
+                50
+            ],
+            [
+                "Tempest",
+                59
+            ],
+            [
+                "Javelin Rain",
+                68
+            ],
+            [
+                "Life Surge",
+                71
+            ],
+            [
+                "Hades Blast",
+                73
+            ]
+        ],
+        "Strength": 7,
+        "Magic": 1,
+        "Vitality": 3,
+        "Agility": 2,
+        "Luck": 5,
+        "Void": [
+            "Nerve"
+        ],
+        "Alignment": "Neutral"
+    },
+    "Muspell": {
+        "Moves": [
+            [
+                "Tentarafoo",
+                49
+            ],
+            [
+                "Makajamon",
+                53
+            ],
+            [
+                "Xeros Beat",
+                56
+            ]
+        ],
+        "Strength": 0,
+        "Magic": 8,
+        "Vitality": 7,
+        "Agility": 0,
+        "Luck": 0,
+        "Resist": [
+            "Nerve",
+            "Mind"
+        ],
+        "Alignment": "Neutral"
+    },
+    "Kamurogi": {
+        "Moves": [
+            [
+                "Blight",
+                45
+            ],
+            [
+                "Life Gain",
+                46
+            ],
+            [
+                "Iron Claw",
+                48
+            ],
+            [
+                "Retaliate",
+                54
+            ],
+            [
+                "Oni-Kagura",
+                64
+            ]
+        ],
+        "Strength": 8,
+        "Magic": 0,
+        "Vitality": 0,
+        "Agility": 4,
+        "Luck": 4,
+        "Resist": [
+            "Expel",
+            "Death",
+            "Phys"
+        ],
+        "Weaknesses": [
+            "Fire",
+            "Ice",
+            "Elec",
+            "Force"
+        ],
+        "Alignment": "Light"
+    },
+    "Sophia": {
+        "Moves": [
+            [
+                "Thunderclap",
+                45
+            ],
+            [
+                "Samarecarm",
+                57
+            ],
+            [
+                "Drain Attack",
+                59
+            ],
+            [
+                "Mediarahan",
+                63
+            ],
+            [
+                "Holy Wrath",
+                70
+            ]
+        ],
+        "Strength": 1,
+        "Magic": 2,
+        "Vitality": 5,
+        "Agility": 7,
+        "Luck": 4,
+        "Void": [
+            "Expel"
+        ],
+        "Resist": [
+            "Death"
+        ],
+        "Alignment": "Light"
+    },
+    "Djed": {
+        "Moves": [
+            [
+                "Tarukaja",
+                42
+            ],
+            [
+                "Sukukaja",
+                43
+            ],
+            [
+                "Makakaja",
+                44
+            ],
+            [
+                "Rakukaja",
+                45
+            ],
+            [
+                "Dekaja",
+                46
+            ]
+        ],
+        "Strength": 2,
+        "Magic": 6,
+        "Vitality": 2,
+        "Agility": 2,
+        "Luck": 2,
+        "Resist": [
+            "Expel",
+            "Death"
+        ],
+        "Alignment": "Dark"
+    },
+    "Geis": {
+        "Moves": [
+            [
+                "Diarama",
+                37
+            ],
+            [
+                "Life Refill",
+                39
+            ],
+            [
+                "Tetraja",
+                41
+            ],
+            [
+                "Mediarama",
+                44
+            ],
+            [
+                "Diarahan",
+                47
+            ],
+            [
+                "Mana Refill",
+                51
+            ]
+        ],
+        "Strength": 2,
+        "Magic": 2,
+        "Vitality": 4,
+        "Agility": 4,
+        "Luck": 4,
+        "Void": [
+            "Expel"
+        ],
+        "Alignment": "Light"
+    },
+    "Murakumo": {
+        "Moves": [
+            [
+                "Void Mind",
+                34
+            ],
+            [
+                "Void Nerve",
+                37
+            ],
+            [
+                "Chaos Blade",
+                40
+            ],
+            [
+                "Void Curse",
+                42
+            ]
+        ],
+        "Strength": 4,
+        "Magic": 4,
+        "Vitality": 1,
+        "Agility": 4,
+        "Luck": 1,
+        "Resist": [
+            "Phys"
+        ],
+        "Weaknesses": [
+            "Fire",
+            "Ice"
+        ],
+        "Alignment": "Neutral"
+    },
+    "Gehenna": {
+        "Moves": [
+            [
+                "Hellfire",
+                33
+            ],
+            [
+                "Void Fire",
+                42
+            ],
+            [
+                "Mana Gain",
+                45
+            ],
+            [
+                "Fire Drain",
+                60
+            ],
+            [
+                "Magma Axis",
+                65
+            ]
+        ],
+        "Strength": 3,
+        "Magic": 3,
+        "Vitality": 3,
+        "Agility": 3,
+        "Luck": 3,
+        "Absorb": [
+            "Fire"
+        ],
+        "Weaknesses": [
+            "Ice"
+        ],
+        "Alignment": "Neutral"
+    },
+    "Nirvana": {
+        "Moves": [
+            [
+                "Violet Flash",
+                32
+            ],
+            [
+                "Anti-Expel",
+                33
+            ],
+            [
+                "Divine Shot",
+                41
+            ],
+            [
+                "Void Expel",
+                56
+            ]
+        ],
+        "Strength": 1,
+        "Magic": 1,
+        "Vitality": 2,
+        "Agility": 2,
+        "Luck": 8,
+        "Void": [
+            "Expel"
+        ],
+        "Weaknesses": [
+            "Death"
+        ],
+        "Alignment": "Light"
+    },
+    "Miasma": {
+        "Moves": [
+            [
+                "Wild Dance",
+                31
+            ],
+            [
+                "Void Ice",
+                45
+            ],
+            [
+                "Glacial Blast",
+                52
+            ],
+            [
+                "Ice Drain",
+                60
+            ]
+        ],
+        "Strength": 2,
+        "Magic": 5,
+        "Vitality": 2,
+        "Agility": 2,
+        "Luck": 2,
+        "Void": [
+            "Ice"
+        ],
+        "Weaknesses": [
+            "Fire"
+        ],
+        "Alignment": "Dark"
+    },
+    "Anathema": {
+        "Moves": [
+            [
+                "Mana Drain",
+                28
+            ],
+            [
+                "Anti-Death",
+                32
+            ],
+            [
+                "Mamudo",
+                35
+            ],
+            [
+                "Evil Gaze",
+                38
+            ],
+            [
+                "Mamudoon",
+                49
+            ]
+        ],
+        "Strength": 0,
+        "Magic": 8,
+        "Vitality": 2,
+        "Agility": 1,
+        "Luck": 1,
+        "Void": [
+            "Death"
+        ],
+        "Weaknesses": [
+            "Expel"
+        ],
+        "Alignment": "Dark"
+    },
+    "Narukami": {
+        "Moves": [
+            [
+                "Shock",
+                21
+            ],
+            [
+                "Elec Boost",
+                26
+            ],
+            [
+                "Anti-Elec",
+                30
+            ],
+            [
+                "Void Elec",
+                44
+            ]
+        ],
+        "Strength": 5,
+        "Magic": 6,
+        "Vitality": 0,
+        "Agility": 0,
+        "Luck": 0,
+        "Void": [
+            "Elec"
+        ],
+        "Weaknesses": [
+            "Ice"
+        ],
+        "Alignment": "Light"
+    },
+    "Kamudo": {
+        "Moves": [
+            [
+                "Heat Wave",
+                18
+            ],
+            [
+                "Focus",
+                23
+            ],
+            [
+                "Mind's Eye",
+                25
+            ],
+            [
+                "Might",
+                29
+            ]
+        ],
+        "Strength": 5,
+        "Magic": 0,
+        "Vitality": 2,
+        "Agility": 3,
+        "Luck": 0,
+        "Resist": [
+            "Phys"
+        ],
+        "Weaknesses": [
+            "Curse",
+            "Nerve",
+            "Mind"
+        ],
+        "Alignment": "Neutral"
+    },
+    "Hifumi": {
+        "Moves": [
+            [
+                "Tornado",
+                17
+            ],
+            [
+                "Force Boost",
+                22
+            ],
+            [
+                "War Cry",
+                24
+            ],
+            [
+                "Anti-Force",
+                27
+            ],
+            [
+                "Void Force",
+                40
+            ]
+        ],
+        "Strength": 0,
+        "Magic": 3,
+        "Vitality": 0,
+        "Agility": 4,
+        "Luck": 3,
+        "Void": [
+            "Force"
+        ],
+        "Weaknesses": [
+            "Fire"
+        ],
+        "Alignment": "Neutral"
+    },
+    "Iyomante": {
+        "Moves": [
+            [
+                "Tarunda",
+                10
+            ],
+            [
+                "Sukunda",
+                13
+            ],
+            [
+                "Rakunda",
+                16
+            ],
+            [
+                "Life Aid",
+                36
+            ]
+        ],
+        "Strength": 2,
+        "Magic": 2,
+        "Vitality": 2,
+        "Agility": 2,
+        "Luck": 3,
+        "Void": [
+            "Mind"
+        ],
+        "Alignment": "Light"
+    },
+    "Shiranui": {
+        "Moves": [
+            [
+                "Fire Breath",
+                9
+            ],
+            [
+                "Fire Boost",
+                14
+            ],
+            [
+                "Taunt",
+                19
+            ],
+            [
+                "Anti-Fire",
+                23
+            ]
+        ],
+        "Strength": 0,
+        "Magic": 5,
+        "Vitality": 0,
+        "Agility": 4,
+        "Luck": 0,
+        "Void": [
+            "Fire"
+        ],
+        "Weaknesses": [
+            "Force"
+        ],
+        "Alignment": "Dark"
+    },
+    "Wadatsumi": {
+        "Moves": [
+            [
+                "Ice Breath",
+                7
+            ],
+            [
+                "Mana Bonus",
+                11
+            ],
+            [
+                "Ice Boost",
+                15
+            ],
+            [
+                "Fog Breath",
+                21
+            ],
+            [
+                "Anti-Ice",
+                24
+            ]
+        ],
+        "Strength": 0,
+        "Magic": 3,
+        "Vitality": 2,
+        "Agility": 2,
+        "Luck": 1,
+        "Void": [
+            "Ice"
+        ],
+        "Weaknesses": [
+            "Elec"
+        ],
+        "Alignment": "Neutral"
+    },
+    "Ankh": {
+        "Moves": [
+            [
+                "Dia",
+                5
+            ],
+            [
+                "Fast Retreat",
+                12
+            ],
+            [
+                "Media",
+                19
+            ]
+        ],
+        "Strength": 1,
+        "Magic": 1,
+        "Vitality": 4,
+        "Agility": 0,
+        "Luck": 2,
+        "Void": [
+            "Expel"
+        ],
+        "Weaknesses": [
+            "Death"
+        ],
+        "Alignment": "Light"
+    },
+    "Marogareh": {
+        "Moves": [
+            [
+                "Lunge",
+                3
+            ],
+            [
+                "Analyze",
+                2
+            ],
+            [
+                "Life Bonus",
+                6
+            ],
+            [
+                "Berserk",
+                10
+            ],
+            [
+                "Counter",
+                20
+            ]
+        ],
+        "Strength": 2,
+        "Magic": 1,
+        "Vitality": 2,
+        "Agility": 1,
+        "Luck": 1,
+        "Alignment": "Dark"
+    }
+}

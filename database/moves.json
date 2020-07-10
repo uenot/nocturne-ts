@@ -1,0 +1,2173 @@
+{
+    "Attack": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Hits": 1,
+        "Power": 32,
+        "Correction": "None",
+        "Limit": "None",
+        "Accuracy": 97,
+        "MP": 0,
+        "HP": 0,
+        "Special Effects": {},
+        "Crit": 4,
+        "Damage Calc": "Level"
+    },
+    "Feral Bite": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 44,
+        "Accuracy": 76,
+        "HP": 12,
+        "Crit": 24,
+        "Damage Calc": "Level"
+    },
+    "Feral Claw": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 34,
+        "Accuracy": 75,
+        "HP": 6,
+        "Crit": 25,
+        "Damage Calc": "Level"
+    },
+    "Lunge": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 41,
+        "Accuracy": 76,
+        "HP": 10,
+        "Crit": 24,
+        "Damage Calc": "Level"
+    },
+    "Needle Rush": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 41,
+        "Accuracy": 76,
+        "HP": 10,
+        "Crit": 24,
+        "Damage Calc": "Level"
+    },
+    "Hell Thrust": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 47,
+        "Accuracy": 67,
+        "HP": 12,
+        "Crit": 33,
+        "Damage Calc": "Level"
+    },
+    "Toxic Sting": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 31,
+        "Accuracy": 76,
+        "HP": 7,
+        "Special Effects": {
+            "Poison": {
+                "Accuracy": 40,
+                "Element": "Curse"
+            }
+        },
+        "Crit": 24,
+        "Damage Calc": "Level"
+    },
+    "Venom Bite": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 41,
+        "Accuracy": 76,
+        "HP": 18,
+        "Special Effects": {
+            "Poison": {
+                "Accuracy": 40,
+                "Element": "Curse"
+            }
+        },
+        "Crit": 24,
+        "Damage Calc": "Level"
+    },
+    "Venom Claw": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 41,
+        "Accuracy": 76,
+        "HP": 18,
+        "Special Effects": {
+            "Poison": {
+                "Accuracy": 40,
+                "Element": "Curse"
+            }
+        },
+        "Crit": 24,
+        "Damage Calc": "Level"
+    },
+    "Charm Bite": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 41,
+        "Accuracy": 76,
+        "HP": 18,
+        "Special Effects": {
+            "Charm": {
+                "Accuracy": 55,
+                "Element": "Mind"
+            }
+        },
+        "Crit": 24,
+        "Damage Calc": "Level"
+    },
+    "Mighty Gust": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 53,
+        "Accuracy": 74,
+        "HP": 14,
+        "Crit": 26,
+        "Damage Calc": "HP"
+    },
+    "Stun Claw": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 44,
+        "Accuracy": 70,
+        "HP": 17,
+        "Special Effects": {
+            "Stun": {
+                "Accuracy": 40,
+                "Element": "Nerve"
+            }
+        },
+        "Crit": 30,
+        "Damage Calc": "Level"
+    },
+    "Stun Needle": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 31,
+        "Accuracy": 76,
+        "HP": 7,
+        "Special Effects": {
+            "Stun": {
+                "Accuracy": 40,
+                "Element": "Nerve"
+            }
+        },
+        "Crit": 24,
+        "Damage Calc": "Level"
+    },
+    "Berserk": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Random Enemies",
+        "Hits": 5,
+        "Power": 16,
+        "Accuracy": 97,
+        "HP": 13,
+        "Crit": 13,
+        "Damage Calc": "Level"
+    },
+    "Brutal Slash": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 50,
+        "Accuracy": 74,
+        "HP": 13,
+        "Crit": 26,
+        "Damage Calc": "HP"
+    },
+    "Stun Bite": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 44,
+        "Accuracy": 74,
+        "HP": 17,
+        "Special Effects": {
+            "Stun": {
+                "Accuracy": 40,
+                "Element": "Nerve"
+            }
+        },
+        "Crit": 26,
+        "Damage Calc": "Level"
+    },
+    "Arid Needle": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 31,
+        "Accuracy": 74,
+        "HP": 12,
+        "Special Effects": {
+            "Stone": {
+                "Accuracy": 60,
+                "Element": "Death"
+            }
+        },
+        "Crit": 26,
+        "Damage Calc": "Level"
+    },
+    "Guillotine": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 47,
+        "Accuracy": 67,
+        "HP": 17,
+        "Crit": 33,
+        "Damage Calc": "HP"
+    },
+    "Iron Claw": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 56,
+        "Accuracy": 55,
+        "HP": 15,
+        "Crit": 45,
+        "Damage Calc": "Level"
+    },
+    "Stone Bite": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 44,
+        "Accuracy": 74,
+        "HP": 22,
+        "Special Effects": {
+            "Stone": {
+                "Accuracy": 50,
+                "Element": "Death"
+            }
+        },
+        "Crit": 26,
+        "Damage Calc": "Level"
+    },
+    "Heat Wave": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 19,
+        "Accuracy": 93,
+        "HP": 19,
+        "Crit": 26,
+        "Damage Calc": "Level"
+    },
+    "Dark Sword": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 53,
+        "Accuracy": 60,
+        "HP": 22,
+        "Special Effects": {
+            "Mute": {
+                "Accuracy": 40,
+                "Element": "Curse"
+            }
+        },
+        "Crit": 40,
+        "Damage Calc": "HP"
+    },
+    "Hell Fang": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 56,
+        "Accuracy": 55,
+        "HP": 15,
+        "Crit": 45,
+        "Damage Calc": "Level"
+    },
+    "Tempest": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 31,
+        "Accuracy": 70,
+        "HP": 25,
+        "Crit": 30,
+        "Damage Calc": "HP"
+    },
+    "Stasis Blade": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 53,
+        "Accuracy": 60,
+        "HP": 22,
+        "Special Effects": {
+            "Bind": {
+                "Accuracy": 65,
+                "Element": "Nerve"
+            }
+        },
+        "Crit": 40,
+        "Damage Calc": "HP"
+    },
+    "Blight": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 22,
+        "Accuracy": 91,
+        "HP": 22,
+        "Special Effects": {
+            "Poison": {
+                "Accuracy": 20,
+                "Element": "Curse"
+            }
+        },
+        "Crit": 36,
+        "Damage Calc": "HP"
+    },
+    "Chaos Blade": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Random Enemies",
+        "Hits": 5,
+        "Power": 22,
+        "Accuracy": 95,
+        "HP": 32,
+        "Special Effects": {
+            "Panic": {
+                "Accuracy": 30,
+                "Element": "Mind"
+            }
+        },
+        "Crit": 20,
+        "Damage Calc": "HP"
+    },
+    "Deathbound": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Random Enemies",
+        "Hits": 5,
+        "Power": 38,
+        "Accuracy": 95,
+        "HP": 25,
+        "Crit": 21,
+        "Damage Calc": "HP"
+    },
+    "Hades Blast": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 41,
+        "Accuracy": 90,
+        "HP": 32,
+        "Crit": 43,
+        "Damage Calc": "Level"
+    },
+    "Hassohappa": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 47,
+        "Accuracy": 89,
+        "HP": 35,
+        "Crit": 46,
+        "Damage Calc": "HP"
+    },
+    "Andalucia": {
+        "Category": "Physical",
+        "Elemnt": "Phys",
+        "Target": "All Enemies",
+        "Hits": 4,
+        "Power": 8,
+        "Accuracy": 100,
+        "HP": 6,
+        "Crit": 1,
+        "Damage Calc": "Level"
+    },
+    "Boogie-Woogie": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Hits": 4,
+        "Power": 8,
+        "Accuracy": 97,
+        "MP": 3,
+        "Crit": 13,
+        "Damage Calc": "Level"
+    },
+    "Deadly Fury": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 41,
+        "Accuracy": 97,
+        "HP": 32,
+        "Crit": 50,
+        "Damage Calc": "Level"
+    },
+    "Divine Shot": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 50,
+        "Accuracy": 97,
+        "HP": 13,
+        "Crit": 55,
+        "Damage Calc": "Level"
+    },
+    "Earthquake": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 70,
+        "Accuracy": 90,
+        "HP": 45,
+        "Damage Calc": "Level"
+    },
+    "Gaea Rage": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 47,
+        "Accuracy": 97,
+        "HP": 35,
+        "Crit": 30,
+        "Damage Calc": "Level"
+    },
+    "Hell Spin": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 31,
+        "Accuracy": 95,
+        "HP": 25,
+        "Crit": 5,
+        "Damage Calc": "Level"
+    },
+    "Javelin Rain": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 41,
+        "Accuracy": 97,
+        "HP": 40,
+        "Special Effects": {
+            "Mute": {
+                "Accuracy": 20,
+                "Element": "Curse"
+            }
+        },
+        "Crit": 30,
+        "Damage Calc": "Level"
+    },
+    "Mokoi Boomerang": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 25,
+        "MP": 10,
+        "Special Effects": {
+            "Panic": {
+                "Accuracy": 30,
+                "Element": "Mind"
+            }
+        },
+        "Crit": 4,
+        "Damage Calc": "Level"
+    },
+    "Oni-Kagura": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 38,
+        "Accuracy": 97,
+        "HP": 30,
+        "Crit": 30,
+        "Damage Calc": "Level"
+    },
+    "Spiral Viper": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 62,
+        "Accuracy": 97,
+        "HP": 18,
+        "Crit": 30,
+        "Damage Calc": "Level"
+    },
+    "Terrorblade": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Random Enemies",
+        "Hits": 5,
+        "Power": 30,
+        "Accuracy": 97,
+        "MP": 10,
+        "Special Effects": {
+            "Panic": {
+                "Accuracy": 30,
+                "Element": "Mind"
+            }
+        },
+        "Crit": 4,
+        "Damage Calc": "Level"
+    },
+    "Xeros Beat": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "All Enemies",
+        "Power": 37,
+        "Accuracy": 97,
+        "HP": 40,
+        "Special Effects": {
+            "Bind": {
+                "Accuracy": 30,
+                "Element": "Nerve"
+            }
+        },
+        "Crit": 30,
+        "Damage Calc": "Level"
+    },
+    "Yoshitsune Show-Up": {
+        "Category": "Physical",
+        "Element": "Phys",
+        "Target": "Single Enemy",
+        "Power": 36,
+        "Accuracy": 98,
+        "HP": 9,
+        "Crit": 50,
+        "Damage Calc": "Level"
+    },
+    "Freikugel": {
+        "Category": "Physical",
+        "Element": "Almighty",
+        "Target": "Single Enemy",
+        "Power": 65,
+        "Accuracy": 97,
+        "HP": 17,
+        "Crit": 30,
+        "Damage Calc": "Level"
+    },
+    "Tekisatsu": {
+        "Category": "Physical",
+        "Element": "Almighty",
+        "Target": "Single Enemy",
+        "Power": 40,
+        "Accuracy": 96,
+        "HP": 12,
+        "Special Effects": {
+            "Kill": {
+                "Accuracy": 40
+            }
+        },
+        "Crit": 4,
+        "Damage Calc": "Level"
+    },
+    "Agi": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "Single Enemy",
+        "Power": 37,
+        "Correction": 10,
+        "Limit": 104,
+        "Accuracy": 100,
+        "MP": 3
+    },
+    "Agilao": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "Single Enemy",
+        "Power": 55,
+        "Correction": 16,
+        "Limit": 155,
+        "Accuracy": 100,
+        "MP": 6
+    },
+    "Maragi": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "All Enemies",
+        "Power": 30,
+        "Correction": 9,
+        "Limit": 85,
+        "Accuracy": 100,
+        "MP": 8
+    },
+    "Fire Breath": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "Random Enemies",
+        "Hits": 5,
+        "Power": 30,
+        "Correction": 8,
+        "Limit": 85,
+        "Accuracy": 100,
+        "MP": 9
+    },
+    "Agidyne": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "Single Enemy",
+        "Power": 75,
+        "Correction": 20,
+        "Limit": 220,
+        "Accuracy": 100,
+        "MP": 10
+    },
+    "Hellfire": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "Random Enemies",
+        "Hits": 4,
+        "Power": 50,
+        "Correction": 14,
+        "Limit": 140,
+        "Accuracy": 100,
+        "MP": 20
+    },
+    "Maragion": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "All Enemies",
+        "Power": 45,
+        "Correction": 13,
+        "Limit": 126,
+        "Accuracy": 100,
+        "MP": 15
+    },
+    "Maragidyne": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "All Enemies",
+        "Power": 65,
+        "Correction": 19,
+        "Limit": 183,
+        "Accuracy": 100,
+        "MP": 25
+    },
+    "Prominence": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "Random Enemies",
+        "Hits": 4,
+        "Power": 90,
+        "Correction": 26,
+        "Limit": 253,
+        "Accuracy": 100,
+        "MP": 30
+    },
+    "Hell Burner": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "All Enemies",
+        "Power": 30,
+        "Correction": 9,
+        "Limit": 85,
+        "Accuracy": 100,
+        "MP": 8
+    },
+    "Magma Axis": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "Single Enemy",
+        "Power": 48,
+        "Correction": 14,
+        "Limit": 470,
+        "Accuracy": 100,
+        "HP": 15
+    },
+    "Ragnarok": {
+        "Category": "Magic",
+        "Element": "Fire",
+        "Target": "Single Enemy",
+        "Power": 80,
+        "Correction": 20,
+        "Limit": 800,
+        "Accuracy": 100,
+        "MP": 30
+    },
+    "Bufu": {
+        "Category": "Magic",
+        "Element": "Ice",
+        "Target": "Single Enemy",
+        "Power": 30,
+        "Correction": 9,
+        "Limit": 85,
+        "Accuracy": 100,
+        "MP": 3,
+        "Special Effects": {
+            "Freeze": {
+                "Accuracy": 20
+            }
+        }
+    },
+    "Bufula": {
+        "Category": "Magic",
+        "Element": "Ice",
+        "Target": "Single Enemy",
+        "Power": 45,
+        "Correction": 13,
+        "Limit": 126,
+        "Accuracy": 100,
+        "MP": 6,
+        "Special Effects": {
+            "Freeze": {
+                "Accuracy": 25
+            }
+        }
+    },
+    "Mabufu": {
+        "Category": "Magic",
+        "Element": "Ice",
+        "Target": "All Enemies",
+        "Power": 20,
+        "Correction": 6,
+        "Limit": 56,
+        "Accuracy": 100,
+        "MP": 8,
+        "Special Effects": {
+            "Freeze": {
+                "Accuracy": 10
+            }
+        }
+    },
+    "Ice Breath": {
+        "Category": "Magic",
+        "Element": "Ice",
+        "Target": "Random Enemies",
+        "Hits": 5,
+        "Power": 25,
+        "Correction": 7,
+        "Limit": 70,
+        "Accuracy": 100,
+        "MP": 9,
+        "Special Effects": {
+            "Freeze": {
+                "Accuracy": 17
+            }
+        }
+    },
+    "Bufudyne": {
+        "Category": "Magic",
+        "Element": "Ice",
+        "Target": "Single Enemy",
+        "Power": 65,
+        "Correction": 19,
+        "Limit": 183,
+        "Accuracy": 100,
+        "MP": 10,
+        "Special Effects": {
+            "Freeze": {
+                "Accuracy": 30
+            }
+        }
+    },
+    "Mabufula": {
+        "Category": "Magic",
+        "Element": "Ice",
+        "Target": "All Enemies",
+        "Power": 35,
+        "Correction": 10,
+        "Limit": 98,
+        "Accuracy": 100,
+        "MP": 15,
+        "Special Effects": {
+            "Freeze": {
+                "Accuracy": 13
+            }
+        }
+    },
+    "Glacial Blast": {
+        "Category": "Magic",
+        "Element": "Ice",
+        "Target": "Random Enemies",
+        "Hits": 4,
+        "Power": 65,
+        "Correction": 19,
+        "Limit": 183,
+        "Accuracy": 100,
+        "MP": 25,
+        "Special Effects": {
+            "Freeze": {
+                "Accuracy": 15
+            }
+        }
+    },
+    "Mabufudyne": {
+        "Category": "Magic",
+        "Element": "Ice",
+        "Target": "All Enemies",
+        "Power": 55,
+        "Correction": 16,
+        "Limit": 155,
+        "Accuracy": 100,
+        "MP": 25,
+        "Special Effects": {
+            "Freeze": {
+                "Accuracy": 15
+            }
+        }
+    },
+    "Zio": {
+        "Category": "Magic",
+        "Element": "Elec",
+        "Target": "Single Enemy",
+        "Power": 30,
+        "Correction": 9,
+        "Limit": 85,
+        "Accuracy": 100,
+        "MP": 3,
+        "Special Effects": {
+            "Shock": {
+                "Accuracy": 20
+            }
+        }
+    },
+    "Zionga": {
+        "Category": "Magic",
+        "Element": "Elec",
+        "Target": "Single Enemy",
+        "Power": 45,
+        "Correction": 13,
+        "Limit": 126,
+        "Accuracy": 100,
+        "MP": 6,
+        "Special Effects": {
+            "Shock": {
+                "Accuracy": 25
+            }
+        }
+    },
+    "Mazio": {
+        "Category": "Magic",
+        "Element": "Elec",
+        "Target": "All Enemies",
+        "Power": 20,
+        "Correction": 6,
+        "Limit": 56,
+        "Accuracy": 100,
+        "MP": 8,
+        "Special Effects": {
+            "Shock": {
+                "Accuracy": 10
+            }
+        }
+    },
+    "Shock": {
+        "Category": "Magic",
+        "Element": "Elec",
+        "Target": "Random Enemies",
+        "Hits": 5,
+        "Power": 25,
+        "Correction": 5,
+        "Limit": 70,
+        "Accuracy": 100,
+        "MP": 9,
+        "Special Effects": {
+            "Shock": {
+                "Accuracy": 17
+            }
+        }
+    },
+    "Mazionga": {
+        "Category": "Magic",
+        "Element": "Elec",
+        "Target": "All Enemies",
+        "Power": 35,
+        "Correction": 10,
+        "Limit": 98,
+        "Accuracy": 100,
+        "MP": 15,
+        "Special Effects": {
+            "Shock": {
+                "Accuracy": 13
+            }
+        }
+    },
+    "Ziodyne": {
+        "Category": "Magic",
+        "Element": "Elec",
+        "Target": "Single Enemy",
+        "Power": 65,
+        "Correction": 19,
+        "Limit": 183,
+        "Accuracy": 100,
+        "MP": 10,
+        "Special Effects": {
+            "Shock": {
+                "Accuracy": 30
+            }
+        }
+    },
+    "Bolt Storm": {
+        "Category": "Magic",
+        "Element": "Elec",
+        "Target": "Random Enemies",
+        "Hits": 4,
+        "Power": 65,
+        "Correction": 19,
+        "Limit": 183,
+        "Accuracy": 100,
+        "MP": 25,
+        "Special Effects": {
+            "Shock": {
+                "Accuracy": 15
+            }
+        }
+    },
+    "Maziodyne": {
+        "Category": "Magic",
+        "Element": "Elec",
+        "Target": "All Enemies",
+        "Power": 55,
+        "Correction": 16,
+        "Limit": 155,
+        "Accuracy": 100,
+        "MP": 25,
+        "Special Effects": {
+            "Shock": {
+                "Accuracy": 15
+            }
+        }
+    },
+    "Mishaguji Thunder": {
+        "Category": "Magic",
+        "Element": "Elec",
+        "Target": "All Enemies",
+        "Power": 55,
+        "Correction": 16,
+        "Limit": 155,
+        "Accuracy": 100,
+        "MP": 25,
+        "Special Effects": {
+            "Shock": {
+                "Accuracy": 15
+            }
+        }
+    },
+    "Zan": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "Single Enemy",
+        "Power": 37,
+        "Correction": 10,
+        "Limit": 104,
+        "Accuracy": 100,
+        "MP": 3
+    },
+    "Zanma": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "Single Enemy",
+        "Power": 55,
+        "Correction": 16,
+        "Limit": 155,
+        "Accuracy": 100,
+        "MP": 6
+    },
+    "Mazan": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "All Enemies",
+        "Power": 30,
+        "Correction": 9,
+        "Limit": 84,
+        "Accuracy": 100,
+        "MP": 8
+    },
+    "Wing Buffet": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "Random Enemies",
+        "Hits": 5,
+        "Power": 30,
+        "Correction": 10,
+        "Limit": 84,
+        "Accuracy": 100,
+        "MP": 9
+    },
+    "Mazanma": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "All Enemies",
+        "Power": 40,
+        "Correction": 11,
+        "Limit": 112,
+        "Accuracy": 100,
+        "MP": 15
+    },
+    "Tornado": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "Random Enemies",
+        "Hits": 4,
+        "Power": 65,
+        "Correction": 19,
+        "Limit": 183,
+        "Accuracy": 100,
+        "MP": 25
+    },
+    "Zandyne": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "Single Enemy",
+        "Power": 75,
+        "Correction": 20,
+        "Limit": 220,
+        "Accuracy": 100,
+        "MP": 10
+    },
+    "Wind Cutter": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "Single Enemy",
+        "Power": 90,
+        "Correction": 26,
+        "Limit": 330,
+        "Accuracy": 100,
+        "MP": 13
+    },
+    "Mazandyne": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "All Enemies",
+        "Power": 65,
+        "Correction": 19,
+        "Limit": 183,
+        "Accuracy": 100,
+        "MP": 25
+    },
+    "Hell Exhaust": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "All Enemies",
+        "Power": 40,
+        "Correction": 11,
+        "Limit": 112,
+        "Accuracy": 100,
+        "MP": 15,
+        "Special Effects": {
+            "Dekaja": {
+                "Element": "None"
+            }
+        }
+    },
+    "Hitokoto Gust": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "All Enemies",
+        "Power": 65,
+        "Correction": 19,
+        "Limit": 183,
+        "Accuracy": 100,
+        "MP": 25
+    },
+    "Wet Wind": {
+        "Category": "Magic",
+        "Element": "Force",
+        "Target": "All Enemies",
+        "Power": 65,
+        "Correction": 20,
+        "Limit": 200,
+        "Accuracy": 100,
+        "MP": 25,
+        "Special Effects": {
+            "Stun": {
+                "Accuracy": 20,
+                "Element": "Nerve"
+            }
+        }
+    },
+    "Hama": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 6,
+        "Special Effects": {
+            "Kill": {
+                "Accuracy": 40
+            }
+        }
+    },
+    "Hamaon": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 10,
+        "Special Effects": {
+            "Kill": {
+                "Accuracy": 60
+            }
+        }
+    },
+    "Mahama": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 15,
+        "Special Effects": {
+            "Kill": {
+                "Accuracy": 20
+            }
+        }
+    },
+    "Thunderclap": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 12,
+        "Special Effects": {
+            "Reduce HP": {
+                "Value": 0.5
+            }
+        }
+    },
+    "Violet Flash": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "Single Enemy",
+        "Power": 75,
+        "Correction": 20,
+        "Limit": 220,
+        "Accuracy": 100,
+        "MP": 10
+    },
+    "Mahamaon": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 25,
+        "Special Effects": {
+            "Kill": {
+                "Accuracy": 30
+            }
+        }
+    },
+    "Holy Wrath": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 36,
+        "Special Effects": {
+            "Reduce HP": {
+                "Value": 0.5
+            }
+        }
+    },
+    "Radiance": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "All Enemies",
+        "Power": 75,
+        "Correction": 21,
+        "Limit": 211,
+        "Accuracy": 100,
+        "MP": 30
+    },
+    "God's Bow": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "Single Enemy",
+        "MP": 20,
+        "Special Effects": {
+            "Kill": {}
+        }
+    },
+    "Godly Light": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 10,
+        "Special Effects": {
+            "Reduce HP": {
+                "Value": 0.2
+            }
+        }
+    },
+    "Starlight": {
+        "Category": "Magic",
+        "Element": "Expel",
+        "Target": "All Enemies",
+        "Power": 50,
+        "Correction": 14,
+        "Limit": 140,
+        "Accuracy": 100,
+        "MP": 22
+    },
+    "Mudo": {
+        "Category": "Magic",
+        "Element": "Death",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 6,
+        "Special Effects": {
+            "Kill": {
+                "Accuracy": 40
+            }
+        }
+    },
+    "Mamudo": {
+        "Category": "Magic",
+        "Element": "Death",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 15,
+        "Special Effects": {
+            "Kill": {
+                "Accuracy": 20
+            }
+        }
+    },
+    "Mudoon": {
+        "Category": "Magic",
+        "Element": "Death",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 10,
+        "Special Effects": {
+            "Kill": {
+                "Accuracy": 60
+            }
+        }
+    },
+    "Stone Gaze": {
+        "Category": "Magic",
+        "Element": "Death",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 6,
+        "Special Effects": {
+            "Stone": {
+                "Accuracy": 50
+            }
+        }
+    },
+    "Evil Gaze": {
+        "Category": "Magic",
+        "Element": "Death",
+        "Target": "Single Enemy",
+        "Accuracy": 55,
+        "MP": 8,
+        "Special Effects": {
+            "One HP": {}
+        }
+    },
+    "Hell Gaze": {
+        "Category": "Magic",
+        "Element": "Death",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 10,
+        "Special Effects": {
+            "Kill": {
+                "Accuracy": 70
+            }
+        }
+    },
+    "Mamudoon": {
+        "Category": "Magic",
+        "Element": "Death",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 25,
+        "Special Effects": {
+            "Kill": {
+                "Accuracy": 30
+            }
+        }
+    },
+    "Mute Gaze": {
+        "Category": "Magic",
+        "Element": "Curse",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 5,
+        "Special Effects": {
+            "Mute": {
+                "Accuracy": 40
+            }
+        }
+    },
+    "Toxic Cloud": {
+        "Category": "Magic",
+        "Element": "Curse",
+        "Target": "All Enemies",
+        "Power": 25,
+        "Correction": 7,
+        "Limit": 70,
+        "Accuracy": 100,
+        "MP": 8,
+        "Special Effects": {
+            "Poison": {
+                "Accuracy": 20
+            }
+        }
+    },
+    "Makajam": {
+        "Category": "Magic",
+        "Element": "Curse",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 4,
+        "Special Effects": {
+            "Mute": {
+                "Accuracy": 40
+            }
+        }
+    },
+    "Dismal Tune": {
+        "Category": "Magic",
+        "Element": "Curse",
+        "Target": "All Enemies",
+        "Power": 55,
+        "Correction": 16,
+        "Limit": 155,
+        "Accuracy": 100,
+        "MP": 30,
+        "Special Effects": {
+            "Mute": {
+                "Accuracy": 15
+            }
+        }
+    },
+    "Makajamon": {
+        "Category": "Magic",
+        "Element": "Curse",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 11,
+        "Special Effects": {
+            "Mute": {
+                "Accuracy": 20
+            }
+        }
+    },
+    "Soul Divide": {
+        "Category": "Magic",
+        "Element": "Curse",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 30,
+        "Special Effects": {
+            "Reduce HP": {
+                "Value": 0.5
+            },
+            "Mute": {
+                "Accuracy": 30
+            }
+        }
+    },
+    "Shibaboo": {
+        "Category": "Magic",
+        "Element": "Nerve",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 5,
+        "Special Effects": {
+            "Bind": {
+                "Accuracy": 65
+            }
+        }
+    },
+    "Stun Gaze": {
+        "Category": "Magic",
+        "Element": "Nerve",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 5,
+        "Special Effects": {
+            "Stun": {
+                "Accuracy": 40
+            }
+        }
+    },
+    "Binding Cry": {
+        "Category": "Magic",
+        "Element": "Nerve",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 14,
+        "Special Effects": {
+            "Bind": {
+                "Accuracy": 20
+            }
+        }
+    },
+    "Pulinpa": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 5,
+        "Special Effects": {
+            "Panic": {
+                "Accuracy": 60
+            }
+        }
+    },
+    "Sexy Gaze": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 5,
+        "Special Effects": {
+            "Charm": {
+                "Accuracy": 55
+            }
+        }
+    },
+    "Dormina": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 9,
+        "Special Effects": {
+            "Sleep": {
+                "Accuracy": 30
+            }
+        }
+    },
+    "Marin Karin": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "Single Enemy",
+        "Accuracy": 100,
+        "MP": 5,
+        "Special Effects": {
+            "Charm": {
+                "Accuracy": 55
+            }
+        }
+    },
+    "Sonic Wave": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 9,
+        "Special Effects": {
+            "Panic": {
+                "Accuracy": 20
+            }
+        }
+    },
+    "Eternal Rest": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 16,
+        "Special Effects": {
+            "Kill": {
+                "Condition": "Target Asleep"
+            }
+        }
+    },
+    "Panic Voice": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 8,
+        "Special Effects": {
+            "Panic": {
+                "Accuracy": 30
+            }
+        }
+    },
+    "Allure": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 13,
+        "Special Effects": {
+            "Charm": {
+                "Accuracy": 45
+            }
+        }
+    },
+    "Tentarafoo": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "All Enemies",
+        "Power": 50,
+        "Correction": 16,
+        "Limit": 155,
+        "Accuracy": 100,
+        "MP": 15,
+        "Special Effects": {
+            "Panic": {
+                "Accuracy": 20
+            }
+        }
+    },
+    "Death Lust": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "All Enemies",
+        "Power": 50,
+        "Correction": 16,
+        "Limit": 155,
+        "Accuracy": 100,
+        "MP": 15,
+        "Special Effects": {
+            "Charm": {
+                "Accuracy": 20
+            }
+        }
+    },
+    "Intoxicate": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 15,
+        "Special Effects": {
+            "Charm": {
+                "Accuracy": 60
+            }
+        }
+    },
+    "Preach": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "All Enemies",
+        "Power": 20,
+        "Correction": 16,
+        "Limit": 155,
+        "Accuracy": 100,
+        "MP": 15,
+        "Special Effects": {
+            "Sleep": {
+                "Accuracy": 13.333333333333334
+            },
+            "Panic": {
+                "Accuracy": 13.333333333333334
+            },
+            "Charm": {
+                "Accuracy": 13.333333333333334
+            }
+        }
+    },
+    "Wild Dance": {
+        "Category": "Magic",
+        "Element": "Mind",
+        "Target": "All Enemies",
+        "Accuracy": 100,
+        "MP": 18,
+        "Special Effects": {
+            "Panic": {
+                "Accuracy": 65
+            }
+        }
+    },
+    "Deathtouch": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "Single Enemy",
+        "Power": 30,
+        "Correction": 10,
+        "Limit": 84,
+        "Accuracy": 100,
+        "MP": 5,
+        "Special Effects": {
+            "HP Drain": {
+                "Value": 1
+            }
+        }
+    },
+    "Mana Drain": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "Single Enemy",
+        "Power": 15,
+        "Correction": 4,
+        "Limit": 42,
+        "Accuracy": 100,
+        "MP": 2,
+        "Special Effects": {
+            "MP Drain": {
+                "Value": 1
+            }
+        }
+    },
+    "Life Drain": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "Single Enemy",
+        "Power": 30,
+        "Correction": 8,
+        "Limit": 84,
+        "Accuracy": 100,
+        "MP": 10,
+        "Special Effects": {
+            "HP Drain": {
+                "Value": 1
+            },
+            "MP Drain": {
+                "Value": 0.5
+            }
+        }
+    },
+    "Kamikaze": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "Single Enemy",
+        "Power": 78,
+        "Correction": 20,
+        "Limit": 227,
+        "Accuracy": 100,
+        "Special Effects": {
+            "Kill": {
+                "Target": "Self"
+            }
+        }
+    },
+    "Sacrifice": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "Random Enemies",
+        "Hits": 4,
+        "Power": 56,
+        "Correction": 16,
+        "Limit": 158,
+        "Accuracy": 100,
+        "Special Effects": {
+            "Kill": {
+                "Target": "Self"
+            }
+        }
+    },
+    "Last Resort": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "All Enemies",
+        "Power": 59,
+        "Correction": 17,
+        "Limit": 167,
+        "Special Effects": {
+            "Kill": {
+                "Target": "Self"
+            }
+        }
+    },
+    "Megido": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "All Enemies",
+        "Power": 70,
+        "Correction": 20,
+        "Limit": 197,
+        "Accuracy": 100,
+        "MP": 30
+    },
+    "Megidola": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "All Enemies",
+        "Power": 80,
+        "Correction": 23,
+        "Limit": 225,
+        "Accuracy": 100,
+        "MP": 37
+    },
+    "Megidolaon": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "All Enemies",
+        "Power": 90,
+        "Correction": 26,
+        "Limit": 253,
+        "Accuracy": 100,
+        "MP": 50
+    },
+    "Beast Roar": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "All Enemies",
+        "Power": 80,
+        "Correction": 23,
+        "Limit": 225,
+        "Accuracy": 100,
+        "MP": 37,
+        "Special Effects": {
+            "HP Recover": {
+                "Value": 0.1,
+                "Target": "Self"
+            }
+        }
+    },
+    "Death Flies": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "All Enemies",
+        "Power": 90,
+        "Correction": 26,
+        "Limit": 253,
+        "Accuracy": 100,
+        "MP": 50,
+        "Special Effects": {
+            "Kill": {
+                "Element": "Death"
+            }
+        }
+    },
+    "Fire of Sinai": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "Random Enemies",
+        "Hits": 5,
+        "Power": 90,
+        "Correction": 26,
+        "Limit": 253,
+        "Accuracy": 100,
+        "MP": 50
+    },
+    "Jiraiya Tarantella": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "All Enemies",
+        "Power": 90,
+        "Correction": 26,
+        "Limit": 253,
+        "MP": 40
+    },
+    "Meditation": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "Single Enemy",
+        "Power": 60,
+        "Correction": 8,
+        "Limit": 84,
+        "Accuracy": 100,
+        "MP": 10,
+        "Special Effects": {
+            "HP Drain": {
+                "Value": 1
+            },
+            "MP Drain": {
+                "Value": 0.5
+            }
+        }
+    },
+    "Pestilence": {
+        "Category": "Magic",
+        "Element": "Almighty",
+        "Target": "All Enemies",
+        "Power": 50,
+        "Correction": 12,
+        "Limit": 120,
+        "MP": 16,
+        "Special Effects": {
+            "Kill": {
+                "Condition": "Target Poisoned"
+            }
+        }
+    },
+    "Evil Melody": {
+        "Category": "Magic",
+        "Target": "Lowest HP",
+        "MP": 1,
+        "Special Effects": {
+            "Kill": {}
+        }
+    },
+    "Dia": {
+        "Category": "Magic",
+        "Target": "Single Ally",
+        "Power": 55,
+        "Correction": 16,
+        "Limit": 155,
+        "MP": 3,
+        "Special Effects": {
+            "Heal": {}
+        }
+    },
+    "Media": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "Power": 45,
+        "Correction": 13,
+        "Limit": 126,
+        "MP": 12,
+        "Special Effects": {
+            "Heal": {}
+        }
+    },
+    "Diarama": {
+        "Category": "Magic",
+        "Target": "Single Ally",
+        "Power": 75,
+        "Correction": 20,
+        "Limit": 220,
+        "MP": 7,
+        "Special Effects": {
+            "Heal": {}
+        }
+    },
+    "Mediarama": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "Power": 65,
+        "Correction": 19,
+        "Limit": 183,
+        "MP": 20,
+        "Special Effects": {
+            "Heal": {}
+        }
+    },
+    "Diarahan": {
+        "Category": "Magic",
+        "Target": "Single Ally",
+        "MP": 15,
+        "Special Effects": {
+            "Heal": {}
+        }
+    },
+    "Mediarahan": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 35,
+        "Special Effects": {
+            "Heal": {}
+        }
+    },
+    "Prayer": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 50,
+        "Special Effects": {
+            "Heal": {},
+            "Cure Ailments": {}
+        }
+    },
+    "Mutudi": {
+        "Category": "Magic",
+        "Target": "Single Ally",
+        "MP": 5,
+        "Special Effects": {
+            "Cure Mute": {}
+        }
+    },
+    "Patra": {
+        "Category": "Magic",
+        "Target": "Single Ally",
+        "MP": 5,
+        "Special Effects": {
+            "Cure Bind/Sleep/Panic": {}
+        }
+    },
+    "Posumudi": {
+        "Category": "Magic",
+        "Target": "Single Ally",
+        "MP": 5,
+        "Special Effects": {
+            "Cure Poison": {}
+        }
+    },
+    "Paraladi": {
+        "Category": "Magic",
+        "Target": "Single Ally",
+        "MP": 5,
+        "Special Effects": {
+            "Cure Stun": {}
+        }
+    },
+    "Petradi": {
+        "Category": "Magic",
+        "Target": "Single Ally",
+        "MP": 5,
+        "Special Effects": {
+            "Cure Stone": {}
+        }
+    },
+    "Me Patra": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 12,
+        "Special Effects": {
+            "Cure Bind/Sleep/Panic": {}
+        }
+    },
+    "Recarm": {
+        "Category": "Magic",
+        "Target": "Dead Ally",
+        "MP": 20,
+        "Special Effects": {
+            "Revive": {
+                "Value": 0.5
+            }
+        }
+    },
+    "Samarecarm": {
+        "Category": "Magic",
+        "Target": "Dead Ally",
+        "MP": 35,
+        "Special Effects": {
+            "Revive": {
+                "Value": 1
+            }
+        }
+    },
+    "Recarmdra": {
+        "Category": "Magic",
+        "Target": "Other Allies",
+        "MP": 1,
+        "Special Effects": {
+            "Heal": {},
+            "MP Recover": {
+                "Value": 1
+            },
+            "Kill": {
+                "Target": "Self"
+            }
+        }
+    },
+    "Holy Melody": {
+        "Category": "Magic",
+        "Target": "Lowest HP",
+        "MP": 1,
+        "Special Effects": {
+            "Heal": {},
+            "MP Recover": {
+                "Value": 1
+            }
+        }
+    },
+    "Focus": {
+        "Category": "Magic",
+        "Target": "Self",
+        "MP": 5,
+        "Special Effects": {
+            "Focus": {}
+        }
+    },
+    "Tarukaja": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 12,
+        "Special Effects": {
+            "Tarukaja": {}
+        }
+    },
+    "Makakaja": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 12,
+        "Special Effects": {
+            "Makakaja": {}
+        }
+    },
+    "Rakukaja": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 12,
+        "Special Effects": {
+            "Rakukaja": {}
+        }
+    },
+    "Sukukaja": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 12,
+        "Special Effects": {
+            "Sukukaja": {}
+        }
+    },
+    "Tarunda": {
+        "Category": "Magic",
+        "Target": "All Enemies",
+        "MP": 20,
+        "Special Effects": {
+            "Tarunda": {}
+        }
+    },
+    "Rakunda": {
+        "Category": "Magic",
+        "Target": "All Enemies",
+        "MP": 12,
+        "Special Effects": {
+            "Rakunda": {}
+        }
+    },
+    "Sukunda": {
+        "Category": "Magic",
+        "Target": "All Enemies",
+        "MP": 12,
+        "Special Effects": {
+            "Sukunda": {}
+        }
+    },
+    "Fog Breath": {
+        "Category": "Magic",
+        "Target": "All Enemies",
+        "MP": 30,
+        "Special Effects": {
+            "Fog Breath": {}
+        }
+    },
+    "War Cry": {
+        "Category": "Magic",
+        "Target": "All Enemies",
+        "MP": 40,
+        "Special Effects": {
+            "War Cry": {}
+        }
+    },
+    "Debilitate": {
+        "Category": "Magic",
+        "Target": "All Enemies",
+        "MP": 48,
+        "Special Effects": {
+            "Debilitate": {}
+        }
+    },
+    "Taunt": {
+        "Category": "Magic",
+        "Target": "All Enemies",
+        "MP": 20,
+        "Special Effects": {
+            "Taunt": {}
+        }
+    },
+    "Dekunda": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 10,
+        "Special Effects": {
+            "Dekunda": {}
+        }
+    },
+    "Dekaja": {
+        "Category": "Magic",
+        "Target": "All Enemies",
+        "MP": 10,
+        "Special Effects": {
+            "Dekaja": {}
+        }
+    },
+    "Makarakarn": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 45,
+        "Special Effects": {
+            "Reflect Magic": {}
+        }
+    },
+    "Tetrakarn": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 45,
+        "Special Effects": {
+            "Reflect Phys": {}
+        }
+    },
+    "Tetraja": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 15,
+        "Special Effects": {
+            "Void Expel/Death": {}
+        }
+    },
+    "Guardian Raptor": {
+        "Category": "Magic",
+        "Target": "All Allies",
+        "MP": 10,
+        "Special Effects": {
+            "Dekunda": {}
+        }
+    },
+    "Provoke": {
+        "Category": "Magic",
+        "Target": "All Enemies",
+        "Special Effects": {
+            "Taunt": {},
+            "MP Recover": {
+                "Value": 0.25,
+                "Target": "Self"
+            }
+        }
+    },
+    "Red Capote": {
+        "Category": "Magic",
+        "Target": "Self",
+        "MP": 36,
+        "Special Effects": {
+            "Red Capote": {}
+        }
+    },
+    "Analyze": {
+        "Category": "Magic",
+        "Target": "Single Enemy",
+        "MP": 2,
+        "Special Effects": {
+            "Analyze": {}
+        }
+    },
+    "Makatora": {
+        "Category": "Magic",
+        "Target": "Single Ally",
+        "MP": 10,
+        "Special Effects": {
+            "Share MP": {
+                "Value": 10
+            }
+        }
+    },
+    "Beckon Call": {
+        "Category": "Magic",
+        "Target": "Random Stock Ally",
+        "MP": 20,
+        "Special Effects": {
+            "Summon": {}
+        }
+    },
+    "Summon": {
+        "Category": "Magic",
+        "Target": "Stock Ally",
+        "Special Effects": {
+            "Summon": {}
+        }
+    },
+    "Life Stone": {
+        "Category": "Item",
+        "Target": "Single Ally",
+        "Special Effects": {
+            "HP Recover": {
+                "Value": 0.25
+            }
+        }
+    },
+    "Chakra Drop": {
+        "Category": "Item",
+        "Target": "Single Ally",
+        "Special Effects": {
+            "MP Recover": {
+                "Value": 0.25
+            }
+        }
+    }
+}

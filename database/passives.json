@@ -2,302 +2,361 @@
     "Anti-Phys": [
         {
             "Effect": "Resist",
-            "Element": "Phys"
+            "Element": "Phys",
+            "Value": "None"
         }
     ],
     "Phys Drain": [
         {
             "Effect": "Absorb",
-            "Element": "Phys"
+            "Element": "Phys",
+            "Value": "None"
         }
     ],
     "Phys Repel": [
         {
             "Effect": "Reflect",
-            "Element": "Phys"
+            "Element": "Phys",
+            "Value": "None"
         }
     ],
     "Anti-Fire": [
         {
             "Effect": "Resist",
-            "Element": "Fire"
+            "Element": "Fire",
+            "Value": "None"
         }
     ],
     "Void Fire": [
         {
             "Effect": "Void",
-            "Element": "Fire"
+            "Element": "Fire",
+            "Value": "None"
         }
     ],
     "Fire Drain": [
         {
             "Effect": "Absorb",
-            "Element": "Fire"
+            "Element": "Fire",
+            "Value": "None"
         }
     ],
     "Fire Repel": [
         {
             "Effect": "Reflect",
-            "Element": "Fire"
+            "Element": "Fire",
+            "Value": "None"
         }
     ],
     "Anti-Ice": [
         {
             "Effect": "Resist",
-            "Element": "Ice"
+            "Element": "Ice",
+            "Value": "None"
         }
     ],
     "Void Ice": [
         {
             "Effect": "Void",
-            "Element": "Ice"
+            "Element": "Ice",
+            "Value": "None"
         }
     ],
     "Ice Drain": [
         {
             "Effect": "Absorb",
-            "Element": "Ice"
+            "Element": "Ice",
+            "Value": "None"
         }
     ],
     "Ice Repel": [
         {
             "Effect": "Reflect",
-            "Element": "Ice"
+            "Element": "Ice",
+            "Value": "None"
         }
     ],
     "Anti-Elec": [
         {
             "Effect": "Resist",
-            "Element": "Elec"
+            "Element": "Elec",
+            "Value": "None"
         }
     ],
     "Void Elec": [
         {
             "Effect": "Void",
-            "Element": "Elec"
+            "Element": "Elec",
+            "Value": "None"
         }
     ],
     "Elec Drain": [
         {
             "Effect": "Absorb",
-            "Element": "Elec"
+            "Element": "Elec",
+            "Value": "None"
         }
     ],
     "Elec Repel": [
         {
             "Effect": "Reflect",
-            "Element": "Elec"
+            "Element": "Elec",
+            "Value": "None"
         }
     ],
     "Anti-Force": [
         {
             "Effect": "Resist",
-            "Element": "Force"
+            "Element": "Force",
+            "Value": "None"
         }
     ],
     "Void Force": [
         {
             "Effect": "Void",
-            "Element": "Force"
+            "Element": "Force",
+            "Value": "None"
         }
     ],
     "Force Drain": [
         {
             "Effect": "Absorb",
-            "Element": "Force"
+            "Element": "Force",
+            "Value": "None"
         }
     ],
     "Force Repel": [
         {
             "Effect": "Reflect",
-            "Element": "Force"
+            "Element": "Force",
+            "Value": "None"
         }
     ],
     "Anti-Expel": [
         {
             "Effect": "Resist",
-            "Element": "Expel"
+            "Element": "Expel",
+            "Value": "None"
         }
     ],
     "Void Expel": [
         {
             "Effect": "Void",
-            "Element": "Expel"
+            "Element": "Expel",
+            "Value": "None"
         }
     ],
     "Anti-Death": [
         {
             "Effect": "Resist",
-            "Element": "Death"
+            "Element": "Death",
+            "Value": "None"
         }
     ],
     "Void Death": [
         {
             "Effect": "Void",
-            "Element": "Death"
+            "Element": "Death",
+            "Value": "None"
         }
     ],
     "Anti-Curse": [
         {
             "Effect": "Resist",
-            "Element": "Curse"
+            "Element": "Curse",
+            "Value": "None"
         }
     ],
     "Void Curse": [
         {
             "Effect": "Void",
-            "Element": "Curse"
+            "Element": "Curse",
+            "Value": "None"
         }
     ],
     "Anti-Nerve": [
         {
             "Effect": "Resist",
-            "Element": "Nerve"
+            "Element": "Nerve",
+            "Value": "None"
         }
     ],
     "Void Nerve": [
         {
             "Effect": "Void",
-            "Element": "Nerve"
+            "Element": "Nerve",
+            "Value": "None"
         }
     ],
     "Anti-Mind": [
         {
             "Effect": "Resist",
-            "Element": "Mind"
+            "Element": "Mind",
+            "Value": "None"
         }
     ],
     "Void Mind": [
         {
             "Effect": "Void",
-            "Element": "Mind"
+            "Element": "Mind",
+            "Value": "None"
         }
     ],
     "Fire Boost": [
         {
             "Effect": "Boost",
-            "Element": "Fire"
+            "Element": "Fire",
+            "Value": "None"
         }
     ],
     "Ice Boost": [
         {
             "Effect": "Boost",
-            "Element": "Ice"
+            "Element": "Ice",
+            "Value": "None"
         }
     ],
     "Elec Boost": [
         {
             "Effect": "Boost",
-            "Element": "Elec"
+            "Element": "Elec",
+            "Value": "None"
         }
     ],
     "Force Boost": [
         {
             "Effect": "Boost",
-            "Element": "Force"
+            "Element": "Force",
+            "Value": "None"
         }
     ],
     "Life Bonus": [
         {
             "Effect": "HP Bonus",
-            "Value": 1.1
+            "Value": 1.1,
+            "Element": "None"
         }
     ],
     "Life Gain": [
         {
             "Effect": "HP Bonus",
-            "Value": 1.2
+            "Value": 1.2,
+            "Element": "None"
         }
     ],
     "Life Surge": [
         {
             "Effect": "HP Bonus",
-            "Value": 1.3
+            "Value": 1.3,
+            "Element": "None"
         }
     ],
     "Mana Bonus": [
         {
             "Effect": "MP Bonus",
-            "Value": 1.1
+            "Value": 1.1,
+            "Element": "None"
         }
     ],
     "Mana Gain": [
         {
             "Effect": "MP Bonus",
-            "Value": 1.2
+            "Value": 1.2,
+            "Element": "None"
         }
     ],
     "Mana Surge": [
         {
             "Effect": "MP Bonus",
-            "Value": 1.3
+            "Value": 1.3,
+            "Element": "None"
         }
     ],
     "Counter": [
         {
             "Effect": "Counter",
-            "Value": 1
+            "Value": 1,
+            "Element": "None"
         }
     ],
     "Retaliate": [
         {
             "Effect": "Counter",
-            "Value": 1.5
+            "Value": 1.5,
+            "Element": "None"
         }
     ],
     "Avenge": [
         {
             "Effect": "Counter",
-            "Value": 2
+            "Value": 2,
+            "Element": "None"
         }
     ],
     "Drain Attack": [
         {
             "Effect": "Drain",
-            "Value": 0.25
+            "Value": 0.25,
+            "Element": "None"
         },
         {
             "Effect": "Crit",
-            "Value": 0.33
+            "Value": 0.33,
+            "Element": "None"
         }
     ],
     "Might": [
         {
             "Effect": "Crit",
-            "Value": 3
+            "Value": 3,
+            "Element": "None"
         }
     ],
     "Dark Might": [
         {
-            "Effect": "Dark Might"
+            "Effect": "Dark Might",
+            "Element": "None",
+            "Value": "None"
         }
     ],
     "Bright Might": [
         {
-            "Effect": "Bright Might"
+            "Effect": "Bright Might",
+            "Element": "None",
+            "Value": "None"
         }
     ],
     "Attack All": [
         {
-            "Effect": "Attack All"
+            "Effect": "Attack All",
+            "Element": "None",
+            "Value": "None"
         }
     ],
     "Endure": [
         {
-            "Effect": "Endure"
+            "Effect": "Endure",
+            "Element": "None",
+            "Value": "None"
         }
     ],
     "Pierce": [
         {
-            "Effect": "Pierce"
+            "Effect": "Pierce",
+            "Element": "None",
+            "Value": "None"
         }
     ],
     "Raidou the Aeon": [
         {
-            "Effect": "Boost"
+            "Effect": "Boost",
+            "Element": "None",
+            "Value": "None"
         },
         {
-            "Effect": "Pierce"
+            "Effect": "Pierce",
+            "Element": "None",
+            "Value": "None"
         }
     ]
 }

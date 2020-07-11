@@ -157,16 +157,6 @@ def print_list(items):
     output += str(new_items[-1])
     return output
 
-
-def except_key(dictionary, subdict_key, key, default):
-    subdict = dictionary[subdict_key]
-    try:
-        output = subdict[key]
-    except KeyError:
-        output = default
-    return copy.deepcopy(output)
-
-
 def ordinal(n):
     ordinals = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh',
                 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth',
@@ -204,33 +194,12 @@ status_list = ['Stone', 'Fly', 'Stun', 'Charm', 'Poison', 'Mute', 'Bind', 'Panic
 
 # In[12]:
 
-
-unimplemented_moves = []
-for demon in demon_dict:
-    base_moves = except_key(demon_dict, demon, 'Base Moves', [])
-    for move in base_moves:
-        if move not in moves_dict and move not in passives_dict:
-            unimplemented_moves.append(move)
-    learned_moves = except_key(demon_dict, demon, 'Learned Moves', [])
-    for move in learned_moves:
-        if move[0] not in moves_dict and move[0] not in passives_dict:
-            unimplemented_moves.append(move[0])
-for magatama in magatama_dict:
-    moves = except_key(magatama_dict, magatama, 'Moves', [])
-    for move in moves:
-        if move[0] not in moves_dict and move[0] not in passives_dict:
-            unimplemented_moves.append(move[0])
-if 'Pierce' not in passives_dict:
-    unimplemented_moves.append('Pierce')
-unimplemented_moves = sorted(list(set(unimplemented_moves)))
-
 RANDOM_DEMON_RANGE = 12
-
 
 # In[13]:
 
 
-#program-specific global functions
+# program-specific global functions
 
 def find_evolve_count(demon):
     searching_evolutions = True
@@ -238,7 +207,7 @@ def find_evolve_count(demon):
     while searching_evolutions:
         temp_evolve = evolve
         for demon_name in demon_dict:
-            if demon == except_key(demon_dict, demon_name, 'Evolution', 'None')[0]:
+            if demon == demon_dict[demon_name]['Evolution'][0]:
                 demon = demon_name
                 evolve += 1
         if temp_evolve == evolve:
@@ -580,29 +549,27 @@ class Move:
         self.name = name
         self.target = moves_dict[name]['Target']
         self.category = moves_dict[name]['Category']
-        self.dmg_calc = except_key(moves_dict, name, 'Damage Calc', 'None')
+        self.dmg_calc = moves_dict[name]['Damage Calc']
         if self.dmg_calc == 'None' and self.category == 'Magic':
             self.dmg_calc = 'Mag'
-        self.element = except_key(moves_dict, name, 'Element', 'None')
-        self.hits = except_key(moves_dict, name, 'Hits', 1)
-        self.power = except_key(moves_dict, name, 'Power', 'None')
-        self.correction = except_key(moves_dict, name, 'Correction', 'None')
-        self.limit = except_key(moves_dict, name, 'Limit', 'None')
+        self.element = moves_dict[name]['Element']
+        self.hits = moves_dict[name]['Hits']
+        self.power = moves_dict[name]['Power']
+        self.correction = moves_dict[name]['Correction']
+        self.limit = moves_dict[name]['Limit']
         if self.power != 'None' and self.correction != 'None' and self.limit != 'None':
             self.peak = round(((self.limit - self.correction) / self.power) * (255 / 24))
         else:
             self.peak = 'None'
-        self.accuracy = except_key(moves_dict, name, 'Accuracy', 'None')
-        self.mp = except_key(moves_dict, name, 'MP', 0)
-        self.hp = except_key(moves_dict, name, 'HP', 0)
-        self.specials = except_key(moves_dict, name, 'Special Effects', {})
+        self.accuracy = moves_dict[name]['Accuracy']
+        self.mp = moves_dict[name]['MP']
+        self.hp = moves_dict[name]['HP']
+        self.specials = moves_dict[name]['Special Effects']
         if self.element == 'Phys':
-            self.specials['Shatter'] = {'Accuracy': 50}
+            self.specials['Shatter'] = self.create_special({'Accuracy': 50, 'Condition': 'Target Stone'})
         elif self.element == 'Force':
-            self.specials['Shatter'] = {'Accuracy': 75}
-        for effect_info in self.specials.values():
-            self.special_default(effect_info)
-        self.crit = except_key(moves_dict, name, 'Crit', 'None')
+            self.specials['Shatter'] = self.create_special({'Accuracy': 75, 'Condition': 'Target Stone'})
+        self.crit = moves_dict[name]['Crit']
         self.pierce = False
         self.reset()
 
@@ -610,19 +577,15 @@ class Move:
         self.reflected = False
         self.temp_dmg_factor = 1
 
-    def special_default(self, effect_info):
-        '''Takes in effect_info dict; updates it to defaults. Separate from __init__ method
-           for use in adding new special effects to moves (via passives; ex. bright/dark might)'''
-        if 'Element' not in effect_info:
-            effect_info['Element'] = self.element
-        if 'Accuracy' not in effect_info:
-            effect_info['Accuracy'] = 100
-        if 'Value' not in effect_info:
-            effect_info['Value'] = 0
-        if 'Target' not in effect_info:
-            effect_info['Target'] = 'Same'
-        if 'Condition' not in effect_info:
-            effect_info['Condition'] = 'None'
+    def create_special(self, effect_info={}):
+        '''Takes in effect_info dict; updates it to defaults. Used when creating new special effects, usually
+        through passives (such as bright/dark might and drain attack)'''
+        effect_info.setdefault('Element', self.element)
+        effect_info.setdefault('Accuracy', 100)
+        effect_info.setdefault('Value', 0)
+        effect_info.setdefault('Target', 'Same')
+        effect_info.setdefault('Condition', 'None')
+        return effect_info
 
     def hp_cost(self, user):
         return int(self.hp * user.max_hp / 100)
@@ -810,14 +773,8 @@ class Move:
 class PassiveAbility:
     def __init__(self, info):
         self.effect = info['Effect']
-        try:
-            self.element = info['Element']
-        except KeyError:
-            self.element = 'None'
-        try:
-            self.value = info['Value']
-        except KeyError:
-            self.value = 'None'
+        self.element = info['Element']
+        self.value = info['Value']
 
     def init_apply(self, demon):
         if self.effect == 'Reflect':
@@ -840,14 +797,12 @@ class PassiveAbility:
             if demon.get_move('Attack').crit != 'None':
                 demon.get_move('Attack').crit *= self.value
         elif self.effect == 'Bright Might':
-            demon.get_move('Attack').specials['Bright Might'] = {}
-            demon.get_move('Attack').special_default(demon.get_move('Attack').specials['Bright Might'])
+            demon.get_move('Attack').specials['Bright Might'] = demon.get_move('Attack').create_special()
         elif self.effect == 'Dark Might':
-            demon.get_move('Attack').specials['Dark Might'] = {}
-            demon.get_move('Attack').special_default(demon.get_move('Attack').specials['Dark Might'])
+            demon.get_move('Attack').specials['Dark Might'] = demon.get_move('Attack').create_special()
         elif self.effect == 'Drain':
-            demon.get_move('Attack').specials['HP Drain'] = {'Value': self.value}
-            demon.get_move('Attack').special_default(demon.get_move('Attack').specials['HP Drain'])
+            special = demon.get_move('Attack').create_special({'Value': self.value})
+            demon.get_move('Attack').specials['HP Drain'] = special
         elif self.effect == 'Attack All':
             demon.get_move('Attack').target = 'All Enemies'
         elif self.effect == 'Pierce':
@@ -1048,15 +1003,15 @@ class Demon:
                         break
         self.name = name
         self.race = demon_dict[name]['Race']
-        self.attack_changes = except_key(demon_dict, name, 'Attack', {})
-        base_moves = except_key(demon_dict, name, 'Base Moves', [])
+        self.attack_changes = demon_dict[name]['Attack']
+        base_moves = demon_dict[name]['Base Moves']
         for move in base_moves:
             if move in moves_dict and move not in self.move_names():
                 self.moves.append(Move(move))
             if move in passives_dict and move not in self.passive_names():
                 self.passives.append(Passive(move))
         # temp way to learn moves
-        learned_moves = except_key(demon_dict, name, 'Learned Moves', [])
+        learned_moves = demon_dict[name]['Learned Moves']
         for move in learned_moves:
             if move[0] in moves_dict and move[0] not in self.move_names():
                 self.moves.append(Move(move[0]))
@@ -1090,12 +1045,12 @@ class Demon:
         self.vit = demon_dict[name]['Vitality']
         self.ag = demon_dict[name]['Agility']
         self.luck = demon_dict[name]['Luck']
-        self.reflect = set(except_key(demon_dict, name, 'Reflect', []))
-        self.absorb = set(except_key(demon_dict, name, 'Absorb', []))
-        self.void = set(except_key(demon_dict, name, 'Void', []))
-        self.resist = set(except_key(demon_dict, name, 'Resist', []))
-        self.weak = set(except_key(demon_dict, name, 'Weaknesses', []))
-        self.evolution = except_key(demon_dict, name, 'Evolution', 'None')
+        self.reflect = set(demon_dict[name]['Reflect'])
+        self.absorb = set(demon_dict[name]['Absorb'])
+        self.void = set(demon_dict[name]['Void'])
+        self.resist = set(demon_dict[name]['Resist'])
+        self.weak = set(demon_dict[name]['Weaknesses'])
+        self.evolution = demon_dict[name]['Evolution']
         self.magatama = 'None'
         self.calc_init()
 
@@ -1456,6 +1411,9 @@ class Demon:
         elif condition == 'Target Poisoned':
             if 'Poison' in self.list_statuses():
                 return True
+        elif condition == 'Target Stone':
+            if 'Stone' in self.list_statuses():
+                return True
         return False
 
     def proc_effect(self, effect, value):
@@ -1696,9 +1654,8 @@ class Demon:
             self.hp = 1
             print(f"{self.name}'s HP was brought to 1!")
         elif effect == 'Shatter':
-            if 'Stone' in self.list_statuses():
-                self.hp = 0
-                print(f'{self.name} was shattered!')
+            self.hp = 0
+            print(f'{self.name} was shattered!')
         elif effect == 'Summon':
             print(f'{self.name} was summoned to the battlefield!')
             self.party.summon(self)
@@ -2676,7 +2633,7 @@ class DemiFiend(Demon):
                 self.race = 'Soldier'
         self.attack_changes = {}
         # temp way to learn moves
-        moves = except_key(magatama_dict, name, 'Moves', [])
+        moves = magatama_dict[name]['Moves']
         # remove unimplemented so that df always has 8 moves
         new_moves = []
         for move_tuple in moves:
@@ -2744,11 +2701,11 @@ class DemiFiend(Demon):
                     self.luck += 1
                     deciding = False
         # resistances
-        self.reflect = set(except_key(magatama_dict, name, 'Reflect', []))
-        self.absorb = set(except_key(magatama_dict, name, 'Absorb', []))
-        self.void = set(except_key(magatama_dict, name, 'Void', []))
-        self.resist = set(except_key(magatama_dict, name, 'Resist', []))
-        self.weak = set(except_key(magatama_dict, name, 'Weaknesses', []))
+        self.reflect = set(magatama_dict[name]['Reflect'])
+        self.absorb = set(magatama_dict[name]['Absorb'])
+        self.void = set(magatama_dict[name]['Void'])
+        self.resist = set(magatama_dict[name]['Resist'])
+        self.weak = set(magatama_dict[name]['Weaknesses'])
         self.evolution = 'None'
         self.calc_init()
 

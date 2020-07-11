@@ -79,7 +79,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Seraph"
+        "Race": "Seraph",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Shiva": {
         "Base Moves": [
@@ -125,7 +130,12 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Fury"
+        "Race": "Fury",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Vishnu": {
         "Base Moves": [
@@ -173,7 +183,11 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Deity"
+        "Race": "Deity",
+        "Attack": {},
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Mot": {
         "Base Moves": [
@@ -215,7 +229,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Tyrant"
+        "Race": "Tyrant",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Michael": {
         "Base Moves": [
@@ -255,7 +274,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Seraph"
+        "Race": "Seraph",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Gabriel": {
         "Base Moves": [
@@ -295,7 +319,12 @@
             "Ice",
             "Force"
         ],
-        "Race": "Seraph"
+        "Race": "Seraph",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Beelzebub": {
         "Base Moves": [
@@ -337,7 +366,10 @@
         "Evolution": [
             "Beelzebub Fly",
             86
-        ]
+        ],
+        "Attack": {},
+        "Absorb": [],
+        "Weaknesses": []
     },
     "Raphael": {
         "Base Moves": [
@@ -376,7 +408,12 @@
             "Fire",
             "Force"
         ],
-        "Race": "Seraph"
+        "Race": "Seraph",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Mada": {
         "Base Moves": [
@@ -417,7 +454,11 @@
         "Weaknesses": [
             "Curse"
         ],
-        "Race": "Vile"
+        "Race": "Vile",
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Ongyo-Ki": {
         "Base Moves": [
@@ -462,7 +503,12 @@
         "Weaknesses": [
             "Expel"
         ],
-        "Race": "Brute"
+        "Race": "Brute",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Lilith": {
         "Base Moves": [
@@ -504,7 +550,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Night"
+        "Race": "Night",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Raidou Kuzunoha XIV": {
         "Base Moves": [
@@ -555,7 +606,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Summoner"
+        "Race": "Summoner",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Mithra": {
         "Base Moves": [
@@ -601,7 +657,11 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Deity"
+        "Race": "Deity",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Aciel": {
         "Learned Moves": [
@@ -640,7 +700,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Tyrant"
+        "Race": "Tyrant",
+        "Base Moves": [],
+        "Attack": {},
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Trumpeter": {
         "Base Moves": [
@@ -681,7 +746,13 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Fiend"
+        "Race": "Fiend",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Thor": {
         "Base Moves": [
@@ -721,7 +792,12 @@
             "Curse",
             "Nerve"
         ],
-        "Race": "Kishin"
+        "Race": "Kishin",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Hresvelgr": {
         "Base Moves": [
@@ -762,7 +838,11 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Wilder"
+        "Race": "Wilder",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Skadi": {
         "Learned Moves": [
@@ -797,7 +877,13 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Lady"
+        "Race": "Lady",
+        "Base Moves": [],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Surt": {
         "Base Moves": [
@@ -847,7 +933,9 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Tyrant"
+        "Race": "Tyrant",
+        "Reflect": [],
+        "Evolution": "None"
     },
     "Samael": {
         "Base Moves": [
@@ -886,7 +974,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Vile"
+        "Race": "Vile",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Uriel": {
         "Learned Moves": [
@@ -919,7 +1012,13 @@
         "Void": [
             "Fire"
         ],
-        "Race": "Seraph"
+        "Race": "Seraph",
+        "Base Moves": [],
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Bishamon": {
         "Base Moves": [
@@ -963,7 +1062,11 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Kishin"
+        "Race": "Kishin",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Rangda": {
         "Base Moves": [
@@ -1001,7 +1104,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Femme"
+        "Race": "Femme",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Nyx": {
         "Base Moves": [
@@ -1039,7 +1147,13 @@
             "Elec",
             "Force"
         ],
-        "Race": "Night"
+        "Race": "Night",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Abaddon": {
         "Base Moves": [
@@ -1090,7 +1204,10 @@
         "Evolution": [
             "Aciel",
             74
-        ]
+        ],
+        "Attack": {},
+        "Absorb": [],
+        "Weaknesses": []
     },
     "The Harlot": {
         "Base Moves": [
@@ -1134,7 +1251,10 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Fiend"
+        "Race": "Fiend",
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Flauros": {
         "Base Moves": [
@@ -1176,7 +1296,12 @@
         "Weaknesses": [
             "Nerve"
         ],
-        "Race": "Fallen"
+        "Race": "Fallen",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Kali": {
         "Base Moves": [
@@ -1217,7 +1342,11 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Lady"
+        "Race": "Lady",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Atropos": {
         "Base Moves": [
@@ -1258,7 +1387,13 @@
             "Death",
             "Mind"
         ],
-        "Race": "Femme"
+        "Race": "Femme",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Yurlungur": {
         "Base Moves": [
@@ -1301,7 +1436,12 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Snake"
+        "Race": "Snake",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Fuu-Ki": {
         "Base Moves": [
@@ -1336,7 +1476,13 @@
             "Force",
             "Death"
         ],
-        "Race": "Brute"
+        "Race": "Brute",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Black Frost": {
         "Base Moves": [
@@ -1381,7 +1527,10 @@
         "Resist": [
             "Phys"
         ],
-        "Race": "Night"
+        "Race": "Night",
+        "Attack": {},
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Odin": {
         "Base Moves": [
@@ -1423,7 +1572,12 @@
         "Weaknesses": [
             "Force"
         ],
-        "Race": "Deity"
+        "Race": "Deity",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Tao Tie": {
         "Base Moves": [
@@ -1461,7 +1615,12 @@
         "Weaknesses": [
             "Curse"
         ],
-        "Race": "Vile"
+        "Race": "Vile",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Scathach": {
         "Base Moves": [
@@ -1508,7 +1667,11 @@
         "Evolution": [
             "Skadi",
             69
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Throne": {
         "Base Moves": [
@@ -1554,7 +1717,10 @@
         "Evolution": [
             "Uriel",
             68
-        ]
+        ],
+        "Attack": {},
+        "Void": [],
+        "Resist": []
     },
     "Albion": {
         "Learned Moves": [
@@ -1586,7 +1752,14 @@
             "Ice",
             "Expel"
         ],
-        "Race": "Entity"
+        "Race": "Entity",
+        "Base Moves": [],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Futomimi": {
         "Base Moves": [
@@ -1622,7 +1795,13 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Kishin"
+        "Race": "Kishin",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Lachesis": {
         "Base Moves": [
@@ -1663,7 +1842,13 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Femme"
+        "Race": "Femme",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Rakshasa": {
         "Base Moves": [
@@ -1705,7 +1890,12 @@
             "Elec",
             "Expel"
         ],
-        "Race": "Haunt"
+        "Race": "Haunt",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Garuda": {
         "Learned Moves": [
@@ -1742,7 +1932,12 @@
         "Weaknesses": [
             "Death"
         ],
-        "Race": "Avian"
+        "Race": "Avian",
+        "Base Moves": [],
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Gurr": {
         "Base Moves": [
@@ -1789,7 +1984,11 @@
         "Weaknesses": [
             "Expel"
         ],
-        "Race": "Raptor"
+        "Race": "Raptor",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Pale Rider": {
         "Base Moves": [
@@ -1828,7 +2027,13 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Fiend"
+        "Race": "Fiend",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Sui-Ki": {
         "Base Moves": [
@@ -1867,7 +2072,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Brute"
+        "Race": "Brute",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Beiji-Weng": {
         "Base Moves": [
@@ -1909,7 +2119,11 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Fury"
+        "Race": "Fury",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Cerberus": {
         "Base Moves": [
@@ -1950,7 +2164,11 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Beast"
+        "Race": "Beast",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Black Rider": {
         "Base Moves": [
@@ -1995,7 +2213,12 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Fiend"
+        "Race": "Fiend",
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Barong": {
         "Base Moves": [
@@ -2035,7 +2258,11 @@
         "Weaknesses": [
             "Death"
         ],
-        "Race": "Avatar"
+        "Race": "Avatar",
+        "Attack": {},
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Kin-Ki": {
         "Base Moves": [
@@ -2073,7 +2300,12 @@
         "Weaknesses": [
             "Curse"
         ],
-        "Race": "Brute"
+        "Race": "Brute",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Decarabia": {
         "Base Moves": [
@@ -2118,7 +2350,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Fallen"
+        "Race": "Fallen",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Clotho": {
         "Base Moves": [
@@ -2154,7 +2391,13 @@
             "Expel",
             "Death"
         ],
-        "Race": "Femme"
+        "Race": "Femme",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Girimehkala": {
         "Base Moves": [
@@ -2191,7 +2434,12 @@
         "Void": [
             "Death"
         ],
-        "Race": "Vile"
+        "Race": "Vile",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Ganesha": {
         "Learned Moves": [
@@ -2226,7 +2474,13 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Wargod"
+        "Race": "Wargod",
+        "Base Moves": [],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Parvati": {
         "Learned Moves": [
@@ -2262,7 +2516,12 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Lady"
+        "Race": "Lady",
+        "Base Moves": [],
+        "Attack": {},
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Titania": {
         "Base Moves": [
@@ -2307,7 +2566,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Fairy"
+        "Race": "Fairy",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Amaterasu": {
         "Base Moves": [
@@ -2343,7 +2607,13 @@
             "Expel",
             "Death"
         ],
-        "Race": "Deity"
+        "Race": "Deity",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Queen Mab": {
         "Base Moves": [
@@ -2385,7 +2655,13 @@
             "Elec",
             "Force"
         ],
-        "Race": "Night"
+        "Race": "Night",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Chimera": {
         "Base Moves": [
@@ -2427,7 +2703,11 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Holy"
+        "Race": "Holy",
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Quetzacoatl": {
         "Base Moves": [
@@ -2472,7 +2752,11 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Snake"
+        "Race": "Snake",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Gogmagog": {
         "Base Moves": [
@@ -2520,7 +2804,11 @@
         "Evolution": [
             "Albion",
             60
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Red Rider": {
         "Base Moves": [
@@ -2556,7 +2844,13 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Fiend"
+        "Race": "Fiend",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Lakshmi": {
         "Base Moves": [
@@ -2602,7 +2896,11 @@
         "Weaknesses": [
             "Force"
         ],
-        "Race": "Megami"
+        "Race": "Megami",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Wu Kong": {
         "Learned Moves": [
@@ -2634,7 +2932,14 @@
             "Expel",
             "Death"
         ],
-        "Race": "Fury"
+        "Race": "Fury",
+        "Base Moves": [],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Sparna": {
         "Base Moves": [
@@ -2678,7 +2983,11 @@
         "Evolution": [
             "Garuda",
             58
-        ]
+        ],
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": []
     },
     "Shiki-Ouji": {
         "Base Moves": [
@@ -2720,7 +3029,11 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Brute"
+        "Race": "Brute",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Loa": {
         "Base Moves": [
@@ -2764,7 +3077,12 @@
         "Weaknesses": [
             "Expel"
         ],
-        "Race": "Night"
+        "Race": "Night",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Jikoku": {
         "Base Moves": [
@@ -2808,7 +3126,11 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Kishin"
+        "Race": "Kishin",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Efreet": {
         "Base Moves": [
@@ -2849,7 +3171,12 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Yoma"
+        "Race": "Yoma",
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Dakini": {
         "Base Moves": [
@@ -2890,7 +3217,12 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Femme"
+        "Race": "Femme",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Loki": {
         "Base Moves": [
@@ -2935,7 +3267,13 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Tyrant"
+        "Race": "Tyrant",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Shadow": {
         "Base Moves": [
@@ -2984,7 +3322,11 @@
             "Force",
             "Expel"
         ],
-        "Race": "Foul"
+        "Race": "Foul",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Cu Chulainn": {
         "Learned Moves": [
@@ -3021,7 +3363,13 @@
         "Void": [
             "Expel"
         ],
-        "Race": "Genma"
+        "Race": "Genma",
+        "Base Moves": [],
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "White Rider": {
         "Base Moves": [
@@ -3059,7 +3407,12 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Fiend"
+        "Race": "Fiend",
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Dominion": {
         "Base Moves": [
@@ -3101,7 +3454,12 @@
             "Death",
             "Curse"
         ],
-        "Race": "Divine"
+        "Race": "Divine",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Titan": {
         "Base Moves": [
@@ -3139,7 +3497,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Jirae"
+        "Race": "Jirae",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Legion": {
         "Base Moves": [
@@ -3181,7 +3544,12 @@
             "Elec",
             "Expel"
         ],
-        "Race": "Haunt"
+        "Race": "Haunt",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Sati": {
         "Base Moves": [
@@ -3226,7 +3594,10 @@
         "Evolution": [
             "Parvati",
             52
-        ]
+        ],
+        "Attack": {},
+        "Void": [],
+        "Resist": []
     },
     "Purski": {
         "Base Moves": [
@@ -3273,7 +3644,11 @@
         "Evolution": [
             "Ganesha",
             53
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Atavaka": {
         "Base Moves": [
@@ -3312,7 +3687,12 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Deity"
+        "Race": "Deity",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Kaiwan": {
         "Base Moves": [
@@ -3360,7 +3740,11 @@
         "Weaknesses": [
             "Expel"
         ],
-        "Race": "Night"
+        "Race": "Night",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Oberon": {
         "Base Moves": [
@@ -3402,7 +3786,12 @@
         "Weaknesses": [
             "Curse"
         ],
-        "Race": "Fairy"
+        "Race": "Fairy",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Hanuman": {
         "Learned Moves": [
@@ -3437,7 +3826,12 @@
         "Evolution": [
             "Wu Kong",
             50
-        ]
+        ],
+        "Base Moves": [],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": []
     },
     "Yatagarasu": {
         "Base Moves": [
@@ -3472,7 +3866,13 @@
             "Force",
             "Expel"
         ],
-        "Race": "Avatar"
+        "Race": "Avatar",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Mikazuchi": {
         "Base Moves": [
@@ -3512,7 +3912,11 @@
         "Weaknesses": [
             "Force"
         ],
-        "Race": "Kishin"
+        "Race": "Kishin",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Ose": {
         "Base Moves": [
@@ -3554,7 +3958,12 @@
         "Weaknesses": [
             "Nerve"
         ],
-        "Race": "Fallen"
+        "Race": "Fallen",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Pazuzu": {
         "Base Moves": [
@@ -3592,7 +4001,12 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Vile"
+        "Race": "Vile",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Sakahagi": {
         "Base Moves": [
@@ -3629,7 +4043,12 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Foul"
+        "Race": "Foul",
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Dionysus": {
         "Base Moves": [
@@ -3668,7 +4087,12 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Fury"
+        "Race": "Fury",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Jinn": {
         "Base Moves": [
@@ -3710,7 +4134,11 @@
         "Evolution": [
             "Efreet",
             48
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Resist": []
     },
     "Ikusa": {
         "Base Moves": [
@@ -3748,7 +4176,12 @@
         "Weaknesses": [
             "Force"
         ],
-        "Race": "Brute"
+        "Race": "Brute",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Long": {
         "Learned Moves": [
@@ -3781,7 +4214,13 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Dragon"
+        "Race": "Dragon",
+        "Base Moves": [],
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Baihu": {
         "Base Moves": [
@@ -3824,7 +4263,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Holy"
+        "Race": "Holy",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Setanta": {
         "Base Moves": [
@@ -3871,7 +4315,11 @@
         "Evolution": [
             "Cu Chulainn",
             48
-        ]
+        ],
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": []
     },
     "Yaksini": {
         "Base Moves": [
@@ -3909,7 +4357,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Femme"
+        "Race": "Femme",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Mothman": {
         "Base Moves": [
@@ -3947,7 +4400,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Wilder"
+        "Race": "Wilder",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Phantom": {
         "Base Moves": [
@@ -3992,7 +4450,11 @@
             "Force",
             "Expel"
         ],
-        "Race": "Foul"
+        "Race": "Foul",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Hell Biker": {
         "Base Moves": [
@@ -4026,7 +4488,12 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Fiend"
+        "Race": "Fiend",
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Kushinada": {
         "Base Moves": [
@@ -4064,7 +4531,12 @@
         "Weaknesses": [
             "Death"
         ],
-        "Race": "Lady"
+        "Race": "Lady",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Virtue": {
         "Base Moves": [
@@ -4103,7 +4575,12 @@
             "Force",
             "Death"
         ],
-        "Race": "Divine"
+        "Race": "Divine",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Okuninushi": {
         "Base Moves": [
@@ -4140,7 +4617,12 @@
         "Void": [
             "Death"
         ],
-        "Race": "Kishin"
+        "Race": "Kishin",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Horus": {
         "Base Moves": [
@@ -4184,7 +4666,11 @@
         "Weaknesses": [
             "Death"
         ],
-        "Race": "Deity"
+        "Race": "Deity",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Troll": {
         "Base Moves": [
@@ -4225,7 +4711,12 @@
         "Weaknesses": [
             "Mind"
         ],
-        "Race": "Fairy"
+        "Race": "Fairy",
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Kurama": {
         "Learned Moves": [
@@ -4262,7 +4753,13 @@
         "Void": [
             "Expel"
         ],
-        "Race": "Genma"
+        "Race": "Genma",
+        "Base Moves": [],
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Onkot": {
         "Base Moves": [
@@ -4309,7 +4806,11 @@
         "Evolution": [
             "Hanuman",
             42
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": []
     },
     "Berith": {
         "Base Moves": [
@@ -4357,7 +4858,10 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Fallen"
+        "Race": "Fallen",
+        "Attack": {},
+        "Reflect": [],
+        "Evolution": "None"
     },
     "Raja Naga": {
         "Base Moves": [
@@ -4401,7 +4905,11 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Snake"
+        "Race": "Snake",
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Succubus": {
         "Base Moves": [
@@ -4439,7 +4947,12 @@
         "Weaknesses": [
             "Expel"
         ],
-        "Race": "Night"
+        "Race": "Night",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Daisoujou": {
         "Base Moves": [
@@ -4477,7 +4990,11 @@
             "Expel",
             "Nerve"
         ],
-        "Race": "Fiend"
+        "Race": "Fiend",
+        "Attack": {},
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Feng Huang": {
         "Base Moves": [
@@ -4518,7 +5035,11 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Holy"
+        "Race": "Holy",
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Sarutahiko": {
         "Base Moves": [
@@ -4560,7 +5081,12 @@
         "Weaknesses": [
             "Nerve"
         ],
-        "Race": "Jirae"
+        "Race": "Jirae",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Saki Mitama": {
         "Base Moves": [
@@ -4605,7 +5131,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Mitama"
+        "Race": "Mitama",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Mizuchi": {
         "Base Moves": [
@@ -4651,7 +5182,10 @@
         "Evolution": [
             "Long",
             38
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Resist": []
     },
     "Orthrus": {
         "Base Moves": [
@@ -4688,7 +5222,12 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Beast"
+        "Race": "Beast",
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Komoku": {
         "Base Moves": [
@@ -4728,7 +5267,11 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Kishin"
+        "Race": "Kishin",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Power": {
         "Base Moves": [
@@ -4767,7 +5310,12 @@
             "Death",
             "Nerve"
         ],
-        "Race": "Divine"
+        "Race": "Divine",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Baphomet": {
         "Base Moves": [
@@ -4805,7 +5353,12 @@
         "Void": [
             "Expel"
         ],
-        "Race": "Vile"
+        "Race": "Vile",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Valkyrie": {
         "Learned Moves": [
@@ -4838,7 +5391,13 @@
         "Void": [
             "Expel"
         ],
-        "Race": "Wargod"
+        "Race": "Wargod",
+        "Base Moves": [],
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Shikome": {
         "Base Moves": [
@@ -4880,7 +5439,11 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Femme"
+        "Race": "Femme",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Kusi Mitama": {
         "Base Moves": [
@@ -4925,7 +5488,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Mitama"
+        "Race": "Mitama",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Nue": {
         "Base Moves": [
@@ -4963,7 +5531,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Wilder"
+        "Race": "Wilder",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Sarasvati": {
         "Base Moves": [
@@ -5003,7 +5576,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Megami"
+        "Race": "Megami",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Arahabaki": {
         "Learned Moves": [
@@ -5050,7 +5628,12 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Vile"
+        "Race": "Vile",
+        "Base Moves": [],
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Gui Xian": {
         "Learned Moves": [
@@ -5086,7 +5669,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Dragon"
+        "Race": "Dragon",
+        "Base Moves": [],
+        "Attack": {},
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Matador": {
         "Base Moves": [
@@ -5125,7 +5713,13 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Fiend"
+        "Race": "Fiend",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Eligor": {
         "Base Moves": [
@@ -5170,7 +5764,11 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Fallen"
+        "Race": "Fallen",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Nigi Mitama": {
         "Base Moves": [
@@ -5215,7 +5813,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Mitama"
+        "Race": "Mitama",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Karasu": {
         "Base Moves": [
@@ -5260,7 +5863,11 @@
         "Evolution": [
             "Kurama",
             33
-        ]
+        ],
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": []
     },
     "Principality": {
         "Base Moves": [
@@ -5298,7 +5905,12 @@
         "Weaknesses": [
             "Death"
         ],
-        "Race": "Divine"
+        "Race": "Divine",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Naga": {
         "Base Moves": [
@@ -5340,7 +5952,11 @@
         "Evolution": [
             "Raja Naga",
             32
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Resist": []
     },
     "Pisaca": {
         "Base Moves": [
@@ -5383,7 +5999,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Haunt"
+        "Race": "Haunt",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Black Ooze": {
         "Base Moves": [
@@ -5428,7 +6049,11 @@
             "Elec",
             "Expel"
         ],
-        "Race": "Foul"
+        "Race": "Foul",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Zouchou": {
         "Base Moves": [
@@ -5468,7 +6093,12 @@
         "Weaknesses": [
             "Force"
         ],
-        "Race": "Kishin"
+        "Race": "Kishin",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Senri": {
         "Learned Moves": [
@@ -5504,7 +6134,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Holy"
+        "Race": "Holy",
+        "Base Moves": [],
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Kelpie": {
         "Base Moves": [
@@ -5542,7 +6177,12 @@
         "Weaknesses": [
             "Force"
         ],
-        "Race": "Fairy"
+        "Race": "Fairy",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Cai-Zhi": {
         "Base Moves": [
@@ -5583,7 +6223,12 @@
             "Nerve",
             "Mind"
         ],
-        "Race": "Avatar"
+        "Race": "Avatar",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Oni": {
         "Base Moves": [
@@ -5625,7 +6270,12 @@
         "Weaknesses": [
             "Nerve"
         ],
-        "Race": "Brute"
+        "Race": "Brute",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Incubus": {
         "Base Moves": [
@@ -5667,7 +6317,11 @@
         "Weaknesses": [
             "Force"
         ],
-        "Race": "Night"
+        "Race": "Night",
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Raiju": {
         "Base Moves": [
@@ -5707,7 +6361,11 @@
         "Weaknesses": [
             "Force"
         ],
-        "Race": "Wilder"
+        "Race": "Wilder",
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Ara Mitama": {
         "Base Moves": [
@@ -5752,7 +6410,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Mitama"
+        "Race": "Mitama",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Kikuri-Hime": {
         "Base Moves": [
@@ -5792,7 +6455,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Lady"
+        "Race": "Lady",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Makami": {
         "Learned Moves": [
@@ -5825,7 +6493,13 @@
         "Void": [
             "Fire"
         ],
-        "Race": "Avatar"
+        "Race": "Avatar",
+        "Base Moves": [],
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Dis": {
         "Base Moves": [
@@ -5864,7 +6538,12 @@
         "Evolution": [
             "Valkyrie",
             27
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": []
     },
     "Badb Catha": {
         "Base Moves": [
@@ -5901,7 +6580,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Beast"
+        "Race": "Beast",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Unicorn": {
         "Base Moves": [
@@ -5945,7 +6629,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Holy"
+        "Race": "Holy",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Forneus": {
         "Base Moves": [
@@ -5987,7 +6676,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Fallen"
+        "Race": "Fallen",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Momunofu": {
         "Base Moves": [
@@ -6030,7 +6724,11 @@
         "Evolution": [
             "Arahabaki",
             24
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": []
     },
     "Taraka": {
         "Base Moves": [
@@ -6072,7 +6770,12 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Femme"
+        "Race": "Femme",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Chatterskull": {
         "Base Moves": [
@@ -6113,7 +6816,11 @@
             "Expel",
             "Curse"
         ],
-        "Race": "Haunt"
+        "Race": "Haunt",
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Flaemis": {
         "Base Moves": [
@@ -6154,7 +6861,11 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Element"
+        "Race": "Element",
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Koppa": {
         "Base Moves": [
@@ -6199,7 +6910,11 @@
         "Evolution": [
             "Karasu",
             24
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Pyro Jack": {
         "Base Moves": [
@@ -6237,7 +6952,12 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Fairy"
+        "Race": "Fairy",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Uzume": {
         "Base Moves": [
@@ -6279,7 +6999,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Megami"
+        "Race": "Megami",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Archangel": {
         "Base Moves": [
@@ -6321,7 +7046,12 @@
             "Ice",
             "Death"
         ],
-        "Race": "Divine"
+        "Race": "Divine",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Nekomata": {
         "Base Moves": [
@@ -6363,7 +7093,11 @@
         "Evolution": [
             "Senri",
             22
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Resist": []
     },
     "Fomor": {
         "Base Moves": [
@@ -6404,7 +7138,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Night"
+        "Race": "Night",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Minakata": {
         "Base Moves": [
@@ -6450,7 +7189,11 @@
             "Fire",
             "Nerve"
         ],
-        "Race": "Kishin"
+        "Race": "Kishin",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Yaka": {
         "Base Moves": [
@@ -6492,7 +7235,12 @@
             "Ice",
             "Expel"
         ],
-        "Race": "Haunt"
+        "Race": "Haunt",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Blob": {
         "Base Moves": [
@@ -6533,7 +7281,11 @@
             "Ice",
             "Expel"
         ],
-        "Race": "Foul"
+        "Race": "Foul",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Bicorn": {
         "Base Moves": [
@@ -6579,7 +7331,11 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Wilder"
+        "Race": "Wilder",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Aquans": {
         "Base Moves": [
@@ -6620,7 +7376,11 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Element"
+        "Race": "Element",
+        "Attack": {},
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Isora": {
         "Base Moves": [
@@ -6657,7 +7417,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Yoma"
+        "Race": "Yoma",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Nozuchi": {
         "Base Moves": [
@@ -6698,7 +7463,11 @@
         "Evolution": [
             "Gui Xian",
             18
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Resist": []
     },
     "Shiisaa": {
         "Base Moves": [
@@ -6742,7 +7511,11 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Holy"
+        "Race": "Holy",
+        "Attack": {},
+        "Reflect": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Inugami": {
         "Base Moves": [
@@ -6784,7 +7557,11 @@
         "Evolution": [
             "Makami",
             17
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Sudama": {
         "Base Moves": [
@@ -6825,7 +7602,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Jirae"
+        "Race": "Jirae",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Angel": {
         "Base Moves": [
@@ -6867,7 +7649,12 @@
             "Force",
             "Death"
         ],
-        "Race": "Divine"
+        "Race": "Divine",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Choronzon": {
         "Base Moves": [
@@ -6911,7 +7698,10 @@
             "Force",
             "Expel"
         ],
-        "Race": "Haunt"
+        "Race": "Haunt",
+        "Attack": {},
+        "Reflect": [],
+        "Evolution": "None"
     },
     "High Pixie": {
         "Base Moves": [
@@ -6953,7 +7743,12 @@
         "Evolution": [
             "Queen Mab",
             16
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Weaknesses": []
     },
     "Aeros": {
         "Base Moves": [
@@ -6995,7 +7790,12 @@
             "Elec",
             "Force"
         ],
-        "Race": "Element"
+        "Race": "Element",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": [],
+        "Evolution": "None"
     },
     "Apsaras": {
         "Base Moves": [
@@ -7033,7 +7833,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Yoma"
+        "Race": "Yoma",
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Lilim": {
         "Base Moves": [
@@ -7074,7 +7879,11 @@
         "Evolution": [
             "Lilith",
             12
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Jack Frost": {
         "Base Moves": [
@@ -7112,7 +7921,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Fairy"
+        "Race": "Fairy",
+        "Attack": {},
+        "Reflect": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Datsue-Ba": {
         "Base Moves": [
@@ -7150,7 +7964,12 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Race": "Femme"
+        "Race": "Femme",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Mou-Ryo": {
         "Base Moves": [
@@ -7187,7 +8006,12 @@
         "Weaknesses": [
             "Expel"
         ],
-        "Race": "Foul"
+        "Race": "Foul",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Erthys": {
         "Base Moves": [
@@ -7225,7 +8049,12 @@
         "Weaknesses": [
             "Force"
         ],
-        "Race": "Element"
+        "Race": "Element",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Zhen": {
         "Base Moves": [
@@ -7271,7 +8100,11 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Wilder"
+        "Race": "Wilder",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Slime": {
         "Base Moves": [
@@ -7315,7 +8148,11 @@
             "Force",
             "Expel"
         ],
-        "Race": "Foul"
+        "Race": "Foul",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     },
     "Hua Po": {
         "Base Moves": [
@@ -7356,7 +8193,12 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Race": "Jirae"
+        "Race": "Jirae",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Shikigami": {
         "Base Moves": [
@@ -7393,7 +8235,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Brute"
+        "Race": "Brute",
+        "Attack": {},
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Preta": {
         "Base Moves": [
@@ -7434,7 +8281,12 @@
             "Force",
             "Expel"
         ],
-        "Race": "Haunt"
+        "Race": "Haunt",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Evolution": "None"
     },
     "Kodama": {
         "Base Moves": [
@@ -7471,7 +8323,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Race": "Jirae"
+        "Race": "Jirae",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Evolution": "None"
     },
     "Pixie": {
         "Base Moves": [
@@ -7509,7 +8366,12 @@
         "Evolution": [
             "High Pixie",
             6
-        ]
+        ],
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Weaknesses": []
     },
     "Will o' Wisp": {
         "Base Moves": [
@@ -7556,6 +8418,10 @@
             "Force",
             "Expel"
         ],
-        "Race": "Foul"
+        "Race": "Foul",
+        "Attack": {},
+        "Reflect": [],
+        "Absorb": [],
+        "Evolution": "None"
     }
 }

@@ -1,4 +1,69 @@
-# sorted by level-alpha
+import json
+
+def fill_defaults():
+    for demon_info in demon_dict.values():
+        demon_info.setdefault('Base Moves', [])
+        demon_info.setdefault('Learned Moves', [])
+        demon_info.setdefault('Attack', {})
+        demon_info.setdefault('Reflect', [])
+        demon_info.setdefault('Absorb', [])
+        demon_info.setdefault('Void', [])
+        demon_info.setdefault('Resist', [])
+        demon_info.setdefault('Weaknesses', [])
+        demon_info.setdefault('Evolution', 'None')
+    for magatama_info in magatama_dict.values():
+        magatama_info.setdefault('Moves', [])
+        magatama_info.setdefault('Strength', 0)
+        magatama_info.setdefault('Magic', 0)
+        magatama_info.setdefault('Vitality', 0)
+        magatama_info.setdefault('Agility', 0)
+        magatama_info.setdefault('Luck', 0)
+        magatama_info.setdefault('Reflect', [])
+        magatama_info.setdefault('Absorb', [])
+        magatama_info.setdefault('Void', [])
+        magatama_info.setdefault('Resist', [])
+        magatama_info.setdefault('Weaknesses', [])
+    for move_info in moves_dict.values():
+        move_info.setdefault('Damage Calc', 'None')
+        move_info.setdefault('Element', 'None')
+        move_info.setdefault('Hits', 1)
+        move_info.setdefault('Power', 'None')
+        move_info.setdefault('Correction', 'None')
+        move_info.setdefault('Limit', 'None')
+        move_info.setdefault('Accuracy', 'None')
+        move_info.setdefault('MP', 0)
+        move_info.setdefault('HP', 0)
+        move_info.setdefault('Special Effects', {})
+        for effect_info in move_info['Special Effects'].values():
+            effect_info.setdefault('Element', move_info['Element'])
+            effect_info.setdefault('Accuracy', 100)
+            effect_info.setdefault('Value', 0)
+            effect_info.setdefault('Target', 'Same')
+            effect_info.setdefault('Condition', 'None')
+        move_info.setdefault('Crit', 'None')
+    for passive_info in passives_dict.values():
+        for ability in passive_info:
+            ability.setdefault('Element', 'None')
+            ability.setdefault('Value', 'None')
+
+def save_jsons():
+
+    with open('database/demons.json', 'w') as f:
+        json.dump(demon_dict, f, indent=4)
+
+    with open('database/magatama.json', 'w') as f:
+        json.dump(magatama_dict, f, indent=4)
+
+    with open('database/moves.json', 'w') as f:
+        json.dump(moves_dict, f, indent=4)
+
+    with open('database/passives.json', 'w') as f:
+        json.dump(passives_dict, f, indent=4)
+
+def main():
+    fill_defaults()
+    save_jsons()
+
 # mandatory: level, stats, race
 # optional: base/learned moves, attack mods, affinities, evolution
 
@@ -1054,6 +1119,9 @@ demon_dict = {'Beelzebub Fly': {'Base Moves': [],
                                'Weaknesses': ['Fire', 'Ice', 'Elec', 'Force', 'Expel'], 'Race': 'Foul'}
               }
 
+# mandatory: moves, alignment, stats
+# optional: affinities
+
 magatama_dict = {'Masakados': {'Moves': [('Radiance', 1), ('Megidolaon', 1), ('Fire Repel', 1),
                                          ('Ice Repel', 1), ('Elec Repel', 1), ('Force Repel', 1),
                                          ('Phys Repel', 1)],
@@ -1077,8 +1145,7 @@ magatama_dict = {'Masakados': {'Moves': [('Radiance', 1), ('Megidolaon', 1), ('F
                              'Strength': 4, 'Magic': 1, 'Vitality': 2, 'Agility': 9, 'Luck': 3,
                              'Absorb': ['Force'], 'Weaknesses': ['Elec'], 'Alignment': 'Dark'},
                  'Gaea': {'Moves': [('Deathbound', 61), ('Avenge', 69), ('Gaea Rage', 74), ('Attack All', 76)],
-                          'Strength': 10, 'Magic': 0, 'Vitality': 10, 'Agility': 0, 'Luck': 0,
-                          'Resist': ['Phys'], 'Weaknesses': ['Force', 'Death', 'Expel'],
+                          'Strength': 10, 'Vitality': 10, 'Resist': ['Phys'], 'Weaknesses': ['Force', 'Death', 'Expel'],
                           'Alignment': 'Dark'},
                  'Adama': {'Moves': [('Bolt Storm', 60), ('Mana Surge', 62), ('Elec Drain', 67)],
                            'Strength': 3, 'Magic': 2, 'Vitality': 8, 'Agility': 2, 'Luck': 2,
@@ -1091,12 +1158,11 @@ magatama_dict = {'Masakados': {'Moves': [('Radiance', 1), ('Megidolaon', 1), ('F
                                       ('Hades Blast', 73)], 'Strength': 7, 'Magic': 1, 'Vitality': 3, 'Agility': 2,
                             'Luck': 5, 'Void': ['Nerve'], 'Alignment': 'Neutral'},
                  'Muspell': {'Moves': [('Tentarafoo', 49), ('Makajamon', 53), ('Xeros Beat', 56)],
-                             'Strength': 0, 'Magic': 8, 'Vitality': 7, 'Agility': 0, 'Luck': 0,
-                             'Resist': ['Nerve', 'Mind'], 'Alignment': 'Neutral'},
+                             'Magic': 8, 'Vitality': 7, 'Resist': ['Nerve', 'Mind'], 'Alignment': 'Neutral'},
                  'Kamurogi': {'Moves': [('Blight', 45), ('Life Gain', 46), ('Iron Claw', 48), ('Retaliate', 54),
-                                        ('Oni-Kagura', 64)], 'Strength': 8, 'Magic': 0, 'Vitality': 0, 'Agility': 4,
-                              'Luck': 4, 'Resist': ['Expel', 'Death', 'Phys'],
-                              'Weaknesses': ['Fire', 'Ice', 'Elec', 'Force'], 'Alignment': 'Light'},
+                                        ('Oni-Kagura', 64)], 'Strength': 8, 'Agility': 4, 'Luck': 4,
+                              'Resist': ['Expel', 'Death', 'Phys'], 'Weaknesses': ['Fire', 'Ice', 'Elec', 'Force'],
+                              'Alignment': 'Light'},
                  'Sophia': {'Moves': [('Thunderclap', 45), ('Samarecarm', 57), ('Drain Attack', 59),
                                       ('Mediarahan', 63), ('Holy Wrath', 70)], 'Strength': 1, 'Magic': 2, 'Vitality': 5,
                             'Agility': 7, 'Luck': 4, 'Void': ['Expel'], 'Resist': ['Death'],
@@ -1123,45 +1189,39 @@ magatama_dict = {'Masakados': {'Moves': [('Radiance', 1), ('Megidolaon', 1), ('F
                                       ('Ice Drain', 60)], 'Strength': 2, 'Magic': 5, 'Vitality': 2, 'Agility': 2,
                             'Luck': 2, 'Void': ['Ice'], 'Weaknesses': ['Fire'], 'Alignment': 'Dark'},
                  'Anathema': {'Moves': [('Mana Drain', 28), ('Anti-Death', 32), ('Mamudo', 35),
-                                        ('Evil Gaze', 38), ('Mamudoon', 49)], 'Strength': 0, 'Magic': 8,
-                              'Vitality': 2, 'Agility': 1, 'Luck': 1, 'Void': ['Death'], 'Weaknesses': ['Expel'],
-                              'Alignment': 'Dark'},
+                                        ('Evil Gaze', 38), ('Mamudoon', 49)], 'Magic': 8, 'Vitality': 2, 'Agility': 1,
+                              'Luck': 1, 'Void': ['Death'], 'Weaknesses': ['Expel'], 'Alignment': 'Dark'},
                  'Narukami': {'Moves': [('Shock', 21), ('Elec Boost', 26), ('Anti-Elec', 30), ('Void Elec', 44)],
-                              'Strength': 5, 'Magic': 6, 'Vitality': 0, 'Agility': 0, 'Luck': 0,
-                              'Void': ['Elec'], 'Weaknesses': ['Ice'], 'Alignment': 'Light'},
+                              'Strength': 5, 'Magic': 6, 'Void': ['Elec'], 'Weaknesses': ['Ice'], 'Alignment': 'Light'},
                  'Kamudo': {'Moves': [('Heat Wave', 18), ('Focus', 23), ("Mind's Eye", 25), ('Might', 29)],
-                            'Strength': 5, 'Magic': 0, 'Vitality': 2, 'Agility': 3, 'Luck': 0,
-                            'Resist': ['Phys'], 'Weaknesses': ['Curse', 'Nerve', 'Mind'],
-                            'Alignment': 'Neutral'},
+                            'Strength': 5, 'Vitality': 2, 'Agility': 3, 'Resist': ['Phys'],
+                            'Weaknesses': ['Curse', 'Nerve', 'Mind'], 'Alignment': 'Neutral'},
                  'Hifumi': {'Moves': [('Tornado', 17), ('Force Boost', 22), ('War Cry', 24), ('Anti-Force', 27),
-                                      ('Void Force', 40)], 'Strength': 0, 'Magic': 3, 'Vitality': 0, 'Agility': 4,
-                            'Luck': 3, 'Void': ['Force'], 'Weaknesses': ['Fire'], 'Alignment': 'Neutral'},
+                                      ('Void Force', 40)], 'Magic': 3, 'Agility': 4, 'Luck': 3, 'Void': ['Force'],
+                            'Weaknesses': ['Fire'], 'Alignment': 'Neutral'},
                  'Iyomante': {'Moves': [('Tarunda', 10), ('Sukunda', 13), ('Rakunda', 16), ('Life Aid', 36)],
                               'Strength': 2, 'Magic': 2, 'Vitality': 2, 'Agility': 2, 'Luck': 3,
                               'Void': ['Mind'], 'Alignment': 'Light'},
                  'Shiranui': {'Moves': [('Fire Breath', 9), ('Fire Boost', 14), ('Taunt', 19),
-                                        ('Anti-Fire', 23)], 'Strength': 0, 'Magic': 5, 'Vitality': 0, 'Agility': 4,
-                              'Luck': 0, 'Void': ['Fire'], 'Weaknesses': ['Force'], 'Alignment': 'Dark'},
+                                        ('Anti-Fire', 23)], 'Magic': 5, 'Agility': 4, 'Void': ['Fire'],
+                              'Weaknesses': ['Force'], 'Alignment': 'Dark'},
                  'Wadatsumi': {'Moves': [('Ice Breath', 7), ('Mana Bonus', 11), ('Ice Boost', 15),
-                                         ('Fog Breath', 21), ('Anti-Ice', 24)], 'Strength': 0, 'Magic': 3,
-                               'Vitality': 2,
+                                         ('Fog Breath', 21), ('Anti-Ice', 24)], 'Magic': 3, 'Vitality': 2,
                                'Agility': 2, 'Luck': 1, 'Void': ['Ice'], 'Weaknesses': ['Elec'],
                                'Alignment': 'Neutral'},
                  'Ankh': {'Moves': [('Dia', 5), ('Fast Retreat', 12), ('Media', 19)], 'Strength': 1,
-                          'Magic': 1, 'Vitality': 4, 'Agility': 0, 'Luck': 2, 'Void': ['Expel'],
+                          'Magic': 1, 'Vitality': 4, 'Luck': 2, 'Void': ['Expel'],
                           'Weaknesses': ['Death'], 'Alignment': 'Light'},
                  'Marogareh': {'Moves': [('Lunge', 3), ('Analyze', 2), ('Life Bonus', 6), ('Berserk', 10),
                                          ('Counter', 20)], 'Strength': 2, 'Magic': 1, 'Vitality': 2,
                                'Agility': 1, 'Luck': 1, 'Alignment': 'Dark'}
                  }
 
-# sorted by element-?
 # for random attacks: hits = max possible
 # for others: hits = hits
 # mandatory: category, target
 # optional: element, hits, power, correction, limit, accuracy, MP, HP, special effect/chance, crit, damage calc
 # note: default accuracy is 'None' (always hit), not 100
-# only phys moves need "damage calc"
 # "Heal" uses power/makakaja of user; "MP Recover" is only percentage (float) or finite amount (int)
 # for recarm effects: use keyword "dead" (as opposed to "stock" for summon/beckon call)
 
@@ -1677,16 +1737,5 @@ passives_dict = {'Anti-Phys': [{'Effect': 'Resist', 'Element': 'Phys'}],
                  'Pierce': [{'Effect': 'Pierce'}],
                  'Raidou the Aeon': [{'Effect': 'Boost'}, {'Effect': 'Pierce'}]}
 
-import json
-
-with open('database/demons.json', 'w') as f:
-    json.dump(demon_dict, f, indent=4)
-
-with open('database/magatama.json', 'w') as f:
-    json.dump(magatama_dict, f, indent=4)
-
-with open('database/moves.json', 'w') as f:
-    json.dump(moves_dict, f, indent=4)
-
-with open('database/passives.json', 'w') as f:
-    json.dump(passives_dict, f, indent=4)
+if __name__ == "__main__":
+    main()

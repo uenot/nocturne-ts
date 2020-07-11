@@ -81,7 +81,12 @@
         "Vitality": 5,
         "Agility": 1,
         "Luck": 2,
-        "Alignment": "Neutral"
+        "Alignment": "Neutral",
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Weaknesses": []
     },
     "Gundari": {
         "Moves": [
@@ -109,7 +114,10 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Alignment": "Dark"
+        "Alignment": "Dark",
+        "Reflect": [],
+        "Void": [],
+        "Resist": []
     },
     "Gaea": {
         "Moves": [
@@ -131,10 +139,7 @@
             ]
         ],
         "Strength": 10,
-        "Magic": 0,
         "Vitality": 10,
-        "Agility": 0,
-        "Luck": 0,
         "Resist": [
             "Phys"
         ],
@@ -143,7 +148,13 @@
             "Death",
             "Expel"
         ],
-        "Alignment": "Dark"
+        "Alignment": "Dark",
+        "Magic": 0,
+        "Agility": 0,
+        "Luck": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Void": []
     },
     "Adama": {
         "Moves": [
@@ -175,7 +186,9 @@
         "Weaknesses": [
             "Force"
         ],
-        "Alignment": "Light"
+        "Alignment": "Light",
+        "Absorb": [],
+        "Void": []
     },
     "Satan": {
         "Moves": [
@@ -211,7 +224,10 @@
         "Void": [
             "Death"
         ],
-        "Alignment": "Dark"
+        "Alignment": "Dark",
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Vimana": {
         "Moves": [
@@ -244,7 +260,11 @@
         "Void": [
             "Nerve"
         ],
-        "Alignment": "Neutral"
+        "Alignment": "Neutral",
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": []
     },
     "Muspell": {
         "Moves": [
@@ -261,16 +281,20 @@
                 56
             ]
         ],
-        "Strength": 0,
         "Magic": 8,
         "Vitality": 7,
-        "Agility": 0,
-        "Luck": 0,
         "Resist": [
             "Nerve",
             "Mind"
         ],
-        "Alignment": "Neutral"
+        "Alignment": "Neutral",
+        "Strength": 0,
+        "Agility": 0,
+        "Luck": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Weaknesses": []
     },
     "Kamurogi": {
         "Moves": [
@@ -296,8 +320,6 @@
             ]
         ],
         "Strength": 8,
-        "Magic": 0,
-        "Vitality": 0,
         "Agility": 4,
         "Luck": 4,
         "Resist": [
@@ -311,7 +333,12 @@
             "Elec",
             "Force"
         ],
-        "Alignment": "Light"
+        "Alignment": "Light",
+        "Magic": 0,
+        "Vitality": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Void": []
     },
     "Sophia": {
         "Moves": [
@@ -347,7 +374,10 @@
         "Resist": [
             "Death"
         ],
-        "Alignment": "Light"
+        "Alignment": "Light",
+        "Reflect": [],
+        "Absorb": [],
+        "Weaknesses": []
     },
     "Djed": {
         "Moves": [
@@ -381,7 +411,11 @@
             "Expel",
             "Death"
         ],
-        "Alignment": "Dark"
+        "Alignment": "Dark",
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Weaknesses": []
     },
     "Geis": {
         "Moves": [
@@ -418,7 +452,11 @@
         "Void": [
             "Expel"
         ],
-        "Alignment": "Light"
+        "Alignment": "Light",
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": []
     },
     "Murakumo": {
         "Moves": [
@@ -451,7 +489,10 @@
             "Fire",
             "Ice"
         ],
-        "Alignment": "Neutral"
+        "Alignment": "Neutral",
+        "Reflect": [],
+        "Absorb": [],
+        "Void": []
     },
     "Gehenna": {
         "Moves": [
@@ -487,7 +528,10 @@
         "Weaknesses": [
             "Ice"
         ],
-        "Alignment": "Neutral"
+        "Alignment": "Neutral",
+        "Reflect": [],
+        "Void": [],
+        "Resist": []
     },
     "Nirvana": {
         "Moves": [
@@ -519,7 +563,10 @@
         "Weaknesses": [
             "Death"
         ],
-        "Alignment": "Light"
+        "Alignment": "Light",
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Miasma": {
         "Moves": [
@@ -551,7 +598,10 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Alignment": "Dark"
+        "Alignment": "Dark",
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Anathema": {
         "Moves": [
@@ -576,7 +626,6 @@
                 49
             ]
         ],
-        "Strength": 0,
         "Magic": 8,
         "Vitality": 2,
         "Agility": 1,
@@ -587,7 +636,11 @@
         "Weaknesses": [
             "Expel"
         ],
-        "Alignment": "Dark"
+        "Alignment": "Dark",
+        "Strength": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Narukami": {
         "Moves": [
@@ -610,16 +663,19 @@
         ],
         "Strength": 5,
         "Magic": 6,
-        "Vitality": 0,
-        "Agility": 0,
-        "Luck": 0,
         "Void": [
             "Elec"
         ],
         "Weaknesses": [
             "Ice"
         ],
-        "Alignment": "Light"
+        "Alignment": "Light",
+        "Vitality": 0,
+        "Agility": 0,
+        "Luck": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Kamudo": {
         "Moves": [
@@ -641,10 +697,8 @@
             ]
         ],
         "Strength": 5,
-        "Magic": 0,
         "Vitality": 2,
         "Agility": 3,
-        "Luck": 0,
         "Resist": [
             "Phys"
         ],
@@ -653,7 +707,12 @@
             "Nerve",
             "Mind"
         ],
-        "Alignment": "Neutral"
+        "Alignment": "Neutral",
+        "Magic": 0,
+        "Luck": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Void": []
     },
     "Hifumi": {
         "Moves": [
@@ -678,9 +737,7 @@
                 40
             ]
         ],
-        "Strength": 0,
         "Magic": 3,
-        "Vitality": 0,
         "Agility": 4,
         "Luck": 3,
         "Void": [
@@ -689,7 +746,12 @@
         "Weaknesses": [
             "Fire"
         ],
-        "Alignment": "Neutral"
+        "Alignment": "Neutral",
+        "Strength": 0,
+        "Vitality": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Iyomante": {
         "Moves": [
@@ -718,7 +780,11 @@
         "Void": [
             "Mind"
         ],
-        "Alignment": "Light"
+        "Alignment": "Light",
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": [],
+        "Weaknesses": []
     },
     "Shiranui": {
         "Moves": [
@@ -739,18 +805,21 @@
                 23
             ]
         ],
-        "Strength": 0,
         "Magic": 5,
-        "Vitality": 0,
         "Agility": 4,
-        "Luck": 0,
         "Void": [
             "Fire"
         ],
         "Weaknesses": [
             "Force"
         ],
-        "Alignment": "Dark"
+        "Alignment": "Dark",
+        "Strength": 0,
+        "Vitality": 0,
+        "Luck": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Wadatsumi": {
         "Moves": [
@@ -775,7 +844,6 @@
                 24
             ]
         ],
-        "Strength": 0,
         "Magic": 3,
         "Vitality": 2,
         "Agility": 2,
@@ -786,7 +854,11 @@
         "Weaknesses": [
             "Elec"
         ],
-        "Alignment": "Neutral"
+        "Alignment": "Neutral",
+        "Strength": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Ankh": {
         "Moves": [
@@ -806,7 +878,6 @@
         "Strength": 1,
         "Magic": 1,
         "Vitality": 4,
-        "Agility": 0,
         "Luck": 2,
         "Void": [
             "Expel"
@@ -814,7 +885,11 @@
         "Weaknesses": [
             "Death"
         ],
-        "Alignment": "Light"
+        "Alignment": "Light",
+        "Agility": 0,
+        "Reflect": [],
+        "Absorb": [],
+        "Resist": []
     },
     "Marogareh": {
         "Moves": [
@@ -844,6 +919,11 @@
         "Vitality": 2,
         "Agility": 1,
         "Luck": 1,
-        "Alignment": "Dark"
+        "Alignment": "Dark",
+        "Reflect": [],
+        "Absorb": [],
+        "Void": [],
+        "Resist": [],
+        "Weaknesses": []
     }
 }

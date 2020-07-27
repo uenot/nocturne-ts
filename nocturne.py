@@ -551,29 +551,31 @@ class Kagutsuchi:
 class Move:
     def __init__(self, name):
         self.name = name
-        self.target = moves_dict[name]['Target']
-        self.category = moves_dict[name]['Category']
-        self.dmg_calc = moves_dict[name]['Damage Calc']
+        # deepcopying bc adding specials affects base moves_dict otherwise
+        move_info = copy.deepcopy(moves_dict[name])
+        self.target = move_info['Target']
+        self.category = move_info['Category']
+        self.dmg_calc = move_info['Damage Calc']
         if self.dmg_calc == 'None' and self.category == 'Magic':
             self.dmg_calc = 'Mag'
-        self.element = moves_dict[name]['Element']
-        self.hits = moves_dict[name]['Hits']
-        self.power = moves_dict[name]['Power']
-        self.correction = moves_dict[name]['Correction']
-        self.limit = moves_dict[name]['Limit']
+        self.element = move_info['Element']
+        self.hits = move_info['Hits']
+        self.power = move_info['Power']
+        self.correction = move_info['Correction']
+        self.limit = move_info['Limit']
         if self.power != 'None' and self.correction != 'None' and self.limit != 'None':
             self.peak = round(((self.limit - self.correction) / self.power) * (255 / 24))
         else:
             self.peak = 'None'
-        self.accuracy = moves_dict[name]['Accuracy']
-        self.mp = moves_dict[name]['MP']
-        self.hp = moves_dict[name]['HP']
-        self.specials = moves_dict[name]['Special Effects']
+        self.accuracy = move_info['Accuracy']
+        self.mp = move_info['MP']
+        self.hp = move_info['HP']
+        self.specials = move_info['Special Effects']
         if self.element == 'Phys':
             self.specials['Shatter'] = self.create_special({'Accuracy': 50, 'Condition': 'Target Stone'})
         elif self.element == 'Force':
             self.specials['Shatter'] = self.create_special({'Accuracy': 75, 'Condition': 'Target Stone'})
-        self.crit = moves_dict[name]['Crit']
+        self.crit = move_info['Crit']
         self.pierce = False
         self.reset()
 
@@ -3293,6 +3295,10 @@ class Endurance(FourVsFour):
         output_dict['Stop'] = self.stopped_game
         return output_dict
 
+class AutoEndurance(Endurance, AutoFourVsFour):
+    pass
+
+
 
 # In[25]:
 
@@ -3360,7 +3366,7 @@ def experiment(game_modes):
                         print(f'The game mode will be set to the default.')
                         valid_input = True
                     else:
-                        setting_val = process.extractOne(setting_val, game_modes)
+                        setting_val = process.extractOne(setting_val, game_modes)[0]
                         valid_input = True
             else:
                 print(f'Only one game mode is available ({game_modes[0]}).')
@@ -3526,6 +3532,8 @@ def experiment(game_modes):
     # game initiation
     if test_info['Game Mode'] == '4 vs. 4':
         game = AutoFourVsFour(test_info, kagutsuchi=test_info['Kagutsuchi'])
+    elif test_info['Game Mode'] == 'Endurance':
+        game = AutoEndurance(test_info, kagutsuchi=test_info['Kagutsuchi'])
     # redirect standard output to file
     if test_info['Log Games']:
         orig_stdout = sys.stdout
@@ -3535,12 +3543,9 @@ def experiment(game_modes):
     # run games
     for i in range(test_info['Trials']):
         game_info = game.run()
-        if game_info['Winner'] == 'Player 1':
-            p1_wins += 1
-        elif game_info['Winner'] == 'Player 2':
-            p2_wins += 1
-        else:
-            ties += 1
+        p1_wins += game_info['Player 1 Wins']
+        p2_wins += game_info['Player 2 Wins']
+        ties += game_info['Ties']
         # print update
         if test_info['Log Games']:
             sys.stdout = orig_stdout
@@ -3553,6 +3558,8 @@ def experiment(game_modes):
         if not test_info['Same Teams']:
             if test_info['Game Mode'] == '4 vs. 4':
                 game = AutoFourVsFour(test_info, kagutsuchi=test_info['Kagutsuchi'])
+            elif test_info['Game Mode'] == 'Endurance':
+                game = AutoEndurance(test_info, kagutsuchi=test_info['Kagutsuchi'])
             else:
                 raise RuntimeError('Missing game mode')
     # close/reset output

@@ -6,7 +6,7 @@
 
 # to do:
 
-#add hard ai thru reinforcement q-learning
+# add hard ai thru reinforcement q-learning
 
 # do bind or stun affect crit rate?
 
@@ -128,7 +128,7 @@
 # In[3]:
 
 
-#imports
+# imports
 import sys
 import timeit
 from fuzzywuzzy import process
@@ -138,10 +138,11 @@ import copy
 import numpy as np
 import json
 
+
 # In[4]:
 
 
-#global utility functions
+# global utility functions
 
 def print_list(items):
     output = ''
@@ -157,6 +158,7 @@ def print_list(items):
     output += str(new_items[-1])
     return output
 
+
 def ordinal(n):
     ordinals = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh',
                 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth',
@@ -169,7 +171,7 @@ def ordinal(n):
 # In[5]:
 
 
-#global variables
+# global variables
 
 
 # In[7]:
@@ -191,10 +193,10 @@ master_list = ['Demi-Fiend'] + list(demon_dict.keys()) + list(magatama_dict.keys
 # sorted by priority
 status_list = ['Stone', 'Fly', 'Stun', 'Charm', 'Poison', 'Mute', 'Bind', 'Panic', 'Sleep', 'Freeze', 'Shock']
 
-
 # In[12]:
 
 RANDOM_DEMON_RANGE = 12
+
 
 # In[13]:
 
@@ -253,13 +255,16 @@ def game_help(topic='None'):
             output += 'The game is known for the "Press Turn" system, which rewards '
             output += 'exploiting enemy weaknesses and landing critical hits with extra turns.'
         elif topic == 'Game Modes':
-            output = 'Currently, two game modes exist: "4 vs. 4" and "Experiment". '
-            output += 'You can access either one by typing out its name in the input prompt.\n\n'
+            output = 'Currently, three game modes exist: "4 vs. 4", "Endurance", and "Experiment". '
+            output += 'You can access any of them by typing out their name in the input prompt.\n\n'
             output += '4 vs. 4 is the standard mode, and can be accessed through the selection prompt '
             output += 'by entering nothing, as well as typing out "4 vs. 4". '
             output += 'The name refers to the number of party members on each team, not the number of players '
             output += 'required. This mode uses 2 controllers, which can be any combination of '
             output += 'human players and computers (more info in the "player selection" section).\n\n'
+            output += 'Endurance is played similarly to 4 vs. 4, except that the game continues until Player 1 dies. '
+            output += "Player 1's goal is to win as many times as possible. Their team will not heal between rounds, "
+            output += "whereas Player 2's team will refresh every round.\n\n"
             output += 'Experiment is mainly used for simulating games with the computer. '
             output += 'You can modify the settings (see "Experiment Settings"), but note that you will not be able to '
             output += 'actually participate in gameplay.'
@@ -436,7 +441,7 @@ def game_help(topic='None'):
             output += 'a number greater than or equal to 1.'
         elif topic == 'Set Game Mode':
             output = 'The game mode is the type of game to be played (see "Game Modes" for more info). '
-            output += 'Currently, there is only one option (4 vs. 4), so that will be selected by default.'
+            output += 'Type the name of the mode you want to simulate: either 4 vs. 4 or Endurance.'
         elif topic == 'Set Same Teams':
             output = 'This determines whether teams should stay the same or be re-made after every game. If you would '
             output += 'like to maintain the same teams each game, enter "y" or "yes" into the prompt. Otherwise, '
@@ -469,8 +474,9 @@ def game_help(topic='None'):
             output = 'In general, entering nothing in the prompt for a setting will '
             output += 'reset it to its default value.\n\n When choosing a setting, you can also type "default" '
             output += 'to restore all settings to their default values (after a confirmation prompt).'
-        print(output+'\n')
+        print(output + '\n')
         topic = 'None'
+
 
 def h_input(message, topic='None'):
     user_input = input(message)
@@ -480,7 +486,8 @@ def h_input(message, topic='None'):
         user_input = input(message)
     return user_input
 
-#classes
+
+# classes
 
 class Kagutsuchi:
     # can implement other numeric/comparison functions if needed
@@ -547,29 +554,31 @@ class Kagutsuchi:
 class Move:
     def __init__(self, name):
         self.name = name
-        self.target = moves_dict[name]['Target']
-        self.category = moves_dict[name]['Category']
-        self.dmg_calc = moves_dict[name]['Damage Calc']
+        # deepcopying bc adding specials affects base moves_dict otherwise
+        move_info = copy.deepcopy(moves_dict[name])
+        self.target = move_info['Target']
+        self.category = move_info['Category']
+        self.dmg_calc = move_info['Damage Calc']
         if self.dmg_calc == 'None' and self.category == 'Magic':
             self.dmg_calc = 'Mag'
-        self.element = moves_dict[name]['Element']
-        self.hits = moves_dict[name]['Hits']
-        self.power = moves_dict[name]['Power']
-        self.correction = moves_dict[name]['Correction']
-        self.limit = moves_dict[name]['Limit']
+        self.element = move_info['Element']
+        self.hits = move_info['Hits']
+        self.power = move_info['Power']
+        self.correction = move_info['Correction']
+        self.limit = move_info['Limit']
         if self.power != 'None' and self.correction != 'None' and self.limit != 'None':
             self.peak = round(((self.limit - self.correction) / self.power) * (255 / 24))
         else:
             self.peak = 'None'
-        self.accuracy = moves_dict[name]['Accuracy']
-        self.mp = moves_dict[name]['MP']
-        self.hp = moves_dict[name]['HP']
-        self.specials = moves_dict[name]['Special Effects']
+        self.accuracy = move_info['Accuracy']
+        self.mp = move_info['MP']
+        self.hp = move_info['HP']
+        self.specials = move_info['Special Effects']
         if self.element == 'Phys':
             self.specials['Shatter'] = self.create_special({'Accuracy': 50, 'Condition': 'Target Stone'})
         elif self.element == 'Force':
             self.specials['Shatter'] = self.create_special({'Accuracy': 75, 'Condition': 'Target Stone'})
-        self.crit = moves_dict[name]['Crit']
+        self.crit = move_info['Crit']
         self.pierce = False
         self.reset()
 
@@ -629,7 +638,6 @@ class Move:
             elif element_effect == 'Weak/Resist':
                 element_effect = 'Weak'
         return (element_effect, barrier_effect, barrier)
-
 
     def calculate_accuracy(self, user, target):
         if 'Shock' in target.list_statuses() or 'Freeze' in target.list_statuses():
@@ -741,7 +749,6 @@ class Move:
         if self.crit != 'None':
             output += f'Base Crit Chance: {self.crit}\n'
         for effect, effect_info in self.specials.items():
-            effect_element = effect_info['Element']
             output += f'Special Effect: {effect} ('
             if effect_info['Value'] != 0:
                 if effect_info['Value'] <= 1:
@@ -1018,7 +1025,7 @@ class Demon:
             if move[0] in passives_dict and move[0] not in self.passive_names():
                 self.passives.append(Passive(move[0]))
         # shrink move pool to 8 by removing random moves
-        if len(self.moves)+len(self.passives)-1 > 8: #-1 counts for attack
+        if len(self.moves) + len(self.passives) - 1 > 8:  # -1 counts for attack
             removable_moves = []
             # prioritizes removing moves from past evolutions if possible
             for move in self.moves:
@@ -1029,7 +1036,7 @@ class Demon:
                     removable_moves.append(passive)
             removable_moves.remove(self.get_move('Attack'))
             random.shuffle(removable_moves)
-            while len(self.moves)+len(self.passives)-1 > 8:
+            while len(self.moves) + len(self.passives) - 1 > 8:
                 # case where base demon has more than 8 moves: considers all remaining moves
                 if len(removable_moves) == 0:
                     removable_moves = self.moves + self.passives
@@ -2025,7 +2032,7 @@ class Demon:
                             hp_damage = round(real_damage_dealt * move.specials['HP Drain']['Value'])
                             if hp_damage < 0:
                                 hp_damage = 0
-                            if might_crit == False:
+                            if not might_crit:
                                 self.hp += hp_damage
                                 if hp_damage > 0:
                                     print(f'{self.name} drained {hp_damage} HP!')
@@ -2273,17 +2280,15 @@ class Demon:
                     if valid_targets:
                         return decision_move.name
 
-
     def choose_move_hard(self, party, other_party):
         '''placeholder; not yet implemented'''
         return self.choose_move_easy(party, other_party)
-
 
     def action(self, party, other_party, controller, kagutsuchi=Kagutsuchi('Dead')):
         valid_decision = False
         while valid_decision == False:
             print(f'Current demon: {self.name} HP: {self.hp}/{self.max_hp} MP: {self.mp}/{self.max_mp}')
-            #for charm effect: needs to be global to check after action ends
+            # for charm effect: needs to be global to check after action ends
             turn_against_party = False
             # stone effect
             if 'Stone' in self.list_statuses():
@@ -2483,7 +2488,7 @@ class Demon:
                         elif controller == 'Easy':
                             target = self.choose_target_easy(decision_move, party, other_party)
                         elif controller == 'Hard':
-                            #placeholder
+                            # placeholder
                             target = self.choose_target_easy(decision_move, party, other_party)
                         else:
                             raise ValueError(f"Unrecognized controller: {controller}")
@@ -2583,11 +2588,11 @@ class DemiFiend(Demon):
                     if magatama_level < target_lv + RANDOM_DEMON_RANGE:
                         if magatama_level > target_lv - RANDOM_DEMON_RANGE:
                             possible_magatamas.append(magatama)
-                if len(possible_magatamas) == 0: # possible if target level plus random range < 19 or > 95
-                    if 99-target_lv > 50: # small target level
+                if len(possible_magatamas) == 0:  # possible if target level plus random range < 19 or > 95
+                    if 99 - target_lv > 50:  # small target level
                         possible_magatamas.append('Marogareh')
                         possible_magatamas.append('Ankh')
-                    else: # large target level
+                    else:  # large target level
                         possible_magatamas.append('Masakados')
                         possible_magatamas.append('Kailash')
             name = random.choice(possible_magatamas)
@@ -2746,6 +2751,7 @@ class Rotation:
 
     def __str__(self):
         return print_list([demon[0].name for demon in self.order])
+
 
 class Party:
     def __init__(self, demons):
@@ -3044,7 +3050,7 @@ class FourVsFour:
     def create_player_party(self, party, target_lv='None'):
         demons = []
         random_party = False
-        demon_count = 4-len(party)
+        demon_count = 4 - len(party)
         for i in range(demon_count):
             player_input = h_input(f'Choose the {ordinal(i + 1)} demon in your party: ', 'Choosing a Party').lower()
             if player_input == 'random':
@@ -3080,12 +3086,12 @@ class FourVsFour:
         if len(party) == 0:
             party.add_demon(DemiFiend(target_lv=target_lv, party=party))
         # following if statement is to make sure level selection adheres to parameter instead of current party lv
-        if target_lv == 'None': # unspecified target level: uses party level average
+        if target_lv == 'None':  # unspecified target level: uses party level average
             if len(party) < party_length and not party.demifiend_in_party():
                 party.add_demon(DemiFiend(target_lv=party.level, party=party))
             while len(party) < party_length:
                 party.add_demon(Demon(target_lv=party.level, party=party))
-        else: # specified target level
+        else:  # specified target level
             if len(party) < party_length and not party.demifiend_in_party():
                 party.add_demon(DemiFiend(target_lv=target_lv, party=party))
             while len(party) < party_length:
@@ -3164,10 +3170,13 @@ class FourVsFour:
             return True
         return False
 
+    def heal_parties(self):
+        self.party1.heal()
+        self.party2.heal()
+
     def run(self):
         if self.ran:
-            self.party1.heal()
-            self.party2.heal()
+            self.heal_parties()
             self.turns = 0
             self.stopped_game = False
             self.match_party1_length = False
@@ -3197,23 +3206,27 @@ class FourVsFour:
             elif current_turn == 2:
                 victory = self.turn(self.party2, self.party1, self.controllers[1])
                 current_turn = 1
-        output_dict = {'Kagutsuchi': self.kagutsuchi, 'Stop': self.stopped_game}
+        output_dict = {'Player 1 Wins': 0,
+                       'Player 2 Wins': 0,
+                       'Ties': 0,
+                       'Kagutsuchi': self.kagutsuchi,
+                       'Stop': self.stopped_game}
         self.kagutsuchi += 1
         if self.party1.lose_check():
             if self.controllers[0] == 'Player' and self.controllers[1] in self.difficulties:
                 print('You lost.')
             else:
                 print('Player 2 wins!')
-            output_dict['Winner'] = 'Player 2'
+            output_dict['Player 2 Wins'] += 1
         elif self.party2.lose_check():
             if self.controllers[0] == 'Player' and self.controllers[1] in self.difficulties:
                 print('You won!')
             else:
                 print('Player 1 wins!')
-            output_dict['Winner'] = 'Player 1'
+            output_dict['Player 1 Wins'] += 1
         else:
             print('Tie!')
-            output_dict['Winner'] = 'Tie'
+            output_dict['Ties'] += 1
         return output_dict
 
 
@@ -3250,6 +3263,46 @@ class AutoFourVsFour(FourVsFour):
             super().create_random_party(party, target_lv=target_lv)
 
 
+class Endurance(FourVsFour):
+
+    def heal_parties(self):
+        # overridden to create new p2 party instead of healing both
+        self.create_random_party(self.party2, target_lv=self.party1.level)
+
+    def who_goes_first(self):
+        # overridden to favor player 1; matches base game
+        party1_chance = 72 + self.party1.level + (self.party1.luck / 2) + self.party1.ag
+        party1_chance -= self.party2.level + (self.party2.luck / 2) + self.party2.ag
+        if party1_chance > 85:
+            party1_chance = 85
+        elif party1_chance < 50:
+            party1_chance = 50
+        if random.randint(0, 100) <= party1_chance:
+            return 1
+        return 2
+
+    def run(self):
+        party1_alive = True
+        output_dict = {'Player 1 Wins': 0, 'Player 2 Wins': 0, 'Ties': 0}
+        while party1_alive:
+            game_output = super().run()
+            for point_total in output_dict.keys():
+                output_dict[point_total] += game_output[point_total]
+            if self.stopped_game:
+                break
+            elif output_dict['Player 2 Wins'] >= 1:
+                party1_alive = False
+            else:
+                print(f'Current score: {output_dict["Player 1 Wins"]}')
+        output_dict['Kagutsuchi'] = game_output['Kagutsuchi']
+        output_dict['Stop'] = self.stopped_game
+        return output_dict
+
+class AutoEndurance(Endurance, AutoFourVsFour):
+    pass
+
+
+
 # In[25]:
 
 
@@ -3272,7 +3325,7 @@ def experiment(game_modes):
         'File Name': 'gamelog'
     }
     test_info = copy.deepcopy(default_test_info)
-    #setting changing
+    # setting changing
     settings_names = list(test_info.keys())
     while True:
         settings_display = ''
@@ -3287,7 +3340,7 @@ def experiment(game_modes):
         if changing_setting == '':
             break
         else:
-            changing_setting = process.extractOne(changing_setting, settings_names+['Default'])[0]
+            changing_setting = process.extractOne(changing_setting, settings_names + ['Default'])[0]
         if changing_setting == 'Trials':
             valid_input = False
             while not valid_input:
@@ -3316,7 +3369,7 @@ def experiment(game_modes):
                         print(f'The game mode will be set to the default.')
                         valid_input = True
                     else:
-                        setting_val = process.extractOne(setting_val, game_modes)
+                        setting_val = process.extractOne(setting_val, game_modes)[0]
                         valid_input = True
             else:
                 print(f'Only one game mode is available ({game_modes[0]}).')
@@ -3479,9 +3532,11 @@ def experiment(game_modes):
         else:
             test_info[changing_setting] = setting_val
         print()
-    #game initiation
+    # game initiation
     if test_info['Game Mode'] == '4 vs. 4':
         game = AutoFourVsFour(test_info, kagutsuchi=test_info['Kagutsuchi'])
+    elif test_info['Game Mode'] == 'Endurance':
+        game = AutoEndurance(test_info, kagutsuchi=test_info['Kagutsuchi'])
     # redirect standard output to file
     if test_info['Log Games']:
         orig_stdout = sys.stdout
@@ -3491,24 +3546,23 @@ def experiment(game_modes):
     # run games
     for i in range(test_info['Trials']):
         game_info = game.run()
-        if game_info['Winner'] == 'Player 1':
-            p1_wins += 1
-        elif game_info['Winner'] == 'Player 2':
-            p2_wins += 1
-        else:
-            ties += 1
+        p1_wins += game_info['Player 1 Wins']
+        p2_wins += game_info['Player 2 Wins']
+        ties += game_info['Ties']
         # print update
         if test_info['Log Games']:
             sys.stdout = orig_stdout
             current_time = timeit.default_timer()
-            info_str = f'\rGames played: {i+1}/{test_info["Trials"]}'
-            info_str += f'\tElapsed time: {round(current_time-start_time, 3)}s'
+            info_str = f'\rGames played: {i + 1}/{test_info["Trials"]}'
+            info_str += f'\tElapsed time: {round(current_time - start_time, 3)}s'
             print(info_str, end='')
             sys.stdout = f
         # remake game
         if not test_info['Same Teams']:
             if test_info['Game Mode'] == '4 vs. 4':
                 game = AutoFourVsFour(test_info, kagutsuchi=test_info['Kagutsuchi'])
+            elif test_info['Game Mode'] == 'Endurance':
+                game = AutoEndurance(test_info, kagutsuchi=test_info['Kagutsuchi'])
             else:
                 raise RuntimeError('Missing game mode')
     # close/reset output
@@ -3533,7 +3587,7 @@ def experiment(game_modes):
 
 
 def main():
-    game_modes = ['4 vs. 4', 'Experiment']
+    game_modes = ['4 vs. 4', 'Endurance', 'Experiment']
     playing = True
     runback = False
     p1_wins = 0
@@ -3551,16 +3605,15 @@ def main():
                 selected_mode = process.extractOne(selected_mode, game_modes)[0]
             if selected_mode == '4 vs. 4':
                 game = FourVsFour(kagutsuchi=kagutsuchi)
+            elif selected_mode == 'Endurance':
+                game = Endurance(kagutsuchi=kagutsuchi)
             elif selected_mode == 'Experiment':
                 experiment(game_modes)
                 break
         game_info = game.run()
-        if game_info['Winner'] == 'Player 1':
-            p1_wins += 1
-        elif game_info['Winner'] == 'Player 2':
-            p2_wins += 1
-        else:
-            ties += 1
+        p1_wins += game_info['Player 1 Wins']
+        p2_wins += game_info['Player 2 Wins']
+        ties += game_info['Ties']
         summary_str = f'Total score: {p1_wins} to {p2_wins} ('
         if p1_wins > p2_wins:
             summary_str += 'Player 1 leading'
@@ -3579,7 +3632,7 @@ def main():
         else:
             print()
             repeat_decision = h_input('Play again? (y/n) ', 'Game End').lower()
-            #could incorporate fuzzywuzzy
+            # could incorporate fuzzywuzzy
             if repeat_decision == 'y' or repeat_decision == 'yes':
                 runback_decision = h_input('Same teams? (y/n) ', 'Game End').lower()
                 if runback_decision == 'y' or runback_decision == 'yes':
@@ -3596,8 +3649,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-
 # In[27]:
-
-
-

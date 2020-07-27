@@ -255,13 +255,16 @@ def game_help(topic='None'):
             output += 'The game is known for the "Press Turn" system, which rewards '
             output += 'exploiting enemy weaknesses and landing critical hits with extra turns.'
         elif topic == 'Game Modes':
-            output = 'Currently, two game modes exist: "4 vs. 4" and "Experiment". '
-            output += 'You can access either one by typing out its name in the input prompt.\n\n'
+            output = 'Currently, three game modes exist: "4 vs. 4", "Endurance", and "Experiment". '
+            output += 'You can access any of them by typing out their name in the input prompt.\n\n'
             output += '4 vs. 4 is the standard mode, and can be accessed through the selection prompt '
             output += 'by entering nothing, as well as typing out "4 vs. 4". '
             output += 'The name refers to the number of party members on each team, not the number of players '
             output += 'required. This mode uses 2 controllers, which can be any combination of '
             output += 'human players and computers (more info in the "player selection" section).\n\n'
+            output += 'Endurance is played similarly to 4 vs. 4, except that the game continues until Player 1 dies. '
+            output += "Player 1's goal is to win as many times as possible. Their team will not heal between rounds, "
+            output += "whereas Player 2's team will refresh every round.\n\n"
             output += 'Experiment is mainly used for simulating games with the computer. '
             output += 'You can modify the settings (see "Experiment Settings"), but note that you will not be able to '
             output += 'actually participate in gameplay.'
@@ -438,7 +441,7 @@ def game_help(topic='None'):
             output += 'a number greater than or equal to 1.'
         elif topic == 'Set Game Mode':
             output = 'The game mode is the type of game to be played (see "Game Modes" for more info). '
-            output += 'Currently, there is only one option (4 vs. 4), so that will be selected by default.'
+            output += 'Type the name of the mode you want to simulate: either 4 vs. 4 or Endurance.'
         elif topic == 'Set Same Teams':
             output = 'This determines whether teams should stay the same or be re-made after every game. If you would '
             output += 'like to maintain the same teams each game, enter "y" or "yes" into the prompt. Otherwise, '

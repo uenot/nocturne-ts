@@ -1,8 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
+from __future__ import annotations
 
 # to do:
 
@@ -109,10 +105,6 @@
 
 # passives (voids, pierce, etc.) that give demons/moves attributes need to reset (if going to implement multi-battles)
 
-
-# In[2]:
-
-
 # links:
 # english skills: https://aqiu384.github.io/megaten-fusion-tool/smt3/skills
 # data notes: https://web.archive.org/web/20160216231006/http://xn--ehqs60c2gs6ptzjh.jp/archives/shin3_skill001.html
@@ -124,42 +116,26 @@
 # misc info: https://web.archive.org/web/20160316012050/http://xn--ehqs60c2gs6ptzjh.jp/archives/shin3_skill008.html
 # other wiki: https://w.atwiki.jp/noctan/pages/85.html
 
-
-# In[3]:
-
-
-# imports
 import sys
 import timeit
 from fuzzywuzzy import process
 import random
-import operator
 import copy
 import numpy as np
 import json
-
-
-# In[4]:
+from typing import Optional, Union, Tuple, List
 
 
 # global utility functions
 
-def print_list(items):
-    output = ''
-    if type(items) is set:
-        new_items = list(items)
-    else:
-        new_items = items
-    if len(new_items) == 0:
-        return 'None'
-    if len(new_items) >= 1:
-        for item in new_items[:-1]:
-            output += f'{item}, '
-    output += str(new_items[-1])
-    return output
 
+def ordinal(n: int) -> str:
+    """
+    Returns an ordinal phrase (first, second, etc.) given a number. Not related to ord().
 
-def ordinal(n):
+    :param n: Number between 0 and 16 (inclusive)
+    :return: Ordinal string
+    """
     ordinals = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh',
                 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth',
                 'fifteenth', 'sixteenth']
@@ -168,13 +144,8 @@ def ordinal(n):
     return ordinals[n]
 
 
-# In[5]:
-
-
 # global variables
 
-
-# In[7]:
 
 with open("database/demons.json", 'r') as f:
     demon_dict = json.load(f)
@@ -193,23 +164,28 @@ master_list = ['Demi-Fiend'] + list(demon_dict.keys()) + list(magatama_dict.keys
 # sorted by priority
 status_list = ['Stone', 'Fly', 'Stun', 'Charm', 'Poison', 'Mute', 'Bind', 'Panic', 'Sleep', 'Freeze', 'Shock']
 
-# In[12]:
-
+# plus/minus threshold for random demon level, given a target level
 RANDOM_DEMON_RANGE = 12
-
-
-# In[13]:
 
 
 # program-specific global functions
 
-def find_evolve_count(demon):
+def find_evolve_count(demon: str) -> Tuple[str, int]:
+    """
+    Finds the base form of a demon and the number of evolutions to get to its current form. If the given demon
+    has no evolutions, returns the demon's name and 0.
+
+    Ex: find_evolve_count('Hanuman') -> ('Onkot', 1)
+
+    :param demon: Name of the demon to get info about
+    :return: Base demon name, number of evolutions
+    """
     searching_evolutions = True
     evolve = 0
     while searching_evolutions:
         temp_evolve = evolve
         for demon_name in demon_dict:
-            if demon == demon_dict[demon_name]['Evolution'][0]:
+            if demon_dict[demon_name]['Evolution'] is not None and demon == demon_dict[demon_name]['Evolution'][0]:
                 demon = demon_name
                 evolve += 1
         if temp_evolve == evolve:
@@ -217,28 +193,32 @@ def find_evolve_count(demon):
     return demon, evolve
 
 
-def game_help(topic='None'):
+def game_help(topic: Optional[str] = None) -> None:
+    """
+    Opens interactive help menu.
+    :param topic: If specified, opens target topic directly instead of opening the main menu.
+    """
     viewing = True
     while viewing:
-        if topic == 'None':
+        if not topic:
             main_topics = ['Intro', 'Game Modes', 'Player Select', 'Difficulty', 'Choosing a Party', 'Move Selection']
             main_topics += ['Target Selection', 'Game End']
             program_topics = ['Random Party Selection', 'View Commands', 'Demi-Fiend Creation']
             mechanic_topics = ['Battle Basics', 'Press Turns', 'Resistances', 'Special Effects', 'The Stock']
             mechanic_topics += ['Demi-Fiend', 'Kagutsuchi']
             experiment_topics = ['Settings Overview', 'Set Trials', 'Set Game Mode', 'Set Same Teams']
-            experiment_topics += ['Set Target Level', 'Set Demons', 'Set Kagutsuchi', 'Set Log Games', 'Set File Name']
-            experiment_topics += ['Default Settings']
+            experiment_topics += ['Set Target Level', 'Set Demons', 'Set Kagutsuchi Phase', 'Set Kagutsuchi Freeze']
+            experiment_topics += ['Set Log Games', 'Set File Name''Default Settings']
             topics = main_topics + program_topics + mechanic_topics + experiment_topics
             if 'back' in topics:
                 topics.remove('back')
             help_explain_str = 'For a detailed look at any of the topics below, type "help {topic}". '
             help_explain_str += 'Type "back" to return to the game.\n\n'
             help_explain_str += 'Topics:\n'
-            help_explain_str += f'Instructions: {print_list(main_topics)}\n'
-            help_explain_str += f'Game Mechanics: {print_list(mechanic_topics)}\n'
-            help_explain_str += f'Program-Specific Info: {print_list(program_topics)}\n'
-            help_explain_str += f'Settings for Experiment Mode: {print_list(experiment_topics)}'
+            help_explain_str += f'Instructions: {", ".join(main_topics)}\n'
+            help_explain_str += f'Game Mechanics: {", ".join(mechanic_topics)}\n'
+            help_explain_str += f'Program-Specific Info: {", ".join(program_topics)}\n'
+            help_explain_str += f'Settings for Experiment Mode: {", ".join(experiment_topics)}'
             print(help_explain_str)
             topics.append('back')
             topic = input('What would you like to view? ')
@@ -455,13 +435,15 @@ def game_help(topic='None'):
             output += 'for info on how input works. The main difference is that you can break demon selection by '
             output += 'entering nothing before you have selected a full party of 4. Doing so will allow the remaining '
             output += 'spots to be randomly chosen. Also, the word "random" has no special effect.'
-        elif topic == 'Set Kagutsuchi':
-            output = 'This allows you to specify a kagutsuchi phase, and involves two prompts.\n\nFor the '
-            output += 'first, type a number between 0 and 8 to represent the phase, where 0 is new and 8 is full. '
+        elif topic == 'Set Kagutsuchi Phase':
+            output = 'This allows you to specify the starting Kagutsuchi phase. Type a number between 0 and 8 to '
+            output += 'represent the phase, where 0 is new and 8 is full. '
             output += 'You can also specify "dead", which means Kagutsuchi will never have an effect, or "random", '
-            output += 'which gives a random phase.\n\n'
-            output += 'The second prompt allows you to disable phase rotation between games. To do so, type "y" or '
-            output += '"yes". Otherwise, type "n" or "no".\n\n'
+            output += 'which gives a random phase.\n\n '
+            output += 'Note that by default Kagutsuchi will still rotate (see "Set Kagutsuchi Freeze").'
+        elif topic == 'Set Kagutsuchi Freeze':
+            output = 'This controls whether Kagutsuchi rotates between games or not. To diable rotation, '
+            output += 'type "y" or "yes". Otherwise, type "n" or "no".\n\n'
         elif topic == 'Set Log Games':
             output = 'Choose if a record of the games played should be saved to a text file. '
             output += 'If you would like to, type "y" or "yes". Otherwise, type "n" or "no". Nte that '
@@ -475,10 +457,19 @@ def game_help(topic='None'):
             output += 'reset it to its default value.\n\n When choosing a setting, you can also type "default" '
             output += 'to restore all settings to their default values (after a confirmation prompt).'
         print(output + '\n')
-        topic = 'None'
+        topic = None
 
 
-def h_input(message, topic='None'):
+def h_input(message: str = '', topic: Optional[str] = None) -> str:
+    """
+    Custom extension of the input() function that integrates the game_help() function. If the user enters "help",
+    then the game_help menu is opened. Otherwise, input is returned like normal.
+
+    :param message: Prompt to print next to input field
+    :param topic: If specified and user inputs "help", opens the topic directly instead of the main help menu.
+
+    :return: The user input.
+    """
     user_input = input(message)
     while user_input == 'help':
         print()
@@ -490,8 +481,20 @@ def h_input(message, topic='None'):
 # classes
 
 class Kagutsuchi:
-    # can implement other numeric/comparison functions if needed
-    def __init__(self, phase='Random', frozen=False):
+    """
+    Limited extension of an int object. Simulates moon phases: cycles between 0 and 8 upon addition.
+    """
+
+    # can implement other numeric/comparison functions if needed: not necessary right now
+    def __init__(self, phase: Union[int, str] = 'Random', frozen: bool = False) -> None:
+        """
+        Constructor for the Kagutsuchi class.
+
+        :param phase: The starting phase, between 0 and 8. Can also be "Dead", which nullifies all Kagutsuchi effects
+            and prevents rotation, or "Random" (the default), which sets the starting phase randomly.
+        :param frozen: If True, stops the phase value from changing.
+        """
+        # could add direction parameter— wouldn't really serve a purpose in bigger game context?
         if phase == 'Dead':
             self.dead = True
             self.phase = random.randint(0, 8)
@@ -513,7 +516,13 @@ class Kagutsuchi:
             self.direction = random.choice(["increasing", "decreasing"])
         self.frozen = frozen
 
-    def __add__(self, n):
+    def __add__(self, n: int) -> Kagutsuchi:
+        """
+        Overriding the add method, allowing for addition using the + symbol.
+
+        :param n: The number of phases to pass through.
+        :return: Self (the Kagutsuchi object being operated on).
+        """
         if not self.frozen:
             while n > 0:
                 if self.direction == "increasing":
@@ -527,15 +536,23 @@ class Kagutsuchi:
                 n -= 1
         return self
 
-    def __eq__(self, n):
+    def __eq__(self, n: int) -> bool:
+        """
+        Overriding the equals method, allowing for equality checks using ==.
+
+        :param n: The phase number to compare to.
+        :return: True if the n matches the current phase, False otherwise.
+        """
         if self.phase == n and not self.dead:
             return True
         return False
 
-    def more_info(self):
-        return f'Phase: {str(self)}, {self.direction}{" (FROZEN)" if self.frozen else ""}'
+    def __str__(self) -> str:
+        """
+        Gets a short description of the object based on the current phase.
 
-    def __str__(self):
+        :return: Phrase describing the Kagutsuchi phase.
+        """
         if self.dead:
             return 'Dead'
         if self.phase == 0:
@@ -552,54 +569,105 @@ class Kagutsuchi:
 
 
 class Move:
-    def __init__(self, name):
+    """
+    Represents the move of a demon. Attributes mainly contain info about the move, and methods provide interfaces
+    for using and modifying the move.
+    """
+
+    def __init__(self, name: str) -> None:
+        """
+        Constructor for Move. Sets attributes based on the info in moves_dict.
+
+        :param name: The name of the move to create.
+        """
         self.name = name
-        # deepcopying bc adding specials affects base moves_dict otherwise
+        # deepcopying because adding specials affects base moves_dict otherwise
         move_info = copy.deepcopy(moves_dict[name])
         self.target = move_info['Target']
         self.category = move_info['Category']
-        self.dmg_calc = move_info['Damage Calc']
-        if self.dmg_calc == 'None' and self.category == 'Magic':
-            self.dmg_calc = 'Mag'
+        self.dmg_calc = move_info['Damage Calc']  # distinguishes between HP-based and level-based phys moves
         self.element = move_info['Element']
         self.hits = move_info['Hits']
         self.power = move_info['Power']
+        # correction, limit, and peak are hidden values for magic moves used in damage calculation
         self.correction = move_info['Correction']
         self.limit = move_info['Limit']
-        if self.power != 'None' and self.correction != 'None' and self.limit != 'None':
+        if self.power is not None and self.correction is not None and self.limit is not None:
             self.peak = round(((self.limit - self.correction) / self.power) * (255 / 24))
         else:
-            self.peak = 'None'
+            self.peak = None
         self.accuracy = move_info['Accuracy']
         self.mp = move_info['MP']
         self.hp = move_info['HP']
         self.specials = move_info['Special Effects']
-        if self.element == 'Phys':
-            self.specials['Shatter'] = self.create_special({'Accuracy': 50, 'Condition': 'Target Stone'})
-        elif self.element == 'Force':
-            self.specials['Shatter'] = self.create_special({'Accuracy': 75, 'Condition': 'Target Stone'})
         self.crit = move_info['Crit']
         self.pierce = False
         self.reset()
 
-    def reset(self):
+    def reset(self) -> None:
+        """
+        Sets the temporary attributes for the move. Called within __init__. Separate in order to reset the attributes
+        after using the move.
+        """
         self.reflected = False
         self.temp_dmg_factor = 1
 
-    def create_special(self, effect_info={}):
-        '''Takes in effect_info dict; updates it to defaults. Used when creating new special effects, usually
-        through passives (such as bright/dark might and drain attack)'''
+    def create_special(self, effect_info: dict = {}) -> dict:
+        """
+        Takes in effect_info dict; updates it to defaults. Used when creating new special effects, usually
+        through passives (such as Dright/Dark Might and drain attack).
+
+        :param effect_info: The desired non-default parameters for the info for an effect.
+        :return: The effect_info dict updated with default values.
+        """
         effect_info.setdefault('Element', self.element)
         effect_info.setdefault('Accuracy', 100)
         effect_info.setdefault('Value', 0)
         effect_info.setdefault('Target', 'Same')
-        effect_info.setdefault('Condition', 'None')
+        effect_info.setdefault('Condition', None)
         return effect_info
 
-    def hp_cost(self, user):
+    def update(self, changes: dict = {}) -> None:
+        """
+        Updates the move based on parameters specified in info_dict. Also sets properties that result from
+        attribute changes, such as the Shatter special effect. Used primarily for updating based on
+        a demon's attack changes.
+
+        :param changes: Dictionary with parameters to change as keys and the new values as values.
+        """
+        # could add more changes, but not necessary
+        # could incorporate other move edits (such as the changes made by passives)
+        for change_type, new_value in changes.items():
+            if change_type == 'Element':
+                self.element = new_value
+            elif change_type == 'Hits':
+                self.hits = new_value
+                self.power = int(self.power / new_value)
+
+        # set "shatter" effect based on element
+        if self.element == 'Phys':
+            self.specials['Shatter'] = self.create_special({'Accuracy': 50, 'Condition': 'Target Stone'})
+        elif self.element == 'Force':
+            self.specials['Shatter'] = self.create_special({'Accuracy': 75, 'Condition': 'Target Stone'})
+        else:
+            del self.specials['Shatter']
+
+    def hp_cost(self, user: Demon) -> int:
+        """
+        Calculates the absolute HP cost of a move for a given demon.
+
+        :param user: The demon using the move.
+        :return: The HP cost for the demon.
+        """
         return int(self.hp * user.max_hp / 100)
 
-    def user_cost_string(self, user):
+    def user_cost_string(self, user: Demon) -> str:
+        """
+        Creates a string which displays the cost of a move for a given demon.
+
+        :param user: The demon using the move.
+        :return: Info about the cost of the move.
+        """
         if self.mp != 0:
             return f'{self.mp} MP'
         elif self.hp != 0:
@@ -607,18 +675,24 @@ class Move:
         else:
             return 'None'
 
-    def calculate_element_effect(self, target):
-        '''more extensive than Demon.find_element_effect; considers barriers and frozen status. Non-destructive;
-        returns a tuple with info on barriers hit.'''
-        barrier_effect = 'None'
-        barrier = 'None'
+    def calculate_element_effect(self, target: Demon) -> Tuple[str, str, str]:
+        """
+        Calculates the elemental effect of the move on a demon. More extensive than Demon.find_element_effect;
+        considers barriers and frozen status. Non-destructive.
+
+        :param target: The demon to calculate the move's effect on.
+        :return: The effect ('Reflect', 'Void', etc.), the overriding barrier effect, and the barrier name.
+            If no barrier is hit, the second and third items will be None.
+        """
+        ''''''
+        barrier_effect = None
+        barrier = None
         element_effect = target.find_element_effect(self.element)
         if self.reflected:
             if element_effect == 'Reflect' or element_effect == 'Absorb':
                 element_effect = 'Void'
         # check for temp barriers
-        barrier_effect = 'None'
-        if self.element != 'Almighty' and self.element != 'None':
+        if self.element != 'Almighty' and self.element is not None:
             if target.tetrakarn and self.category == 'Physical' and 'Freeze' not in target.list_statuses():
                 barrier_effect = 'Reflect'
                 barrier = 'Tetrakarn'
@@ -634,15 +708,23 @@ class Move:
         # redo weaknesses if target is frozen
         if self.category == 'Physical' and 'Freeze' in target.list_statuses():
             if element_effect in ['Reflect', 'Absorb', 'Void', 'Resist']:
-                element_effect = 'None'
+                element_effect = None
             elif element_effect == 'Weak/Resist':
                 element_effect = 'Weak'
-        return (element_effect, barrier_effect, barrier)
+        return element_effect, barrier_effect, barrier
 
-    def calculate_accuracy(self, user, target):
+    def calculate_accuracy(self, user: Demon, target: Demon) -> float:
+        """
+        Calculates the hit chance of the move given a user demon and a target demon. Separate from calculate_hit
+        because the accuracy value is used in calculate_crit.
+
+        :param user: The demon using the move.
+        :param target: The demon being targeted with the move.
+        :return: The chance for the move to hit as a number between 0 and 100.
+        """
         if 'Shock' in target.list_statuses() or 'Freeze' in target.list_statuses():
             hit_chance = 100
-        elif self.accuracy == 'None':
+        elif self.accuracy is None:
             hit_chance = 100
         elif self.category == 'Magic':
             hit_chance = self.accuracy * (user.level + 2 * user.mag + user.luck / 2 + 17.5)
@@ -658,13 +740,34 @@ class Move:
             hit_chance = 100
         return hit_chance
 
-    def calculate_base_damage(self, user, target, power_factor=1):
-        # power factor used for mana drains
-        if self.power != 'None':
+    def calculate_hit(self, user: Demon, target: Demon) -> float:
+        """
+        Decides if the move hits given a user demon and a target demon.
+
+        :param user: The demon using the move.
+        :param target: The demon being targeted with the move.
+        :return: True if the move hits and False otherwise.
+        """
+        return self.calculate_accuracy(user, target) < random.randint(1, 100)
+
+    def calculate_base_damage(self, user: Demon, target: Demon, power_factor: float = 1) -> float:
+        """
+        Calculates the base damage of the move given a user demon and a target demon. Does not take into account
+        the random damage multiplier and any temporary modifiers (represented by self.temp_dmg_factor).
+
+        :param user: The demon using the move.
+        :param target: The demon being targeted with the move.
+        :param power_factor: A multiplier for the effective move power. Can affect move damage differently than
+            multiplying the result. Used exclusively with MP draining.
+        :return: The base damage for the move.
+        """
+        if self.power is not None:
             power = self.power * power_factor
             if self.dmg_calc == 'Mag':
                 if user.level <= self.peak:
                     damage = 0.004 * (5 * (user.mag + 36) - user.level)
+                    # since a value is added to the multiple of power here, the result differs when
+                    # multiplying base power versus multiplying the function result
                     damage *= ((24 * power * user.level / 255) + self.correction)
                 elif user.level < 160:
                     damage = 0.004 * (5 * (user.mag + 36) - user.level) * self.limit
@@ -675,26 +778,33 @@ class Move:
             elif self.dmg_calc == 'HP':
                 damage = user.max_hp * power * 0.0114
             else:
-                damage = 'None'
+                damage = None
+        # if the move heals but has no power, will heal to full
         elif 'Heal' in self.specials:
             damage = target.max_hp - target.hp
         else:
-            damage = 'None'
-        if damage != 'None':
+            damage = None
+        # buff/debuff modifiers
+        if damage is not None:
             if self.category == 'Physical':
                 damage *= user.taru_mod()
             elif self.category == 'Magic':
                 damage *= user.maka_mod()
             if 'Heal' not in self.specials:
                 damage /= target.raku_mod()
-        if 'Stone' in target.list_statuses():
-            if self.element == 'Fire' or self.element == 'Ice' or self.element == 'Elec':
-                damage *= 0.1
         return damage
 
-    def calculate_crit(self, user, target, kagutsuchi=Kagutsuchi('Dead')):
+    def calculate_crit(self, user: Demon, target: Demon, kagutsuchi: Kagutsuchi = Kagutsuchi('Dead')) -> bool:
+        """
+        Decides if the move is a critical hit given a user demon and a target demon.
+
+        :param user: The demon using the move.
+        :param target: The demon being targeted with the move.
+        :param kagutsuchi: The current Kagutsuchi. Affects Bright/Dark Might. If not specified, assumes no effect.
+        :return: True if the move crits and False otherwise.
+        """
         crit_proc = False
-        if self.crit != 'None':
+        if self.crit is not None:
             if 'Shock' in target.list_statuses() or 'Freeze' in target.list_statuses():
                 crit_chance = 100
             elif 'Bright Might' in self.specials and kagutsuchi == 8:
@@ -702,7 +812,7 @@ class Move:
             elif 'Dark Might' in self.specials and kagutsuchi == 0:
                 crit_chance = 100
             else:
-                if self.accuracy == 'None':
+                if self.accuracy is None:
                     base_accuracy = 100
                 else:
                     base_accuracy = self.accuracy
@@ -711,7 +821,13 @@ class Move:
                 crit_proc = True
         return crit_proc
 
-    def unknown_str(self):
+    def unknown_str(self) -> str:
+        """
+        Modified __str__ method that obscures significant info. Called when the user has no information
+        about a demon that posesses this move.
+
+        :return: A string formatted like __str__, but with question marks.
+        """
         output = f'Move: {self.name}\n'
         output += 'Cost: ???\n'
         output += 'Type: ???\n'
@@ -724,7 +840,13 @@ class Move:
         output += 'Analyze a demon with this move for more information...\n'
         return output
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Overrides string representation of a Move. Displays all relevant info about the move. Notably omits
+        complex damage calculation stats.
+
+        :return: String containing information about the object.
+        """
         output = f'Move: {self.name}\n'
         if self.mp != 0:
             output += f'Cost: {self.mp} MP\n'
@@ -742,11 +864,11 @@ class Move:
             if 'Random' in self.target:
                 output += 'Max '
             output += f'Hits: {self.hits}\n'
-        if self.power != 'None':
+        if self.power is not None:
             output += f'Base Power: {self.power}\n'
-        if self.accuracy != 'None':
+        if self.accuracy is not None:
             output += f'Base Accuracy: {self.accuracy}\n'
-        if self.crit != 'None':
+        if self.crit is not None:
             output += f'Base Crit Chance: {self.crit}\n'
         for effect, effect_info in self.specials.items():
             output += f'Special Effect: {effect} ('
@@ -764,7 +886,7 @@ class Move:
                 elif effect == 'Revive':
                     output += '% of max HP'
                 output += ', '
-            if effect_info['Condition'] != 'None':
+            if effect_info['Condition'] is not None:
                 output += f'Condition: {effect_info["Condition"]}, '
             if effect_info['Target'] != 'Same':
                 output += f'Target: {effect_info["Target"]}, '
@@ -774,16 +896,33 @@ class Move:
         return output
 
 
-# In[15]:
-
-
 class PassiveAbility:
-    def __init__(self, info):
-        self.effect = info['Effect']
-        self.element = info['Element']
-        self.value = info['Value']
+    """
+    Represents an ability of a passive. Contains the actual effects of the passive. Separate from the Passive class
+    because a Passive can contain multiple passive abilities. None of the methods are meant to be called outside
+    of methods in the Passive class; as Passive acts as a wrapper around the PassiveAbility methods.
+    """
 
-    def init_apply(self, demon):
+    def __init__(self, effect: str, element: Optional[str], value: Optional[float]) -> None:
+        """
+        Constructor for the PassiveAbility object.
+
+        :param effect: The effect of the passive ability.
+        :param element: The element of the passive ability. Used for resistances and boosts. Can be None if the chosen
+            effect doesn't require an element.
+        :param value: A number to apply to a move/demon parameter. Actual usage varies based on the chosen effect.
+            Can be None if the chosen element doesn't require a value.
+        """
+        self.effect = effect
+        self.element = element
+        self.value = value
+
+    def init_apply(self, demon: Demon) -> None:
+        """
+        Applies the effect of the passive ability. Called when a demon is initialized.
+
+        :param demon: The demon to apply the passive effect to.
+        """
         if self.effect == 'Reflect':
             demon.reflect.add(self.element)
         elif self.effect == 'Absorb':
@@ -801,7 +940,7 @@ class PassiveAbility:
         elif self.effect == 'Endure':
             demon.endure = True
         elif self.effect == 'Crit':
-            if demon.get_move('Attack').crit != 'None':
+            if demon.get_move('Attack').crit is not None:
                 demon.get_move('Attack').crit *= self.value
         elif self.effect == 'Bright Might':
             demon.get_move('Attack').specials['Bright Might'] = demon.get_move('Attack').create_special()
@@ -817,25 +956,44 @@ class PassiveAbility:
                 if move.category == 'Physical':
                     move.pierce = True
 
-    def attack_apply(self, move):
+    def attack_apply(self, move: Move) -> None:
+        """
+        Applies the effect of the passive ability. Called when a demon attacks with a given move.
+
+        :param move: The move to apply the passive effect to.
+        """
         if self.effect == 'Boost':
-            if self.element == move.element and self.element != 'None':
+            if self.element == move.element and self.element is not None:
                 move.temp_dmg_factor *= 1.5
-            elif self.element == 'None' and move.element != 'None':
+            # boost effect with no element boosts all moves
+            elif self.element is None and move.element is not None:
                 move.temp_dmg_factor *= 1.5
 
-    def counter_apply(self, user, target, kagutsuchi):
+    def counter_apply(self, user: Demon, target: Demon, kagutsuchi: Kagutsuchi = Kagutsuchi('Dead')) -> bool:
+        """
+        Initiates counter-attacks. Called when a counter-attack is meant to be initiated. Checks for if the
+        effect of the ability is "Counter".
+
+        :param user: The demon who was attacked and is countering.
+        :param target: The attacking demon to be counter-attacked.
+        :param kagutsuchi: The current Kagutsuchi phase. Defaults to "Dead" if not specified.
+        :return: True if a counter-attack was initiated, False otherwise.
+        """
         if self.effect == 'Counter':
             print(f'\n{user.name} countered!')
             user.get_move('Attack').temp_dmg_factor *= self.value
+            # reflected shares same properties as counters— can't be reflected back or trigger further counters
             user.get_move('Attack').reflected = True
-            for i in range(user.get_move('Attack').hits):
-                print()
-                user.use_move(user.get_move('Attack'), target, kagutsuchi)
+            user.initiate_move(user.get_move('Attack'), [target], target.party, kagutsuchi)
             return True
         return False
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        String representation of a PassiveAbility.
+
+        :return: Information about the passive ability.
+        """
         output = 'Missing passive effect'
         if self.effect in ['Reflect', 'Absorb', 'Void', 'Resist']:
             resist_element = self.element
@@ -850,7 +1008,7 @@ class PassiveAbility:
             output = f'Counters physical attacks, {self.value}x damage'
         elif self.effect == 'Boost':
             boost_element = self.element
-            if boost_element == 'None':
+            if boost_element is None:
                 boost_element = 'All'
             if boost_element == 'Elec':
                 boost_element = 'electric'
@@ -872,60 +1030,113 @@ class PassiveAbility:
         return output
 
 
-# In[16]:
-
-
 class Passive:
-    def __init__(self, name):
+    """
+    Represents a passive. Acts essentially as a wrapper around a list of PassiveAbility objects, with most methods
+    calling the associated PassiveAbility method for each object in the self.abilities list.
+    """
+
+    def __init__(self, name: str) -> None:
+        """
+        Constructor for the Passive object. Sets attributes based on the info in passives_dict.
+
+        :param name: The name of the passive to be created.
+        """
         self.name = name
+        # creates PassiveAbility for each info set in passives_dict
         self.abilities = []
         for ability in passives_dict[name]:
-            self.abilities.append(PassiveAbility(ability))
+            self.abilities.append(PassiveAbility(ability['Effect'], ability['Element'], ability['Value']))
 
-    def init_apply(self, demon):
+    def init_apply(self, demon: Demon) -> None:
+        """
+        Applies the effect of the passive. Called when a demon is initialized.
+
+        :param demon: The demon to apply the passive to.
+        """
         for ability in self.abilities:
             ability.init_apply(demon)
 
-    def attack_apply(self, move):
+    def attack_apply(self, move: Move) -> None:
+        """
+        Applies the effect of the passive. Called when a demon attacks with a given move.
+
+        :param move: The move to apply the passive effect to.
+        """
         for ability in self.abilities:
             ability.attack_apply(move)
 
-    def counter_apply(self, user, target, kagutsuchi):
+    def counter_apply(self, user: Demon, target: Demon, kagutsuchi: Kagutsuchi = Kagutsuchi('Dead')) -> None:
+        """
+        Initiates counter-attacks. Called when a counter-attack is meant to be initiated. Checks for if the
+        effect of the ability is "Counter".
+
+        :param user: The demon who was attacked and is countering.
+        :param target: The attacking demon to be counter-attacked.
+        :param kagutsuchi: The current Kagutsuchi phase. Defaults to "Dead" if not specified.
+        """
         for ability in self.abilities:
+            # ensures that only one counter is triggered
+            # this catches multiple counter PassiveAbilities— multiple counter Passives must be caught elsewhere
+            # would occur as the result of a strange entry in passives_dict
             if ability.counter_apply(user, target, kagutsuchi):
                 break
 
-    def unknown_str(self):
+    def unknown_str(self) -> str:
+        """
+        Modified __str__ method that obscures significant info. Called when the user has no information
+        about a demon that posesses this passive.
+
+        :return: A string formatted like __str__, but with question marks.
+        """
         return f'Passive: {self.name}\nEffect: ???'
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Overrides string representation of a Passive. Lists the PassiveEffects associated with the passive.
+
+        :return: String containing information about the object.
+        """
         output = f'Passive: {self.name}\nEffect'
         ability_strings = []
         for ability in self.abilities:
             ability_strings.append(str(ability))
         if len(ability_strings) >= 2:
             output += 's'
-        output += f': {print_list(ability_strings)}'
+        output += f': {", ".join(ability_strings)}'
         return output
 
 
-# In[17]:
-
-
 class Status:
-    def __init__(self, name):
+    """
+    Represents a status ailment. Main purpose is to figure out when the ailment should be healed naturally through
+    tick(). Effects of statuses are applied via "in" checks with the demon's list of statuses.
+    """
+
+    def __init__(self, name: str) -> None:
+        """
+        Constructor for the Status class.
+
+        :param name: The name of the status to be created.
+        """
         self.name = name
         self.timer = 0
         if self.name == 'Freeze' or self.name == 'Shock':
             self.max_time = 1
-        elif self.name == 'Charm' or self.name == 'Bind' or self.name == 'Panic' or self.name == 'Sleep':
+        elif self.name in ['Charm', 'Bind', 'Panic', 'Sleep']:
             self.max_time = 4
         else:
-            self.max_time = 'End'
+            self.max_time = None
 
-    def tick(self, demon):
+    def tick(self, demon: Demon) -> bool:
+        """
+        Checks to see if the status has expired. Rolls randomly and checks against the max time.
+
+        :param demon: The demon who possesses the status.
+        :return: True if the status expires, False otherwise.
+        """
         self.timer += 1
-        if self.max_time != 'End':
+        if self.max_time is not None:
             if self.timer >= self.max_time:
                 return True
             else:
@@ -943,12 +1154,58 @@ class Status:
                     return True
         return False
 
+    def __str__(self) -> str:
+        """
+        String representation of a Status. Gives info on what the status does. Currently unused method.
 
-# In[18]:
+        :return: Description of the status effect.
+        """
+        output = f'{self.name}: '
+        if self.name == 'Stone':
+            output += 'Cannot act and can be shattered by physical or force skills.'
+        elif self.name == 'Stun':
+            output += 'Drastically reduces hit chance of physical moves.'
+        elif self.name == 'Charm':
+            output += 'Will sometimes turn against the party.'
+        elif self.name == 'Poison':
+            output += 'Loses 1/8 of max HP every turn and weakens physical moves.'
+        elif self.name == 'Mute':
+            output += 'Cannot use magic skills.'
+        elif self.name == 'Bind':
+            output += 'Cannot act.'
+        elif self.name == 'Panic':
+            output += 'Will sometimes skip actions, and can rarely retreat from battle.'
+        elif self.name == 'Sleep':
+            output += 'Cannot act. Will slowly regain HP/MP.'
+        elif self.name == 'Freeze':
+            output += 'Always receives critical hits and loses physical resistance.'
+        elif self.name == 'Shock':
+            output += 'Always receives critical hits.'
+        else:
+            output += 'Missing status description.'
+        return output
 
 
 class Demon:
-    def __init__(self, name='None', evolutions=0, target_lv='None', party='None'):
+    """
+    Represents a demon. Attributes hold distinguishing information about the demon and temporary changes,
+    and methods allow for demon-demon interaction as well as standard information retrieval and interfacing.
+    """
+
+    def __init__(self, name: Optional[str] = None, evolutions: int = 0, target_lv: Optional[int] = None,
+                 party: Optional[Party] = None) -> None:
+        """
+        Constructor for the Demon class.
+
+        :param name: The name of the demon. If specified, creates the named demon. If not specified, creates
+            a random demon.
+        :param evolutions: The number of evolutions to undergo at the end of initialization. When creating demons
+            that have older forms, this parameter is used to carry over attributes such as moves.
+        :param target_lv: The target level of the demon. Relevant only if name is not specified and thus a demon
+            will be chosen randomly. If name is not specified and target_lv is, the level of the randomly created
+            demon will be close to the target level.
+        :param party: The party to which the demon belongs.
+        """
         self.moves = [Move('Attack')]
         self.passives = []
         self.has_endure = False
@@ -960,12 +1217,21 @@ class Demon:
         # temp way to evolve
         while self.evo_num > 0:
             self.evo_num -= 1
-            if self.evolution != 'None':
+            if self.evolution is not None:
                 self.dict_pull_init(self.evolution[0])
+                self.reset()
 
-    def reset(self):
-        self.dead = False
-        self.statuses = []
+    def soft_reset(self) -> None:
+        """
+        Resets most temporary attributes. Separate from reset() in order to be called during endurance battles.
+        """
+        new_statuses = []
+        # carries over some statuses
+        for status in self.statuses:
+            if status.name in ['Stone', 'Stun', 'Poison', 'Mute']:
+                new_statuses.append(status)
+        self.statuses = new_statuses
+        # resets all other misc. stuff
         self.taru_minus = 0
         # tracking minuses in absolute value
         self.taru_plus = 0
@@ -984,30 +1250,45 @@ class Demon:
         else:
             self.endure = False
 
-    def dict_pull_init(self, name, target_lv='None'):
-        '''Subset of __init__ method for Demon classes; separate in order to call multiple times
-        during evolution. Takes in name and optionally target level, sets the attributes:
-        name, race, attack_changes, moves, passives, level, str, mag, vit,
-        ag, luck, reflect, absorb, void, resist, weak, evolution, magatama. Also must call calc_init method
-        to set hp, max_hp, mp, max_hp, and apply passives/attack changes.'''
-        if name == 'None':
+    def reset(self) -> None:
+        """
+        Resets temporary attributes. Called during __init__ to define those attributes. Separate from __init__
+        in order to be called elsewhere, such as in heal().
+        """
+        self.dead = False
+        self.statuses = []
+        self.soft_reset()
+
+    def dict_pull_init(self, name: Optional[str] = None, target_lv: Optional[int] = None) -> None:
+        """
+        Subset of __init__ method; separate in order to call multiple times during evolution and to override in
+        subclasses. Sets all "info" attributes, such as name, stats, moves, etc. based on demon_dict.
+
+        :param name: The name of the demon. If not specified, chooses a random demon to create.
+        :param target_lv: The target level of a randomly generated demon. Only used if name is not specified.
+        """
+        # random selection
+        if name is None:
             possible_members = copy.deepcopy(list(demon_dict.keys()))
             random.shuffle(possible_members)
             for member in possible_members:
+                # check for if demon is already in party
                 party_check = True
-                if self.party != 'None':
+                if self.party is not None:
                     if member in self.party.list_demon_names():
                         party_check = False
                 if party_check:
+                    # check if level falls within target_lv range (if specified)
                     level_cap = False
-                    if target_lv != 'None':
+                    if target_lv is not None:
                         if demon_dict[member]['Level'] > target_lv + RANDOM_DEMON_RANGE:
                             level_cap = True
                         elif demon_dict[member]['Level'] < target_lv - RANDOM_DEMON_RANGE:
                             level_cap = True
-                    if level_cap == False:
+                    if not level_cap:
                         name, self.evo_num = find_evolve_count(member)
                         break
+        # define attributes
         self.name = name
         self.race = demon_dict[name]['Race']
         self.attack_changes = demon_dict[name]['Attack']
@@ -1034,7 +1315,7 @@ class Demon:
             for passive in self.passives:
                 if passive.name not in base_moves and passive.name not in [x[0] for x in learned_moves]:
                     removable_moves.append(passive)
-            removable_moves.remove(self.get_move('Attack'))
+            removable_moves.remove(self.get_move('Attack'))  # can't delete Attack
             random.shuffle(removable_moves)
             while len(self.moves) + len(self.passives) - 1 > 8:
                 # case where base demon has more than 8 moves: considers all remaining moves
@@ -1058,13 +1339,16 @@ class Demon:
         self.resist = set(demon_dict[name]['Resist'])
         self.weak = set(demon_dict[name]['Weaknesses'])
         self.evolution = demon_dict[name]['Evolution']
-        self.magatama = 'None'
+        self.magatama = None
         self.calc_init()
 
-    def calc_init(self):
-        '''Subset of __init__ method for Demon classes; separate in order to call multiple times
-        during evolution. Called during dict_pull_init subclass methods to set hp, max_hp,
-        mp, max_hp, and apply passives/attack changes.'''
+    def calc_init(self) -> None:
+        """
+        Subset of dict_pull_init. Sets various attributes that are not defined explicitly in dict_pull_init.
+        Separate in order to avoid repetition when defining dict_pull_init in subclasses.
+
+        """
+        # hp/mp
         self.hp = (self.level + self.vit) * 6
         if self.hp > 999:
             self.hp = 999
@@ -1073,26 +1357,26 @@ class Demon:
         if self.mp > 999:
             self.mp = 999
         self.max_mp = self.mp
+        # apply passive abilities
         for passive in self.passives:
             passive.init_apply(self)
+        # update attack move
         for move in self.moves:
             if move.name == 'Attack':
-                for change_type, new_value in self.attack_changes.items():
-                    if change_type == 'Element':
-                        move.element = new_value
-                    elif change_type == 'Hits':
-                        move.hits = new_value
-                        move.power = int(move.power / new_value)
-                    if move.element != 'Phys' or move.element != 'Force':
-                        del move.specials['Shatter']
+                move.update(self.attack_changes)
 
-    def heal(self):
-        '''used in game resets; not intended for use during games'''
+    def heal(self) -> None:
+        """
+        Fully heals and resets the demon. Used when resetting games; not intended for use during games.
+        """
         self.reset()
         self.hp = self.max_hp
         self.mp = self.max_mp
 
-    def level_up(self):
+    def level_up(self) -> None:
+        """
+        Increases the level of the demon and adjust stats to match. Currently unused.
+        """
         print(f'{self.name} gained a level!')
         self.level += 1
         raisable_stats = []
@@ -1109,7 +1393,7 @@ class Demon:
         if len(raisable_stats) >= 1:
             raised_stat = random.choice(raisable_stats)
         else:
-            raised_stat = 'None'
+            raised_stat = None
         if raised_stat == self.str:
             print('Strength increased by 1!')
         elif raised_stat == self.mag:
@@ -1130,7 +1414,7 @@ class Demon:
                     self.passives.append(Passive(move[0]))
                     print(f'{self.name} learned {move[0]}!')
         print()
-        if self.evolution != 'None':
+        if self.evolution is not None:
             if self.level >= self.evolution[1]:
                 print(f'{self.name} is evolving!')
                 old_name = self.name
@@ -1138,49 +1422,91 @@ class Demon:
                 self.dict_pull_init(self.evolution[0])
                 print(f'{old_name} evolved into {self.name}!')
 
-    def hp_percent(self):
+    def hp_percent(self) -> float:
+        """
+        Gets the percent HP remaining of the demon.
+
+        :return: Current HP divided by max HP.
+        """
         return self.hp / self.max_hp
 
-    def get_move(self, move_name):
+    def get_move(self, move_name: str) -> Optional[Move]:
+        """
+        Given a move's name, gets the move object belonging to the demon.
+
+        :param move_name: The name of the move to get.
+        :return: The Move object with the given name. If multiple Moves have the given name, only one
+        will be returned. Returns None if no Moves match the given name.
+        """
         for move in self.moves:
             if move.name == move_name:
                 return move
-        return False
+        return None
 
-    def move_names(self):
+    def move_names(self) -> List[str]:
+        """
+        Gets a list of the demon's move names.
+
+        :return: A list of strings containing the names of the demon's moves.
+        """
         return [move.name for move in self.moves]
 
-    def passive_names(self):
+    def passive_names(self) -> List[str]:
+        """
+        Gets a list of the demon's passive names.
+
+        :return: A list of strings containing the names of the demon's passives.
+        """
         return [passive.name for passive in self.passives]
 
-    def list_statuses(self):
+    def list_statuses(self) -> List[str]:
+        """
+        Gets a list of the demon's statuses.
+
+        :return: A list of strings containing the names of the demon's statuses.
+        """
         status_strings = []
         for status in self.statuses:
             status_strings.append(status.name)
         return status_strings
 
-    def can_counter(self):
-        counter = True
-        if self.dead:
-            counter = False
-        else:
-            for status in self.list_statuses():
-                if status == 'Stone' or status == 'Stun' or status == 'Charm':
-                    counter = False
-                elif status == 'Bind' or status == 'Sleep' or status == 'Freeze' or status == 'Shock':
-                    counter = False
-        return counter
+    def can_counter(self) -> bool:
+        """
+        Checks if the demon has the ability to counter.
 
-    def check_status_priority(self, status_name):
-        can_apply = True
+        :return: True if the demon can counter, False otherwise.
+        """
+        # cannot counter if died to the attack
+        if self.dead:
+            return False
+        # these statuses immobilize/prevent from countering
+        for status in self.list_statuses():
+            if status in ['Stone', 'Stun', 'Charm', 'Bind', 'Sleep', 'Freeze', 'Shock']:
+                return False
+        return True
+
+    def check_status_priority(self, status_name: str) -> bool:
+        """
+        Checks if the status with the given name is higher priority than any other existing statuses (and can
+        therefore be applied).
+
+        :param status_name: The name of the status to check.
+        :return: True if the given status is highest priority, False otherwise.
+        """
         for status in self.statuses:
             if status_list.index(status_name) > status_list.index(status.name):
-                can_apply = False
-        return can_apply
+                return False
+        return True
 
-    def find_element_effect(self, element):
-        '''called as a part of Move.calculate_element_effect. Separate for use in status calculation (which differs
-        from normal moves)'''
+    def find_element_effect(self, element: str) -> str:
+        """
+        Finds the base elemental effect on a demon given an element. Called as a part of Move.calculate_element_effect.
+        Separate for use in status calculation (which differs from normal moves).
+
+        :param element: The name of the element to check for.
+        :return: The effect of the move. Can be 'Reflect', 'Absorb', 'Void', 'Weak/Resist', 'Weak', 'Resist', or
+            'Normal'.
+        """
         if element in self.reflect:
             return 'Reflect'
         elif element in self.absorb:
@@ -1195,43 +1521,89 @@ class Demon:
             return 'Resist'
         return 'Normal'
 
-    def taru_total(self):
+    def taru_total(self) -> int:
+        """
+        Finds the total Taru effect on the demon.
+
+        :return: The stages of buff/debuff, between -4 and 4 inclusive.
+        """
         return self.taru_plus - self.taru_minus
 
-    def taru_mod(self):
+    def taru_mod(self) -> float:
+        """
+        Finds the modifier based on Taru buffs/debuffs, to be applied to attack power.
+
+        :return: A power multiplier for physical moves.
+        """
         if self.taru_total() >= 0:
             return 1 + (0.25 * self.taru_total())
         else:
             return 1 + (0.125 * self.taru_total())
 
-    def maka_total(self):
+    def maka_total(self) -> int:
+        """
+        Finds the total Maka effect on the demon.
+
+        :return: The stages of buff/debuff, between -4 and 4 inclusive.
+        """
         return self.maka_plus - self.maka_minus
 
-    def maka_mod(self):
+    def maka_mod(self) -> float:
+        """
+        Finds the modifier based on Maka buffs/debuffs, to be applied to magic power.
+
+        :return: A power multiplier for magic moves.
+        """
         if self.maka_total() >= 0:
             return 1 + (0.25 * self.maka_total())
         else:
             return 1 + (0.125 * self.maka_total())
 
-    def raku_total(self):
+    def raku_total(self) -> int:
+        """
+        Finds the total Raku effect on the demon.
+
+        :return: The stages of buff/debuff, between -4 and 4 inclusive.
+        """
         return self.raku_plus - self.raku_minus
 
-    def raku_mod(self):
+    def raku_mod(self) -> float:
+        """
+        Finds the modifier based on Raku buffs/debuffs, to be applied to defense.
+
+        :return: A multiplier for defense.
+        """
         if self.raku_total() >= 0:
             return 1 + (0.25 * self.raku_total())
         else:
             return 1 + (0.125 * self.raku_total())
 
-    def suku_total(self):
+    def suku_total(self) -> int:
+        """
+        Finds the total Suku effect on the demon.
+
+        :return: The stages of buff/debuff, between -4 and 4 inclusive.
+        """
         return self.suku_plus - self.suku_minus
 
-    def suku_mod(self):
+    def suku_mod(self) -> float:
+        """
+        Finds the modifier based on Suku buffs/debuffs, to be applied to agility.
+
+        :return: A multiplier for accuracy and agility.
+        """
         if self.suku_total() >= 0:
             return 1 + (0.25 * self.suku_total())
         else:
             return 1 + (0.125 * self.suku_total())
 
-    def recover_hp(self, n):
+    def recover_hp(self, n: int) -> int:
+        """
+        Setter for the HP attribute, to be used in-game. Ensures that HP does not exceed max HP.
+
+        :param n: The amount of HP to be recovered.
+        :return: The real amount of HP recovered.
+        """
         n = round(n)
         if self.hp + n > self.max_hp:
             recovered_hp = self.max_hp - self.hp
@@ -1241,7 +1613,13 @@ class Demon:
             recovered_hp = n
         return recovered_hp
 
-    def recover_mp(self, n):
+    def recover_mp(self, n: int) -> int:
+        """
+        Setter for the MP attribute, to be used in-game. Ensures that MP does not exceed max MP.
+
+        :param n: The amount of MP to be recovered.
+        :return: The real amount of MP recovered.
+        """
         if self.mp + n > self.max_mp:
             recovered_mp = self.max_mp - self.mp
             self.mp = self.max_mp
@@ -1250,7 +1628,10 @@ class Demon:
             recovered_mp = n
         return recovered_mp
 
-    def check_max(self):
+    def check_max(self) -> None:
+        """
+        Ensures that HP and MP do not exceed the maximums. If they do, sets them to the maximums.
+        """
         if self.hp > self.max_hp:
             self.hp = self.max_hp
         if self.hp < 0:
@@ -1260,7 +1641,13 @@ class Demon:
         if self.mp < 0:
             self.mp = 0
 
-    def check_max_stats(self):
+    def check_max_stats(self) -> bool:
+        """
+        Ensures that stats do not exceed the maximums. If they do, sets them to the maximums. Currently unused
+        (intended to work with level_up).
+
+        :return: True if no stats were adjusted, False otherwise.
+        """
         no_adjust = True
         if self.str > 40:
             self.str = 40
@@ -1279,7 +1666,10 @@ class Demon:
             no_adjust = False
         return no_adjust
 
-    def check_dead(self):
+    def check_dead(self) -> None:
+        """
+        Checks if the demon is dead and sets the dead attribute. Also checks for endure.
+        """
         if self.hp <= 0:
             if self.endure:
                 self.endure = False
@@ -1291,7 +1681,12 @@ class Demon:
         else:
             self.dead = False
 
-    def check_max_buffs(self):
+    def check_max_buffs(self) -> bool:
+        """
+        Ensures that buffs/debuffs do not exceed their maximums. If they do, sets them to the max.
+
+        :return: True if no buffs were adjusted, False otherwise.
+        """
         no_adjust = True
         if self.taru_minus > 4:
             self.taru_minus = 4
@@ -1319,23 +1714,49 @@ class Demon:
             no_adjust = False
         return no_adjust
 
-    def effect_tarukaja(self):
+    def effect_tarukaja(self) -> bool:
+        """
+        Intializes the Tarukaja effect, increasing attack.
+
+        :return: True if the increase actually took effect (not at the maximum), False otherwise.
+        """
         self.taru_plus += 1
         return self.check_max_buffs()
 
-    def effect_makakaja(self):
+    def effect_makakaja(self) -> bool:
+        """
+        Intializes the Makakaja effect, increasing magic.
+
+        :return: True if the increase actually took effect (not at the maximum), False otherwise.
+        """
         self.maka_plus += 1
         return self.check_max_buffs()
 
-    def effect_rakukaja(self):
+    def effect_rakukaja(self) -> bool:
+        """
+        Intializes the Rakukaja effect, increasing defense.
+
+        :return: True if the increase actually took effect (not at the maximum), False otherwise.
+        """
         self.raku_plus += 1
         return self.check_max_buffs()
 
-    def effect_sukukaja(self):
+    def effect_sukukaja(self) -> bool:
+        """
+        Intializes the Sukukaja effect, increasing agility.
+
+        :return: True if the increase actually took effect (not at the maximum), False otherwise.
+        """
         self.suku_plus += 1
         return self.check_max_buffs()
 
-    def effect_tarunda(self):
+    def effect_tarunda(self) -> bool:
+        """
+        Intializes the Tarunda effect, decreasing attack and magic.
+
+        :return: True if the decrease actually took effect (not at the minimum), False otherwise.
+        """
+        # has to check if either taru_minus or maka_minus changed
         no_adjust = []
         self.taru_minus += 1
         if self.check_max_buffs():
@@ -1347,29 +1768,50 @@ class Demon:
             return True
         return False
 
-    def effect_rakunda(self):
+    def effect_rakunda(self) -> bool:
+        """
+        Intializes the Rakunda effect, decreasing defense.
+
+        :return: True if the decrease actually took effect (not at the minimum), False otherwise.
+        """
         self.raku_minus += 1
         return self.check_max_buffs()
 
-    def effect_sukunda(self):
+    def effect_sukunda(self) -> bool:
+        """
+        Intializes the Sukunda effect, decreasing agility.
+
+        :return: True if the decrease actually took effect (not at the minimum), False otherwise.
+        """
         self.suku_minus += 1
         return self.check_max_buffs()
 
-    def clear_status(self, status_name):
-        '''cure single status'''
+    def clear_status(self, status_name: str) -> bool:
+        """
+        Cures a single specified status.
+
+        :param status_name: The name of the status to remove.
+        :return: True if the status was found and removed, False otherwise.
+        """
         for status in self.statuses:
             if status.name == status_name:
                 self.statuses.remove(status)
                 return True
         return False
 
-    def clear_statuses(self):
-        '''for use when applying new effects'''
+    def clear_statuses(self) -> None:
+        """
+        Clears all statuses besides Freeze and Shock. For use when applying new statuses.
+        """
         for status_name in status_list:
             if status_name != 'Freeze' and status_name != 'Shock':
                 self.clear_status(status_name)
 
-    def tick_statuses(self):
+    def tick_statuses(self) -> None:
+        """
+        Updates all temporary attributes, for use at the beginning of a turn. Clears barriers and statuses when
+        appropriate.
+        """
         self.tetrakarn = False
         self.makarakarn = False
         for status in self.statuses:
@@ -1377,7 +1819,10 @@ class Demon:
                 print(f'{self.name} recovered from {status.name}!\n')
                 self.statuses.remove(status)
 
-    def apply_poison_dmg(self):
+    def apply_poison_dmg(self) -> None:
+        """
+        Checks if the demon is poisoned, and if it is, applies poison damage.
+        """
         if 'Poison' in self.list_statuses():
             poison_dmg = round(self.max_hp / 8)
             if poison_dmg >= self.hp:
@@ -1386,9 +1831,13 @@ class Demon:
             if poison_dmg > 0:
                 print(f'\n{self.name} took {poison_dmg} poison damage!')
 
-    def mute_options(self, options):
-        '''takes in list of options, if user is muted updates list in place to remove magic if muted and
-        returns list of removed moves'''
+    def mute_options(self, options: List[str]) -> List[str]:
+        """
+        Filters a list of move names, removing magic moves. Updates the given list in place, returns the removed moves.
+
+        :param options: A list of move names.
+        :return: A list of the removed move names.
+        """
         removed_moves = []
         if 'Mute' in self.list_statuses():
             for option in options:
@@ -1399,7 +1848,15 @@ class Demon:
             options.remove(removed_move)
         return removed_moves
 
-    def charmed_options(self, options):
+    def charmed_options(self, options: List[str]) -> List[str]:
+        """
+        Filters a list of move names, removing those that cannot be used while charmed. Updates the given list
+        in place, returns the removed moves.
+
+        :param options: A list of move names.
+        :return: A list of the removed move names.
+        """
+        # necessary so that charmed demons can't interact with the stock
         removed_moves = []
         for option in options:
             if option in moves_dict:
@@ -1409,8 +1866,14 @@ class Demon:
             options.remove(removed_move)
         return removed_moves
 
-    def effect_conditions(self, condition):
-        if condition == 'None':
+    def effect_conditions(self, condition: Optional[str] = None) -> bool:
+        """
+        Checks if a given condition is met. Used when triggering special effects.
+
+        :param condition: The condition to check. If None, returns True.
+        :return: True if the condition is met, False otherwise.
+        """
+        if condition is None:
             return True
         elif condition == 'Target Asleep':
             if 'Sleep' in self.list_statuses():
@@ -1423,7 +1886,15 @@ class Demon:
                 return True
         return False
 
-    def proc_effect(self, effect, value):
+    def proc_effect(self, effect: str, value: Optional[float] = None) -> bool:
+        """
+        Applies a given effect to the demon.
+
+        :param effect: The effect to apply.
+        :param value: A number value associated with the effect, used when calculating results.
+            Usage varies based on effect.
+        :return: True if the effect triggered successfully, False otherwise.
+        """
         if effect == 'Cure Ailments':
             successful_cures = []
             for status in status_list:
@@ -1437,7 +1908,7 @@ class Demon:
             self.hp = self.max_hp * value
             self.check_max()
             self.reset()
-            print(f'{self.name} was revived with {self.hp} health!')
+            print(f'{self.name} was revived with {int(self.hp)} health!')
         elif effect == 'HP Recover':
             self.hp += round(self.max_hp * value)
             self.check_max()
@@ -1579,20 +2050,28 @@ class Demon:
             if 'Shock' not in self.list_statuses() and 'Freeze' not in self.list_statuses():
                 self.statuses.append(Status('Freeze'))
                 print(f'{self.name} was frozen!')
+            else:
+                return False
         elif effect == 'Shock':
             if 'Shock' not in self.list_statuses() and 'Freeze' not in self.list_statuses():
                 self.statuses.append(Status('Shock'))
                 print(f'{self.name} was shocked!')
+            else:
+                return False
         elif effect == 'Charm':
             if self.check_status_priority('Charm'):
                 self.clear_statuses()
                 self.statuses.append(Status('Charm'))
                 print(f'{self.name} was charmed!')
+            else:
+                return False
         elif effect == 'Stun':
             if self.check_status_priority('Stun'):
                 self.clear_statuses()
                 self.statuses.append(Status('Stun'))
                 print(f'{self.name} was stunned!')
+            else:
+                return False
         elif effect == 'Cure Stun':
             if self.clear_status('Stun'):
                 print(f"{self.name} was cured of stun!")
@@ -1603,6 +2082,8 @@ class Demon:
                 self.clear_statuses()
                 self.statuses.append(Status('Poison'))
                 print(f'{self.name} was poisoned!')
+            else:
+                return False
         elif effect == 'Cure Poison':
             if self.clear_status('Poison'):
                 print(f"{self.name} was cured of poison!")
@@ -1613,6 +2094,8 @@ class Demon:
                 self.clear_statuses()
                 self.statuses.append(Status('Mute'))
                 print(f'{self.name} was muted!')
+            else:
+                return False
         elif effect == 'Cure Mute':
             if self.clear_status('Mute'):
                 print(f"{self.name} was cured of mute!")
@@ -1623,16 +2106,22 @@ class Demon:
                 self.clear_statuses()
                 self.statuses.append(Status('Bind'))
                 print(f'{self.name} was bound!')
+            else:
+                return False
         elif effect == 'Panic':
             if self.check_status_priority('Panic'):
                 self.clear_statuses()
                 self.statuses.append(Status('Panic'))
                 print(f'{self.name} was panicked!')
+            else:
+                return False
         elif effect == 'Sleep':
             if self.check_status_priority('Sleep'):
                 self.clear_statuses()
                 self.statuses.append(Status('Sleep'))
                 print(f'{self.name} was put to sleep!')
+            else:
+                return False
         elif effect == 'Cure Bind/Sleep/Panic':
             successful_cures = []
             for status in ['Bind', 'Sleep', 'Panic']:
@@ -1647,6 +2136,8 @@ class Demon:
                 self.clear_statuses()
                 self.statuses.append(Status('Stone'))
                 print(f'{self.name} was petrified!')
+            else:
+                return False
         elif effect == 'Cure Stone':
             if self.clear_status('Stone'):
                 print(f"{self.name} was cured of stone!")
@@ -1671,29 +2162,28 @@ class Demon:
             print(self)
             self.analyzed = True
         else:
-            print('Effect missing.')
+            raise RuntimeError(f'Missing move special effect: {effect}.')
+        return True
 
-    def choose_target(self, decision_move, party, other_party):
-        '''make sure returns list, even for single target'''
+    def choose_target(self, decision_move: Move, party: Party, other_party: Party) -> Union[List[Demon], str]:
+        """
+        Allows the player to choose a target for a given move through input. If the targets are predefined,
+        gives a confirmation prompt.
+
+        :param decision_move: The move to choose targets for.
+        :param party: The demon's party.
+        :param other_party: The opposing party.
+        :return: A list of targets for the move. If 'back' was inputted, returns the string 'back'.
+        """
         valid_decision = False
         break_counter = 0
-        while valid_decision == False:
+        # while loop catches bad input
+        while not valid_decision:
+            # single-enemy target
             if decision_move.target == 'Single Enemy':
                 print(f'{decision_move.name} will target a single enemy.')
                 if len(other_party) >= 1:
-                    target_string = f'Valid targets: '
-                    i = 1
-                    if len(other_party) > 1:
-                        for demon in other_party.demons[:-1]:
-                            target_string += f'[{i}] {demon.name} (HP: {demon.hp}/{demon.max_hp}), '
-                            i += 1
-                    if len(other_party) >= 1:
-                        target_string += f'[{i}] {other_party.demons[-1].name} '
-                        target_string += f'(HP: {other_party.demons[-1].hp}/{other_party.demons[-1].max_hp})\n'
-                    else:
-                        target_string += 'None\n'
-                    print(target_string)
-                    # can change to "type desired demon" once enough functional ones are added?
+                    print(other_party.view_targets())
                     target_decision = h_input('Choose a target number or type "back": ', 'Target Selection').lower()
                     print()
                     if target_decision == 'back':
@@ -1701,19 +2191,26 @@ class Demon:
                     else:
                         try:
                             target_decision = int(target_decision)
-                            if target_decision >= 1 and target_decision <= len(other_party):
+                            # check if tag with input exists
+                            if 1 <= target_decision <= len(other_party):
                                 target_list = []
+                                # targeted once for each hit in the move
                                 for i in range(decision_move.hits):
+                                    # input uses 1-indexing; adjusted here
                                     target_list.append(other_party.demons[target_decision - 1])
                                 return target_list
+                        # catch non-integer input
                         except ValueError:
                             pass
                 else:
+                    # can occur if the only demon in a party is charmed and switches sides
                     print('There are no valid targets.\n')
                     return 'back'
                 print('Invalid input. Please try again.')
+            # all-enemy target
             elif decision_move.target == 'All Enemies':
                 print(f'{decision_move.name} will target all enemies.')
+                # opportunity to return to move selection
                 input_str = 'Type "back" to return or type anything else to continue: '
                 target_decision = h_input(input_str, 'Target Selection').lower()
                 print()
@@ -1722,9 +2219,11 @@ class Demon:
                 else:
                     target_list = []
                     for demon in other_party.demons:
+                        # added once for each hit
                         for i in range(decision_move.hits):
                             target_list.append(demon)
                     return target_list
+            # self-target
             elif decision_move.target == 'Self':
                 print(f'{decision_move.name} will target {self.name}.')
                 input_str = 'Type "back" to return or type anything else to continue: '
@@ -1733,19 +2232,18 @@ class Demon:
                 if target_decision == 'back':
                     return 'back'
                 else:
-                    return [self]
+                    # multihit loop really shouldn't be necessary here, added just in case
+                    # really, it should only matter for single-enemy and all-enemies
+                    target_list = []
+                    for i in range(decision_move.hits):
+                        target_list.append(self)
+                    return target_list
+            # single-ally target
             elif decision_move.target == 'Single Ally':
+                # same as single enemy, but uses party instead of other_party
                 print(f'{decision_move.name} will target a single ally.')
                 if len(party) >= 1:
-                    target_string = f'Valid targets: '
-                    i = 1
-                    if len(party) > 1:
-                        for demon in party.demons[:-1]:
-                            target_string += f'[{i}] {demon.name} (HP: {demon.hp}/{demon.max_hp}), '
-                            i += 1
-                    target_string += f'[{i}] {party.demons[-1].name} '
-                    target_string += f'(HP: {party.demons[-1].hp}/{party.demons[-1].max_hp})\n'
-                    print(target_string)
+                    print(party.view_targets())
                     target_decision = h_input('Choose a target number or type "back": ', 'Target Selection').lower()
                     print()
                     if target_decision == 'back':
@@ -1753,14 +2251,19 @@ class Demon:
                     else:
                         try:
                             target_decision = int(target_decision)
-                            if target_decision >= 1 and target_decision <= len(party):
-                                return [party.demons[target_decision - 1]]
+                            if 1 <= target_decision <= len(party):
+                                target_list = []
+                                for i in range(decision_move.hits):
+                                    target_list.append(party.demons[target_decision - 1])
+                                return target_list
+                        # catch non-integer input
                         except ValueError:
                             pass
                 else:
                     print('There are no valid targets.\n')
                     return 'back'
                 print('Invalid input. Please try again.')
+            # all allies except self
             elif decision_move.target == 'Other Allies':
                 print(f'{decision_move.name} will target all other allies.')
                 input_str = 'Type "back" to return or type anything else to continue: '
@@ -1769,11 +2272,13 @@ class Demon:
                 if target_decision == 'back':
                     return 'back'
                 else:
-                    demon_list = []
+                    target_list = []
                     for demon in party.demons:
                         if demon != self:
-                            demon_list.append(demon)
-                    return demon_list
+                            for i in range(decision_move.hits):
+                                target_list.append(demon)
+                    return target_list
+            # all allies (including self)
             elif decision_move.target == 'All Allies':
                 print(f'{decision_move.name} will target all allies.')
                 input_str = 'Type "back" to return or type anything else to continue: '
@@ -1782,7 +2287,12 @@ class Demon:
                 if target_decision == 'back':
                     return 'back'
                 else:
-                    return party.demons
+                    target_list = []
+                    for demon in party.demons:
+                        for i in range(decision_move.hits):
+                            target_list.append(demon)
+                    return target_list
+            # random enemies
             elif decision_move.target == "Random Enemies":
                 print(f'{decision_move.name} will target random enemies.')
                 input_str = 'Type "back" to return or type anything else to continue: '
@@ -1791,18 +2301,14 @@ class Demon:
                 if target_decision == 'back':
                     return 'back'
                 else:
+                    # chooses randomly via this method
                     return other_party.random_targets(decision_move.hits)
+            # dead allies
             elif decision_move.target == 'Dead Ally':
                 print(f'{decision_move.name} will target a dead demon in your stock.')
+                # using .dead_demons() instead of .demons to get the dead demons in stock
                 if len(party.dead_demons()) >= 1:
-                    target_string = 'Valid targets: '
-                    i = 1
-                    if len(party.dead_demons()) > 1:
-                        for demon in party.dead_demons()[:-1]:
-                            target_string += f'[{i}] {demon.name}, '
-                            i += 1
-                    target_string += f'[{i}] {party.dead_demons()[-1].name}'
-                    print(target_string)
+                    print(party.view_dead_targets())
                     target_decision = h_input('Choose a target number or type "back": ', 'Target Selection').lower()
                     print()
                     if target_decision == 'back':
@@ -1811,6 +2317,9 @@ class Demon:
                         try:
                             target_decision = int(target_decision)
                             if 1 <= target_decision <= len(party.dead_demons()):
+                                # not going to implement multihit loop
+                                # I can't imagine a scenario where that could possibly be useful
+                                # the only things that targets dead demons are revives, where multihits make no sense
                                 return [party.dead_demons()[target_decision - 1]]
                         except ValueError:
                             pass
@@ -1818,19 +2327,12 @@ class Demon:
                     print('There are no valid targets.\n')
                     return 'back'
                 print('Invalid input. Please try again.')
+            # allies in the stock (but not dead)
             elif decision_move.target == 'Stock Ally':
                 print(f'{decision_move.name} will target a demon in your stock.')
+                # using .summonable_demons() instead of .demons to get the alive demons in stock
                 if len(party.summonable_demons()) >= 1:
-                    target_string = f'Valid targets: '
-                    i = 1
-                    if len(party.summonable_demons()) > 1:
-                        for demon in party.summonable_demons()[:-1]:
-                            target_string += f'[{i}] {demon.name} (HP: {demon.hp}/{demon.max_hp}), '
-                            i += 1
-                    target_string += f'[{i}] {party.summonable_demons()[-1].name} '
-                    target_string += f'(HP: {party.summonable_demons()[-1].hp}'
-                    target_string += f'/{party.summonable_demons()[-1].max_hp})\n'
-                    print(target_string)
+                    print(party.view_stock_targets())
                     target_decision = h_input('Choose a target number or type "back": ', 'Target Selection').lower()
                     print()
                     if target_decision == 'back':
@@ -1839,6 +2341,7 @@ class Demon:
                         try:
                             target_decision = int(target_decision)
                             if 1 <= target_decision <= len(party.summonable_demons()):
+                                # same thing here: not bothering with multihit loop
                                 return [party.summonable_demons()[target_decision - 1]]
                         except ValueError:
                             pass
@@ -1855,6 +2358,7 @@ class Demon:
                     if target_decision == 'back':
                         return 'back'
                     else:
+                        # same thing here: not bothering with multihit loop
                         return [random.choice(party.summonable_demons())]
                 else:
                     print('There are no valid targets.\n')
@@ -1862,7 +2366,7 @@ class Demon:
             elif decision_move.target == 'Lowest HP':
                 all_demons = party.demons + other_party.demons
                 random.shuffle(all_demons)
-                all_demons.sort(key=operator.methodcaller('hp_percent'))
+                all_demons.sort(key=lambda x: x.hp_percent())
                 output = f'{decision_move.name} will target the demon with the lowest %HP. '
                 output += f'Currently, this is {all_demons[0].name}.'
                 print(output)
@@ -1872,89 +2376,131 @@ class Demon:
                 if target_decision == 'back':
                     return 'back'
                 else:
-                    return [all_demons[0]]
+                    target_list = []
+                    for i in range(decision_move.hits):
+                        target_list.append(all_demons[0])
+                    return target_list
+
+            # break counter is more of a failsafe than something that's expected to happen
+            # especially for player input
             break_counter += 1
             if break_counter >= 255:
                 print('Unable to select target.')
                 return 'back'
 
-    def use_move(self, move, target, kagutsuchi=Kagutsuchi('Dead'), input_hit='Unknown', input_crit='Unknown'):
-        press_turns = 1
-        damage_dealt = 0
-        counter_possible = False
-        move_hit = True
-        move_crit = False
-        might_crit = False
+    def use_move(self, move: Move, target: Demon, kagutsuchi: Kagutsuchi = Kagutsuchi('Dead'),
+                 input_hit: Optional[bool] = None, input_crit: Optional[bool] = None) -> dict:
+        """
+        When called, the demon uses the given move on another target demon. Updates demons in place based
+        on the move effects.
+
+        :param move: The move to be used.
+        :param target: The demon being targeted with the move.
+        :param kagutsuchi: The current Kagutsuchi phase. Affects Bright/Dark Might. If not specified, assumes
+            no effect.
+        :param input_hit: If True, the move is guaranteed to hit; if False, the move will miss. If not specified,
+            will calculate hit chance independently.
+        :param input_crit: If True, the move is guaranteed to crit; if False, the move will not crit. If not specified,
+            will calculate crit chance independently.
+        :return: Dictionary containing the press turns used, if the move can be countered, whether the move hit,
+            and whether the move crit.
+        """
+        press_turns = 1  # Tracks the press turns used by the move; default 1
+        counter_possible = False  # Tracks whether the move can be countered or not
+        move_hit = True  # Tracks whether the move hit
+        move_crit = False  # Tracks whether the move crit
+        might_crit = False  # Tracks whether the crit was obtained via the Might passive
+        # find temp dmg factor
+        # check passives for boosts; theoretically other passives that apply on attack trigger here too
         for passive in self.passives:
             passive.attack_apply(move)
+        # change power based on statuses
         if 'Stone' in target.list_statuses() and move.element in ['Fire', 'Ice', 'Elec']:
             move.temp_dmg_factor *= 1 / 10
         if 'Poison' in self.list_statuses() and move.category == 'Physical':
             move.temp_dmg_factor *= 1 / 2
+        # apply focus
         if self.focus and move.category == 'Physical':
             move.temp_dmg_factor *= 2.5
             self.focus = False
         # check for dodge
-        if input_hit != True:
-            if input_hit == False or move.calculate_accuracy(self, target) < random.randint(1, 100):
+        # input_hit can be True, False, or None, so the logic here is a little weird
+        # if True, bypasses check; if False, automatically dodges; if None, calls calculate_hit
+        if not input_hit:
+            if input_hit is not None or move.calculate_hit(self, target):
                 move_hit = False
                 print(f'{target.name} dodged the attack!')
                 press_turns = 2
-        if move_hit != False:
+        # proceed if move connected
+        if move_hit:
             # set resistances/weaknesses
             element_effect, barrier_effect, barrier = move.calculate_element_effect(target)
+            # remove any consumed barriers
             if barrier == 'Tetrakarn':
                 target.tetrakarn = False
             elif barrier == 'Makarakarn':
                 target.makarakarn = False
             elif barrier == 'Tetraja':
                 target.tetraja = False
-            # initiate reverse object for reflect
+            # apply reflection
             if element_effect == 'Reflect' or barrier_effect == 'Reflect':
                 if barrier_effect == 'Reflect':
                     print(f"{target.name}'s shield reflected the attack!")
                 else:
                     print(f'{target.name} reflected the attack!')
+                # reflected attribute makes it so that reflected moves can't be re-reflected or countered
                 move.reflected = True
-                reflect_move_info = self.use_move(move, self, input_hit, input_crit)
-                if reflect_move_info['Crit'] == True:
+                # uses the move on itself
+                # avoids infinite recusion since it cannot be re-reflected
+                reflect_move_info = self.use_move(move, self, kagutsuchi, input_hit, input_crit)
+                if reflect_move_info['Crit']:
                     move_crit = True
                 press_turns = 'All'
             else:
-                # damaging moves + heals
-                if move.power != 'None' or 'Heal' in move.specials:
+                # calculating for damaging moves + heals
+                if move.power is not None or 'Heal' in move.specials:
                     damage = move.calculate_base_damage(self, target)
-                    damage *= random.randint(1000, 1100) / 1000
-                    damage *= move.temp_dmg_factor
-                    if input_crit != False:
-                        if input_crit == True or move.calculate_crit(self, target, kagutsuchi):
-                            move_crit = True
-                            # print passive statements for crits
-                            # bright/dark might prints would fit better in move.calculate_crit
-                            # they are here so that calculate_crit only returns, doesn't print anything
-                            # rn, testing more than once for bright might activation
-                            # could set crit=true here?
-                            if move.name == 'Attack':
-                                if 'Bright Might' in self.passive_names() and kagutsuchi == 8:
-                                    print(f"{self.name}'s Bright Might activated!")
-                                elif 'Dark Might' in self.passive_names() and kagutsuchi == 0:
-                                    print(f"{self.name}'s Dark Might activated!")
-                                elif 'Might' in self.passive_names():
-                                    print(f"{self.name}'s Might activated!")
-                            print('Critical hit!')
-                            damage *= 3 / 2
-                            press_turns = 0.5
+                    damage *= random.randint(1000, 1100) / 1000  # random variance
+                    damage *= move.temp_dmg_factor  # apply the temporary factor (default 1)
+                    # calculate crit
+                    # more weird logic b/c of True/False/None
+                    # if False, bypasses check; if True, auto-crits; if None, calls calculate_crit
+                    if input_crit or input_crit is None and move.calculate_crit(self, target, kagutsuchi):
+                        move_crit = True
+                        # print message based on passives (if they caused the crit)
+                        if move.name == 'Attack':
+                            if 'Bright Might' in self.passive_names() and kagutsuchi == 8:
+                                print(f"{self.name}'s Bright Might activated!")
+                            elif 'Dark Might' in self.passive_names() and kagutsuchi == 0:
+                                print(f"{self.name}'s Dark Might activated!")
+                            elif 'Might' in self.passive_names():
+                                print(f"{self.name}'s Might activated!")
+                                might_crit = True  # used because drain attack doesn't trigger on Might crits
+                        print('Critical hit!')
+                        # crit effects: extra damage and half-turn
+                        damage *= 3 / 2
+                        press_turns = 0.5
+                    # elemental effect
                     element_coefficient = 1
+                    # in order of priority (excluding reflect, which is triggered earlier)
                     if barrier_effect == 'Void':
-                        element_coefficient = 0
-                        print(f"{target.name}'s shield voided the attack!")
-                        press_turns = 2
-                    elif element_effect == 'Absorb':
+                        # pierce shouldn't normally occur here; only expel/death have a void barrier
+                        # custom moves could change that theoretically
                         if move.pierce:
                             print('Pierced!')
                         else:
+                            element_coefficient = 0
+                            print(f"{target.name}'s shield voided the attack!")
+                            press_turns = 2
+                    elif element_effect == 'Absorb':
+                        # in each block: check for pierce
+                        if move.pierce:
+                            print('Pierced!')
+                        else:
+                            # adjust element coefficient (multiplying damage by this)
                             element_coefficient = -1
                             print(f'{target.name} absorbed the attack!')
+                            # if necessary, adjust press turns
                             press_turns = 'All'
                     elif element_effect == 'Void':
                         if move.pierce:
@@ -1964,10 +2510,13 @@ class Demon:
                             print(f'{target.name} voided the attack!')
                             press_turns = 2
                     elif element_effect == 'Weak':
+                        # no pierce check since this is not a resistance
                         element_coefficient = 1.5
                         print(f'{target.name} was weak to the attack!')
                         press_turns = 0.5
                     elif element_effect == 'Weak/Resist':
+                        # weak and resist can apply simultaneously; represented by "Weak/Resist"
+                        # prints weakness message; gives half-turn; opportunity to pierce resistance
                         if move.pierce:
                             element_coefficient = 1.5
                             print('Pierced!')
@@ -1981,29 +2530,37 @@ class Demon:
                         else:
                             element_coefficient = 0.5
                             print(f'{target.name} resisted the attack!')
+                    # apply element coefficient to damage and round
                     damage = round(damage * element_coefficient)
+                    # heal will give HP instead of taking it away
                     if 'Heal' in move.specials:
                         damage *= -1
                     deal_regular_damage = True
+                    # MP drain effect
                     if 'MP Drain' in move.specials:
+                        # recalculates MP damage based on unique factor
                         power_factor = move.specials['MP Drain']['Value']
                         mp_damage = move.calculate_base_damage(self, target, power_factor)
                         mp_damage *= random.randint(1000, 1100) / 1000
-                        mp_damage = round(mp_damage * move.temp_dmg_factor)
+                        mp_damage = round(mp_damage * move.temp_dmg_factor * element_coefficient)
+                        # clamp values
                         if mp_damage < 0:
                             mp_damage = 0
                         if target.mp < mp_damage:
                             mp_damage = target.mp
+                        # apply changes
                         self.mp += mp_damage
                         target.mp -= mp_damage
                         print(f'{self.name} drained {mp_damage} MP!')
                         print(f'{target.name} lost {mp_damage} MP!')
-                        # MP draining moves only continue if also HP draining
-                        # inflexible: regular moves can't regain MP
-                        # sufficient for all possible moves?
+                        # MP moves only continue to deal_regular_damage if also draining HP
+                        # prevents damage from being applied normally if only draining MP
+                        # works for all in-game moves, but moves that drain MP and deal damage wouldn't work
+                        # TODO: reimplement this to make it more flexible
                         if 'HP Drain' not in move.specials:
                             deal_regular_damage = False
                     if deal_regular_damage:
+                        # clamped damage: used for HP drain
                         if target.hp < damage:
                             real_damage_dealt = target.hp
                         else:
@@ -2014,155 +2571,201 @@ class Demon:
                             # cure sleep
                             if target.clear_status('Sleep'):
                                 print(f'{target.name} recovered from Sleep!')
-                            # check if counter could occur (initialize at end of init move)
-                            if move.category == 'Physical' and move.reflected == False:
-                                # going to have to add other immobilizing statuses
-                                if 'Freeze' not in target.list_statuses() and 'Shock' not in target.list_statuses():
-                                    counter_possible = True
+                            # check if counter could occur (initialize at end of initiate move)
+                            if move.category == 'Physical' and not move.reflected:
+                                counter_possible = True
+                        # print different messages if gained HP
                         elif damage < 0:
-                            if 'Heal' in move.specials and real_damage_dealt == 0:
-                                print(f"{target.name}'s health is full.")
                             print(f'{target.name} gained {-damage} health!')
                         elif damage == 0:
                             if 'Heal' in move.specials:
                                 print(f"{target.name}'s health is full.")
                             else:
                                 print(f'{target.name} took no damage!')
+                        # apply HP drain effect
                         if 'HP Drain' in move.specials:
                             hp_damage = round(real_damage_dealt * move.specials['HP Drain']['Value'])
                             if hp_damage < 0:
                                 hp_damage = 0
+                            # does not trigger if the move critted and Might activated
+                            # in the original game, i guess it was something to do with how multiple effects applied
+                            # artificially recreating that with this check
                             if not might_crit:
                                 self.hp += hp_damage
                                 if hp_damage > 0:
                                     print(f'{self.name} drained {hp_damage} HP!')
                                 self.check_max()
                 else:
-                    damage = 'None'
+                    damage = None
                 # special effects
+                # TODO: improve flexibility of this section
+                # should be sufficient for all existing moves
+                # would be wrong if there were two effects with different elements
+                # tetraja_status_shield assumes all effects are the same element
                 if len(move.specials) > 0:
                     parent_null = False
                     one_proc = False
-                    # check elemental effect of base move
-                    if damage != 'None':
+                    # if the base move was absorbed or voided, the effect will not apply
+                    if damage is not None:
                         if element_effect == 'Absorb' or element_effect == 'Void':
                             parent_null = True
-                    if parent_null == False:
+                    if not parent_null:
                         tetraja_status_shield = False
+                        # iterates through each effect in the move, applying them individually
                         for effect, effect_info in copy.deepcopy(move.specials).items():
+                            # target can differ from the target of the original move
+                            # the "self" target is handled in initiate move
                             if effect_info['Target'] == 'Same':
-                                # could improve how prints are initiated— somewhat inflexible?
-                                # should be sufficient for all existing moves
-                                # would be wrong if there were two effects with different elements
                                 chance_factor = 1
                                 effect_weak = False
+                                # find the element of the effect (as opposed to the parent move)
                                 temp_element_effect = target.find_element_effect(effect_info['Element'])
+                                # apply elemental effects to chance_factor
                                 if barrier_effect == 'Void':
+                                    # occurs when the parent move hits a barrier in damage calculation
+                                    # target.tetraja won't be true but the effect should still be voided
                                     chance_factor *= 0
+                                    # tetraja_status_shield detects that a barrier voided the effect
                                     tetraja_status_shield = True
                                 elif target.tetraja:
+                                    # occurs if the barrier wasn't hit by the normal move's element
                                     if effect_info['Element'] == 'Expel' or effect_info['Element'] == 'Death':
                                         chance_factor *= 0
                                         tetraja_status_shield = True
-                                elif temp_element_effect == 'Reflect' or element_effect == 'Absorb':
+                                elif temp_element_effect == 'Reflect' or temp_element_effect == 'Absorb':
+                                    # reflect can happen if parent move element differs from effect
+                                    # can't reflect or absorb effects; just voided
                                     chance_factor *= 0
-                                    if damage == 'None':
+                                    # if the move has no damage, sets press_turns and prints message
+                                    if damage is None:
                                         press_turns = 'All'
                                         print(f'{target.name} voided the attack!')
                                 elif temp_element_effect == 'Void':
                                     chance_factor *= 0
-                                    if damage == 'None':
+                                    if damage is None:
+                                        # press turns used differ from reflect/absorb
                                         press_turns = 2
                                         print(f'{target.name} voided the attack!')
                                 elif temp_element_effect == 'Weak':
                                     chance_factor *= 1.5
-                                    effect_weak = True
+                                    effect_weak = True  # for press turns and print statement
+                                    # done separately because the effect has to connect first
                                 elif temp_element_effect == 'Weak/Resist':
                                     chance_factor *= 0.75
                                     effect_weak = True
                                 elif temp_element_effect == 'Resist':
                                     chance_factor *= 0.5
-                                if target.magatama != 'None':
+                                # demi-fiends get extra evasion against insta-kill expel/death attacks
+                                if target.magatama is not None:
                                     if effect == 'Kill':
                                         if effect_info['Element'] == 'Expel' or effect_info['Element'] == 'Death':
                                             chance_factor *= 0.5
                                 effect_chance = effect_info['Accuracy']
-                                effect_miss = False
+                                # cannot proc these effects: initialized elsewhere separately
                                 if effect != 'Heal' and 'Drain' not in effect and 'Might' not in effect:
+                                    # effect chance of 100 means that the effect will always hit unless voided
+                                    # if effect chance is 100 and the effect is not voided, will bypass chance_factor
                                     if effect_chance < 100 or chance_factor == 0:
                                         effect_chance *= chance_factor
+                                    # check against random number
                                     if effect_chance >= random.randint(1, 100):
+                                        # check if any conditions are satisfied
                                         if target.effect_conditions(effect_info['Condition']):
-                                            if effect_weak and one_proc == False:
-                                                if move.power == 'None':
-                                                    print(f'{target.name} was weak to the attack!')
-                                                    press_turns = 0.5
-                                            target.proc_effect(effect, effect_info['Value'])
-                                            one_proc = True
+                                            # set press turns for weaknesses
+                                            if effect_weak and not one_proc and move.power is None:
+                                                # TODO: rearrange this
+                                                # could print this and still miss in proc_effect
+                                                print(f'{target.name} was weak to the attack!')
+                                                press_turns = 0.5
+                                            # proc_effect applies the effect to the demon
+                                            # returns False if the effect didn't work: ex. no status to cure
+                                            effect_miss = not target.proc_effect(effect, effect_info['Value'])
+                                            one_proc = True  # avoids repeat prints for weaknesses
                                         else:
                                             effect_miss = True
                                     else:
                                         effect_miss = True
-                                    if effect_miss:
-                                        if move.power == 'None' and effect_chance != 0:
-                                            if tetraja_status_shield == False:
-                                                print(f'The effect missed {target.name}!')
+                                    # checks if the effect missed and was not voided for print statement
+                                    if effect_miss and move.power is None and effect_chance != 0:
+                                        if not tetraja_status_shield:
+                                            print(f'The effect missed {target.name}!')
+                        # get rid of barrier
+                        # done here so that it applies to all effects
                         if tetraja_status_shield:
                             print(f"{target.name}'s shield voided the effects!")
                             target.tetraja = False
+                # ensures no overflow
                 target.check_max()
                 self.check_max()
-                if move.reflected == False:
-                    # checking if reflected b/c og user will finish using move before dying
+                if not move.reflected:  # doesn't trigger if original user dies to a reflection
                     target.check_dead()
                     if target.dead:
                         print(f'{target.name} died!')
-        move.reset()
+        move.reset()  # resets temp attributes
         return {'Press Turns': press_turns, 'Counter': counter_possible, 'Hit': move_hit, 'Crit': move_crit}
 
-    def initiate_move(self, move, target, other_party, kagutsuchi=Kagutsuchi('Dead'), charmed=False):
-        # other_party needed for multihit retargeting
-        '''returns press turns'''
-        print('******************************************************************')
-        print(f'{self.name} used {move.name}!')
+    def initiate_move(self, move: Move, target: List[Demon], other_party: Party = None,
+                      kagutsuchi: Kagutsuchi = Kagutsuchi('Dead'), charmed: bool = False) -> Union[str, float]:
+        """
+        Allows for the demon to use the given move. More extensive than use_move; includes multihits, counters, and
+        different-targeting effects.
+
+        :param move: The move to be used.
+        :param target: An ordered list of demons to be targeted with the move.
+        :param other_party: The opposing party. Used for redirecting multihit moves with random targeting. If not
+            specified, will not redirect missing multihits.
+        :param kagutsuchi: The current Kagutsuchi phase. Affects Bright/Dark Might. If not specified, assumes
+            no effect.
+        :param charmed: Default is False. True if the demon has switched sides via charm. If true, prevents
+            counters from triggering.
+        :return: The press turns used by the move.
+        """
+        # apply costs
         self.mp -= move.mp
         self.hp -= move.hp_cost(self)
         press_turns = []
         possible_counters = []
         moves_initiated = 0
-        move_hit = 'Unknown'
-        move_crit = 'Unknown'
-        # main
+        move_hit = None
+        move_crit = None
+        # iterate through demons in target list
         for demon in target:
-            if demon.dead == False or 'Dead' in move.target:
+            # disregard if the demon is dead (possibly from earlier appearances in the target list)
+            # exception for moves intended to target dead demons
+            if not demon.dead or 'Dead' in move.target:
                 print()
                 moves_initiated += 1
-                index_from_end = moves_initiated - target.index(demon)
+                # call use_move
                 move_outputs = self.use_move(move, demon, kagutsuchi, move_hit, move_crit)
+                # add press turns from that call to a list, to be parsed later
                 press_turns.append(move_outputs['Press Turns'])
+                # if a counter is possible, add the attacked demon to a list of demons that can counter
                 if move_outputs['Counter']:
                     possible_counters.append(demon)
                 # for standardizing single-target multi-hit accuracy/crit
                 if move.hits > 1:
                     if move.target == 'Single Enemy' or move.target == 'All Enemies':
+                        # compares the number of times the demon has been targeted vs the expected number
                         if target[:moves_initiated].count(demon) < move.hits:
+                            # ensures that following attacks in the multi-hit chain will hit/crit the same
                             move_hit = move_outputs['Hit']
                             move_crit = move_outputs['Crit']
                         else:
-                            move_hit = 'Unknown'
-                            move_crit = 'Unknown'
-            # redirect multihits to other demons
-            elif move.target == 'Random Enemies':
+                            # resets the hit/crit chances if multi-hit is finished
+                            move_hit = None
+                            move_crit = None
+            # redirect random multihits to other demons if original target died
+            elif move.target == 'Random Enemies' and other_party is not None:
                 new_targets = []
                 for new_demon in other_party.demons:
-                    if new_demon.dead == False and target.count(new_demon) < 2:
+                    # targets per demon can't exceed 2 for a random-targeting move
+                    if not new_demon.dead and target.count(new_demon) < 2:
                         new_targets.append(new_demon)
                 if len(new_targets) >= 1:
                     print()
+                    # run move, same as above
                     new_target = random.choice(new_targets)
-                    # could replace new_target with random.choice in use_move call
-                    # separated for debugging
-                    move_outputs = self.use_move(move, new_target)
+                    move_outputs = self.use_move(move, new_target, kagutsuchi)
                     press_turns.append(move_outputs['Press Turns'])
                     if move_outputs['Counter']:
                         possible_counters.append(demon)
@@ -2173,7 +2776,7 @@ class Demon:
                 if effect == 'HP Recover':
                     temp_move = Move('Life Stone')
                     temp_move.specials['HP Recover']['Value'] = effect_info['Value']
-                    # do we care about outputs?
+                    # don't really care about outputs
                     self.use_move(temp_move, self)
                 elif effect == 'MP Recover':
                     temp_move = Move('Chakra Drop')
@@ -2182,26 +2785,30 @@ class Demon:
                 elif effect == 'Kill':
                     self.hp = 0
                 else:
-                    print('Effect missing.')
+                    raise ValueError(f'Effect missing: {effect}')
 
-        # check if user died (to reflects)
+        # check if user died (to reflects or self-kill effect)
         self.check_dead()
-        if self.dead == False and not charmed:
+        if not self.dead and not charmed:
             # initialize counters here
-            # needed b/c only one per demon, after og move has finished
+            # needed b/c only one per demon, after original move has finished
             for demon in set(possible_counters):
                 if self.dead:
                     break
                 elif demon.can_counter():
+                    # iterates through all passives, only those with counter effects will do anything
                     for passive in demon.passives:
+                        # always a 50% chance to trigger
                         if random.randint(0, 1) == 1:
                             passive.counter_apply(demon, self, kagutsuchi)
                             self.check_dead()
-                            break  # should be necessary to stop multiple counters from triggering
+                            break  # necessary to stop multiple counters from triggering
+
+            # also trigger poison damage
+            # poison can't kill, so check dead isn't necessary
             self.apply_poison_dmg()
         if self.dead:
             print(f'{self.name} died!')
-        print('******************************************************************\n')
         # scans for relevant press turn value to return
         if 'All' in press_turns:
             return 'All'
@@ -2212,12 +2819,20 @@ class Demon:
         elif 1 in press_turns:
             return 1
         # catches case where recarmdra has no targets; press_turns is empty
-        # would this break anything else?
         elif len(press_turns) == 0:
             return 1
+        else:
+            raise RuntimeError(f'No valid press turn values in the list: {press_turns}.')
 
-    def choose_target_easy(self, decision_move, party, other_party):
-        '''takes in decision as Move'''
+    def choose_target_easy(self, decision_move: Move, party: Party, other_party: Party) -> Union[List[Demon], str]:
+        """
+        Chooses random targets for a move. Similar to choose_target, but takes no player input.
+
+        :param decision_move: The move to select targets for.
+        :param party: The user's party.
+        :param other_party: The opposing party.
+        :return: A list of targets for the move. Only returns 'back' if no valid targets for the move can be found.
+        """
         if decision_move.target == 'Single Enemy':
             return [random.choice(other_party.demons)]
         elif decision_move.target == 'All Enemies':
@@ -2245,13 +2860,22 @@ class Demon:
         elif decision_move.target == 'Lowest HP':
             all_demons = party.demons + other_party.demons
             random.shuffle(all_demons)
-            all_demons.sort(key=operator.methodcaller('hp_percent'))
+            all_demons.sort(key=lambda x: x.hp_percent())
             return [all_demons[0]]
         else:
+            # happens when targeting method is unimplemented
             print('Unable to select target.')
             return 'back'
 
-    def choose_move_easy(self, party, other_party, charmed=False):
+    def choose_move_easy(self, party: Party, other_party: Party, charmed: bool = False) -> str:
+        """
+        Randomly selects a move to use. Ensures that the move is valid and usable.
+
+        :param party: The demon's party.
+        :param other_party: The opposing party.
+        :param charmed: True if the demon is charmed, False otherwise. Runs charmed_options if true.
+        :return: The name of the move to use. If all moves have no valid targets, returns "Pass".
+        """
         possible_moves = self.move_names()
         # mute effect
         self.mute_options(possible_moves)
@@ -2259,37 +2883,55 @@ class Demon:
         if charmed:
             self.charmed_options(possible_moves)
         valid_move = False
-        while valid_move == False:
+        while not valid_move:
             try:
+                # choose randomly from list of possible moves
                 decision = possible_moves.pop(random.randint(0, len(possible_moves) - 1))
-            except ValueError:
+            except ValueError:  # occurs when list is empty
                 return 'Pass'
-            if decision in moves_dict:
-                decision_move = Move(decision)
-                if decision_move.mp <= self.mp and decision_move.hp_cost(self) < self.hp:
-                    valid_targets = True
-                    if 'Enemies' in decision_move.target or 'Enemy' in decision_move.target:
-                        if len(other_party) < 1:
-                            valid_targets = False
-                    if 'Stock' in decision_move.target:
-                        if len(party.summonable_demons()) < 1:
-                            valid_targets = False
-                    if 'Dead' in decision_move.target:
-                        if len(party.dead_demons()) < 1:
-                            valid_targets = False
-                    if valid_targets:
-                        return decision_move.name
+            decision_move = self.get_move(decision)
+            # check cost
+            if decision_move.mp <= self.mp and decision_move.hp_cost(self) < self.hp:
+                # check if valid targets exist
+                valid_targets = True
+                if 'Enemies' in decision_move.target or 'Enemy' in decision_move.target:
+                    if len(other_party) < 1:
+                        valid_targets = False
+                if 'Stock' in decision_move.target:
+                    if len(party.summonable_demons()) < 1:
+                        valid_targets = False
+                if 'Dead' in decision_move.target:
+                    if len(party.dead_demons()) < 1:
+                        valid_targets = False
+                if valid_targets:
+                    return decision_move.name
 
-    def choose_move_hard(self, party, other_party):
-        '''placeholder; not yet implemented'''
+    def choose_move_hard(self, party: Party, other_party: Party) -> str:
+        """
+        Not yet implemented. Once done, will select a move strategically.
+
+        :param party: The demon's party.
+        :param other_party: The opposing party.
+        :return:
+        """
         return self.choose_move_easy(party, other_party)
 
-    def action(self, party, other_party, controller, kagutsuchi=Kagutsuchi('Dead')):
+    def action(self, party: Party, other_party: Party, controller: str,
+               kagutsuchi: Kagutsuchi = Kagutsuchi('Dead')) -> Union[str, float]:
+        """
+        When called, the demon takes an action. Selects and uses a move. Can rely on user input. Some external
+        effects are applied here, such as statuses that prevent actions.
+
+        :param party:
+        :param other_party:
+        :param controller:
+        :param kagutsuchi:
+        :return:
+        """
         valid_decision = False
-        while valid_decision == False:
+        while not valid_decision:
             print(f'Current demon: {self.name} HP: {self.hp}/{self.max_hp} MP: {self.mp}/{self.max_mp}')
-            # for charm effect: needs to be global to check after action ends
-            turn_against_party = False
+            turn_against_party = False  # for charm effect: needs to be global variable to check after action ends
             # stone effect
             if 'Stone' in self.list_statuses():
                 print(f'\n{self.name} is petrified...')
@@ -2298,14 +2940,14 @@ class Demon:
             elif 'Charm' in self.list_statuses():
                 charm_test_party = copy.deepcopy(party)
                 charm_test_party.demons.pop()
-                if random.randint(0, 1) == 1 and self.choose_move_easy(other_party, charm_test_party) != False:
+                # 50% chance to trigger
+                # also checks if the demon has an usable move once switching sides
+                if random.randint(0, 1) == 1 and self.choose_move_easy(other_party, charm_test_party, True) != 'Pass':
                     print(f'\n{self.name} turned against the party!')
                     turn_against_party = True
-                    temp_party = party
-                    party = other_party
-                    other_party = temp_party
+                    party, other_party = other_party, party
                     other_party.remove_demon(self)
-                    controller = 'Easy'
+                    controller = 'Easy'  # signal to choose random move
                 else:
                     print(f'\n{self.name} is acting strangely...\n')
                     return 1
@@ -2315,18 +2957,19 @@ class Demon:
                 return 1
             # panic effect
             elif 'Panic' in self.list_statuses():
+                # normally 4 possible actions
                 panic_actions = 4
-                if self.magatama != 'None':
+                if self.magatama is not None:
+                    # demi-fiend can't retreat
                     panic_actions = 3
                 random_panic_action = random.randint(1, panic_actions)
                 print(f'\n{self.name} is panicked...')
                 # 1: normal action
                 if random_panic_action == 2:
-                    # add macca dropping action
+                    # 2 and 3 are both functionally the same (unless macca and conversations get added)
                     print(f'\n{self.name} dropped some Macca!')
                     return 1
                 elif random_panic_action == 3:
-                    # add real convo initiate
                     print(f'\n{self.name} started babbling to {random.choice(other_party.demons).name}!')
                     return 1
                 elif random_panic_action == 4:
@@ -2336,14 +2979,15 @@ class Demon:
             # sleep effect
             elif 'Sleep' in self.list_statuses():
                 print(f'\n{self.name} is asleep...')
-                recovered_hp = self.recover_hp(self.max_hp / 8)
+                recovered_hp = self.recover_hp(round(self.max_hp / 8))
                 if recovered_hp > 0:
                     print(f'{self.name} recovered {recovered_hp} HP.')
-                recovered_mp = self.recover_mp(self.max_mp / 8)
+                recovered_mp = self.recover_mp(round(self.max_mp / 8))
                 if recovered_mp > 0:
                     print(f'{self.name} recovered {recovered_mp} MP.')
                 print()
                 return 1
+            # player chooses action to take
             if controller == 'Player':
                 options = ['Pass', 'View', 'Stop']
                 options += self.move_names()
@@ -2351,6 +2995,7 @@ class Demon:
                 muted_moves = self.mute_options(options)
                 if len(muted_moves) >= 1:
                     print(f"{self.name} is unable to cast spells!")
+                # "view" possibilities: all demons and moves
                 for demon in party.demons:
                     if demon == self:
                         options.append(f'View Self')
@@ -2369,6 +3014,7 @@ class Demon:
                 for i in range(1, len(party) + len(other_party) + 1):
                     options.append(f'View {i}')
                 options = list(set(options))
+                # only prints moves and "pass"
                 move_list_string = 'Your options: '
                 for move in self.moves:
                     if move.name not in muted_moves:
@@ -2378,28 +3024,33 @@ class Demon:
                 decision = ''
                 temp_decision = h_input('What will you do? ', 'Move Selection').title()
                 if temp_decision != '':
+                    # extract choice from list of all options, even if not printed
                     closest_matches = process.extract(temp_decision, options, limit=None)
                     # isolate view commands based on input
+                    # inputs without "view" at the start will never be read as a view command (and vice versa)
                     if temp_decision[:4] == 'View':
-                        new_closest_matches = copy.deepcopy(closest_matches)
-                        for option in closest_matches:
-                            if option[0][:4] != 'View':
-                                new_closest_matches.remove(option)
-                        closest_matches = new_closest_matches
-                    else:
-                        new_closest_matches = copy.deepcopy(closest_matches)
+                        new_closest_matches = []
                         for option in closest_matches:
                             if option[0][:4] == 'View':
-                                new_closest_matches.remove(option)
+                                new_closest_matches.append(option)
                         closest_matches = new_closest_matches
-                    # decide if able
+                    else:
+                        new_closest_matches = []
+                        for option in closest_matches:
+                            if option[0][:4] != 'View':
+                                new_closest_matches.append(option)
+                        closest_matches = new_closest_matches
+                    # similarity threshold
                     if closest_matches[0][1] > 70 and closest_matches[0][1] != closest_matches[1][1]:
                         decision = closest_matches[0][0]
+            # random move selection
             elif controller == 'Easy':
                 print()
                 decision = self.choose_move_easy(party, other_party, turn_against_party)
+            # calculated move selection
             elif controller == 'Hard':
                 print()
+                # check for charm switch; if true, uses easy choose move
                 if turn_against_party:
                     decision = self.choose_move_easy(party, other_party, turn_against_party)
                 else:
@@ -2408,30 +3059,40 @@ class Demon:
                 raise ValueError(f"Unrecognized controller: {controller}")
             # analyze decisions
             if decision == 'Stop':
+                # puts a hard stop to the game
                 return 'Stop'
             elif decision[:4] == 'View':
+                # quick view of everything
                 if decision == 'View':
                     print('\nYour party:')
-                    party.quick_view()
-                    print('\nEnemy party:')
-                    other_party.quick_view(len(party) + 1)
-                    view_explain_str = "\nTo view a specific demon's details, type "
+                    print(party.quick_view())
+                    print('Enemy party:')
+                    print(other_party.quick_view(len(party) + 1))
+                    view_explain_str = "To view a specific demon's details, type "
                     view_explain_str += '"view {demon}", '
                     view_explain_str += "or to view a move's details, type "
                     view_explain_str += '"view {move}".\n'
                     print(view_explain_str)
+                # view move
                 elif decision[5:] in moves_dict:
                     show_move = False
+                    # checks if a friendly or analyzed demon has the move
+                    # if not, will print the unknown string
                     for demon in party.demons:
                         if decision[5:] in demon.move_names():
                             show_move = True
                     for demon in other_party.demons:
                         if decision[5:] in demon.move_names() and demon.analyzed:
                             show_move = True
+                    # variations of a move will not be shown here (ex. surt fire element attack)
+                    # since a new move object is created
+                    # would have to distinguish between owners of moves somehow in command
+                    # TODO: select demon's move in view command?
                     if show_move:
                         print('\n' + str(Move(decision[5:])))
                     else:
                         print('\n' + Move(decision[5:]).unknown_str())
+                # view passive (works same as move)
                 elif decision[5:] in passives_dict:
                     show_move = False
                     for demon in party.demons:
@@ -2444,8 +3105,10 @@ class Demon:
                         print('\n' + str(Passive(decision[5:])))
                     else:
                         print('\n' + Passive(decision[5:]).unknown_str())
+                # shortcut for viewing self (demon)
                 elif decision[5:] == 'Self':
                     print('\n' + str(self))
+                # show demon by index (shown in plain "view" command)
                 elif decision[5:].isnumeric():
                     # search for demon on battlefield by number
                     demon_search_index = int(decision[5:])
@@ -2454,18 +3117,20 @@ class Demon:
                         searching_party = other_party
                         demon_search_index -= len(party)
                     viewing_demon = searching_party.demons[demon_search_index - 1]
+                    # check if friendly/analyzed
                     if searching_party == party or viewing_demon.analyzed:
                         print('\n' + str(viewing_demon))
                     else:
                         print('\n' + viewing_demon.unknown_str())
+                # search for demon(s) on battlefield by name
                 elif decision[5:] in master_list or decision[5:] == 'Demi-Fiend':
-                    # search for demon(s) on battlefield by name
                     viewed_demons = []
                     all_demons = party.demons + other_party.demons
                     for demon in all_demons:
                         if decision[5:] == demon.name:
                             viewed_demons.append(demon)
                     view_demon_str = '\n'
+                    # notify if more than one demon is found
                     if len(viewed_demons) > 1:
                         view_demon_str += f'{len(viewed_demons)} demons have the name {decision[5:]}:\n\n'
                     for demon in viewed_demons:
@@ -2476,13 +3141,17 @@ class Demon:
                     view_demon_str = view_demon_str[:-1]
                     print(view_demon_str)
             elif decision == 'Pass':
+                # normally poison is applied in initiate move, so since that isn't called here, poison is here instead
                 self.apply_poison_dmg()
                 print()
                 return 'Pass'
             elif decision in self.move_names():
                 decision_move = self.get_move(decision)
+                # verify costs
+                # mainly for player; comps should check this beforehand
                 if decision_move.mp <= self.mp:
                     if decision_move.hp_cost(self) < self.hp:
+                        # call appropriate target choosing method
                         if controller == 'Player':
                             target = self.choose_target(decision_move, party, other_party)
                         elif controller == 'Easy':
@@ -2492,15 +3161,21 @@ class Demon:
                             target = self.choose_target_easy(decision_move, party, other_party)
                         else:
                             raise ValueError(f"Unrecognized controller: {controller}")
+                        # if target is "back", will finish while loop and return to move selection
                         if target != 'back':
-                            print([demon.name for demon in target])
+                            # call initiate move
+                            print('******************************************************************')
+                            print(f'{self.name} used {decision_move.name}!')
                             press_turns = self.initiate_move(decision_move, target, other_party, kagutsuchi,
                                                              turn_against_party)
+                            print('******************************************************************\n')
                             # reset charm effect
                             if turn_against_party:
                                 other_party.add_demon(self)
                             return press_turns
                     else:
+                        # if the demon has 0 health, no HP costs will be satisfied
+                        # will trigger infinite loop
                         if self.hp <= 0:
                             raise RuntimeError('Dead demon encountered in active party.')
                         print('Not enough HP.')
@@ -2509,17 +3184,31 @@ class Demon:
             else:
                 print('Unrecognized input.\n')
 
-    def unknown_str(self):
+    def unknown_str(self) -> str:
+        """
+        Modified __str__ method that obscures significant info. Called when the user has no information
+        about this demon.
+
+        :return: A string formatted like __str__, but with question marks.
+        """
         output = f'Demon: {self.race} {self.name}'
         if self.dead:
             output += ' DEAD'
         output += f', Level ???\n\n'
-        if self.magatama != 'None':
+        if self.magatama is not None:
             output += f'Magatama: ???\n\n'
         output += f'HP: ???/??? MP: ???/???\n\n'
         output += f'Moves: ???\n\n'
         output += f'Passives: ???\n\n'
-        output += f'Status: {print_list(self.list_statuses())}\n'
+        barrier_name_list = []
+        if self.tetrakarn:
+            barrier_name_list.append('Tetrakarn')
+        if self.makarakarn:
+            barrier_name_list.append('Makarakarn')
+        if self.tetraja:
+            barrier_name_list.append('Tetraja')
+        output += f'Barriers: {", ".join(barrier_name_list) or "None"}\n'
+        output += f'Status: {", ".join(self.list_statuses()) or "None"}\n\n'
         output += f'Taru: {self.taru_total()} (+{self.taru_plus}/-{self.taru_minus})\n'
         output += f'Maka: {self.maka_total()} (+{self.maka_plus}/-{self.maka_minus})\n'
         output += f'Raku: {self.raku_total()} (+{self.raku_plus}/-{self.raku_minus})\n'
@@ -2537,17 +3226,31 @@ class Demon:
         output += 'Analyze this demon for more information...\n'
         return output
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Overrides the string representation of Demon. Gives info about the demon, including inherent and temporary
+        attributes.
+
+        :return: A string containing info about the demon.
+        """
         output = f'Demon: {self.race} {self.name}'
         if self.dead:
             output += ' DEAD'
         output += f', Level {self.level}\n\n'
-        if self.magatama != 'None':
+        if self.magatama is not None:
             output += f'Magatama: {self.magatama}\n\n'
         output += f'HP: {self.hp}/{self.max_hp} MP: {self.mp}/{self.max_mp}\n\n'
-        output += f'Moves: {print_list(self.move_names())}\n\n'
-        output += f'Passives: {print_list(self.passive_names())}\n\n'
-        output += f'Status: {print_list(self.list_statuses())}\n'
+        output += f'Moves: {", ".join(self.move_names())}\n\n'
+        output += f'Passives: {", ".join(self.passive_names()) or "None"}\n\n'
+        barrier_name_list = []
+        if self.tetrakarn:
+            barrier_name_list.append('Tetrakarn')
+        if self.makarakarn:
+            barrier_name_list.append('Makarakarn')
+        if self.tetraja:
+            barrier_name_list.append('Tetraja')
+        output += f'Barriers: {", ".join(barrier_name_list) or "None"}\n'
+        output += f'Status: {", ".join(self.list_statuses()) or "None"}\n\n'
         output += f'Taru: {self.taru_total()} (+{self.taru_plus}/-{self.taru_minus})\n'
         output += f'Maka: {self.maka_total()} (+{self.maka_plus}/-{self.maka_minus})\n'
         output += f'Raku: {self.raku_total()} (+{self.raku_plus}/-{self.raku_minus})\n'
@@ -2557,55 +3260,72 @@ class Demon:
         output += f'Vitality: {self.vit}\n'
         output += f'Agility: {self.ag}\n'
         output += f'Luck: {self.luck}\n\n'
-        output += f'Reflects: {print_list(self.reflect)}\n'
-        output += f'Absorbs: {print_list(self.absorb)}\n'
-        output += f'Voids: {print_list(self.void)}\n'
-        output += f'Resists: {print_list(self.resist)}\n'
-        output += f'Weaknesses: {print_list(self.weak)}\n'
+        output += f'Reflects: {", ".join(self.reflect) or "None"}\n'
+        output += f'Absorbs: {", ".join(self.absorb) or "None"}\n'
+        output += f'Voids: {", ".join(self.void) or "None"}\n'
+        output += f'Resists: {", ".join(self.resist) or "None"}\n'
+        output += f'Weaknesses: {", ".join(self.weak) or "None"}\n'
         return output
 
 
-# In[19]:
-
-
 class DemiFiend(Demon):
-    def __init__(self, name='Demi-Fiend', target_lv='None', party='None'):
-        super().__init__(name, target_lv=target_lv)
+    """
+    Subclass of Demon. Represents a Demi-Fiend, a special type of demon. Overrides methods involved in the creation
+    of the demon, notably dict_pull_init.
+    """
 
-    def dict_pull_init(self, name, target_lv):
+    def __init__(self, magatama: Optional[str] = None, target_lv: Optional[int] = None,
+                 party: Optional[Party] = None) -> None:
+        """
+        Constructor for the Demi-Fiend class.
+
+        :param magatama: The desired magatama of the Demi-Fiend. If not specified, chooses a random magatama.
+        :param target_lv: The target level of the Demi-Fiend. Relevant only if name is not specified and thus a
+            magatama will be chosen randomly. If name is not specified and target_lv is, the level of the randomly
+            created Demi-Fiend will be close to the target level.
+        :param party: The party to which the Demi-Fiend belongs.
+        """
+        super().__init__(magatama, target_lv=target_lv, party=party)
+
+    def dict_pull_init(self, name: Optional[str], target_lv: Optional[int]) -> None:
+        """
+        Overriden subset of __init__ method. Sets all "info" attributes, such as name, stats, moves, etc. based on
+        magatama_dict.
+
+        :param name: The name of the magatama. If not specified, chooses a random magatama.
+        :param target_lv: The target level of a randomly generated magatama. Only used if name is not specified.
+        """
         self.name = 'Demi-Fiend'
-        if name == 'Demi-Fiend':
-            all_magatamas = list(magatama_dict.keys())
-            if target_lv == 'None':
-                possible_magatamas = all_magatamas
+        # find magatama levels is the level at which its last move is learned
+        all_magatama = {n: info['Moves'][-1][1] for n, info in magatama_dict.items()}
+        # masakados has to be manually adjusted; all its moves are level 1
+        all_magatama['Masakados'] = 95
+        # random selection
+        if name is None:
+            if target_lv is None:
+                # select randomly from any magatama
+                possible_magatamas = list(all_magatama.keys())
             else:
+                # filter magatamas to be within target level range
                 possible_magatamas = []
-                for magatama in all_magatamas:
-                    if magatama == 'Masakados':
-                        magatama_level = 95
-                    else:
-                        magatama_level = magatama_dict[magatama]['Moves'][-1][1]
-                    if magatama_level < target_lv + RANDOM_DEMON_RANGE:
-                        if magatama_level > target_lv - RANDOM_DEMON_RANGE:
+                for magatama, level in all_magatama.items():
+                    if level < target_lv + RANDOM_DEMON_RANGE:
+                        if level > target_lv - RANDOM_DEMON_RANGE:
                             possible_magatamas.append(magatama)
-                if len(possible_magatamas) == 0:  # possible if target level plus random range < 19 or > 95
+                if len(possible_magatamas) == 0:
+                    # possible if target level plus random range < 19 or > 95 (min/max levels of magatama)
+                    # if true, chooses from a few of the lowest/highest level magatama
+                    all_sorted_magatama = sorted(all_magatama.items(), key=lambda x: x[1])
+                    all_sorted_magatama = [n[0] for n in all_sorted_magatama]
                     if 99 - target_lv > 50:  # small target level
-                        possible_magatamas.append('Marogareh')
-                        possible_magatamas.append('Ankh')
+                        possible_magatamas = all_sorted_magatama[:3]
                     else:  # large target level
-                        possible_magatamas.append('Masakados')
-                        possible_magatamas.append('Kailash')
+                        possible_magatamas = all_sorted_magatama[-2:]
             name = random.choice(possible_magatamas)
         self.magatama = name
-        # skills include all of current magatama; random lower-level skills
-        # level
-        if name == 'Masakados':
-            self.level = 95
-        else:
-            self.level = magatama_dict[name]['Moves'][-1][1]
-        # race
-        magatama_levels = [magatama_dict[name]['Moves'][-1][1] for name in list(magatama_dict.keys())]
-        magatama_levels = [95 if n == 1 else n for n in magatama_levels]  # masakados adjust
+        self.level = all_magatama[name]
+        # find race
+        magatama_levels = list(all_magatama.values())
         self.race = 'Fiend'
         if self.level >= 95:
             self.race = 'King'
@@ -2637,9 +3357,9 @@ class DemiFiend(Demon):
             elif self.level >= np.quantile(magatama_levels, .2):
                 self.race = 'Soldier'
         self.attack_changes = {}
-        # temp way to learn moves
+        # skills include all of current magatama plus random lower-level skills
         moves = magatama_dict[name]['Moves']
-        # remove unimplemented so that df always has 8 moves
+        # filter unimplemented moves
         new_moves = []
         for move_tuple in moves:
             if move_tuple[0] in moves_dict or move_tuple[0] in passives_dict:
@@ -2652,9 +3372,10 @@ class DemiFiend(Demon):
                 for move_tuple in magatama_info['Moves']:
                     if move_tuple not in moves:
                         possible_moves.append(move_tuple)
-        # add pierce to possibilities
+        # add pierce to possibilities (not in any magatama)
         possible_moves.append(('Pierce', 1))
         random.shuffle(possible_moves)
+        # fill moves, so that demi-fiend always has 8
         while len(moves) < 8 and len(possible_moves) >= 1:
             # level check: makes sure all moves can be learned
             # ex: lv24, can't learn 2 lv23 moves
@@ -2665,30 +3386,36 @@ class DemiFiend(Demon):
             if level_check >= 0:
                 moves.append(possible_moves[0])
             del possible_moves[0]
+        # create Moves
         for move in moves:
             if move[0] in moves_dict and move[0] not in self.move_names():
                 self.moves.append(Move(move[0]))
             if move[0] in passives_dict and move[0] not in self.passive_names():
                 self.passives.append(Passive(move[0]))
+        # all demi-fiends get Summon
         self.moves.append(Move('Summon'))
         # determine stats
+        # modifiers from magatama
         str_mod = magatama_dict[name]['Strength']
         mag_mod = magatama_dict[name]['Magic']
         vit_mod = magatama_dict[name]['Vitality']
         ag_mod = magatama_dict[name]['Agility']
         luck_mod = magatama_dict[name]['Luck']
+        # base stats
         self.str = 2 + str_mod
         self.mag = 2 + mag_mod
         self.vit = 2 + vit_mod
         self.ag = 2 + ag_mod
         self.luck = 2 + luck_mod
-        total_mod = str_mod + mag_mod + vit_mod + ag_mod + luck_mod
         stats = ['str', 'mag', 'vit', 'ag', 'luck']
+        # used for weighting random selection
         stat_weights = [str_mod, mag_mod, vit_mod, ag_mod, luck_mod]
         stat_weights = [n + 3 for n in stat_weights]
-        for i in range(self.level):
+        # assign 1 point per level-up
+        for i in range(self.level - 1):
             deciding = True
             while deciding:
+                # more likely to choose stats with higher mods from the magatama
                 stat_choice = random.choices(stats, weights=stat_weights)[0]
                 if stat_choice == 'str' and self.str < 40:
                     self.str += 1
@@ -2702,8 +3429,11 @@ class DemiFiend(Demon):
                 elif stat_choice == 'ag' and self.ag < 40:
                     self.ag += 1
                     deciding = False
-                elif self.luck < 40:
+                elif stat_choice == 'luck' and self.luck < 40:
                     self.luck += 1
+                    deciding = False
+                else:
+                    # if all stats are 40
                     deciding = False
         # resistances
         self.reflect = set(magatama_dict[name]['Reflect'])
@@ -2711,32 +3441,58 @@ class DemiFiend(Demon):
         self.void = set(magatama_dict[name]['Void'])
         self.resist = set(magatama_dict[name]['Resist'])
         self.weak = set(magatama_dict[name]['Weaknesses'])
-        self.evolution = 'None'
+        self.evolution = None
         self.calc_init()
 
 
-# In[20]:
-
 class Rotation:
-    def __init__(self, party):
+    """
+    Contains the order in which demons in a party will act. Includes methods for manipulating and analyzing
+    the order.
+    """
+
+    def __init__(self, party: Party) -> None:
+        """
+        Constructor for Rotation.
+
+        :param party: The party to base the rotation on.
+        """
         self.party = party
+        # boolean indicates whether the demon has gone in the current round or not
+        # using lists instead of tuples to be able to edit booleans
         self.order = [[demon, False] for demon in self.party.demons]
 
-    def next(self):
+    def next(self) -> Demon:
+        """
+        Gets the next demon in the rotation. Shifts the rotation. If the Rotation is empty, raises an IndexError.
+
+        :return: The next demon to act.
+        """
         for demon_info in self.order:
+            # check if demon hasn't gone yet
             if not demon_info[1]:
                 demon_info[1] = True
                 return demon_info[0]
-        # go back to top of list
+        # if all have gone: reset list
         for demon_info in self.order:
             demon_info[1] = False
+        # return first demon in list
         self.order[0][1] = True
         return self.order[0][0]
 
-    def reset(self):
-        self.order = [[demon, False] for demon in self.party.demons]
+    def reset(self) -> None:
+        """
+        Resets the rotation. Also updates the included demons to match that of the linked party.
+        For use in between turns.
+        """
+        self.update()
+        self.order = [[demon_info[0], False] for demon_info in self.order]
 
-    def update(self):
+    def update(self) -> None:
+        """
+        Updates the rotation to match the demons in the party. For use when a demon is added or removed from the party,
+        typically in the middle of a round. Unlike reset, does not adjust which demons have gone.
+        """
         new_order = []
         # remove demons not in party
         for demon_info in self.order:
@@ -2749,27 +3505,48 @@ class Rotation:
         self.order = new_order
         self.order.sort(key=lambda x: x[0].ag, reverse=True)
 
-    def __str__(self):
-        return print_list([demon[0].name for demon in self.order])
+    def __str__(self) -> str:
+        """
+        String representation of a Rotation. Contains the demons' names in order.
+
+        :return: A string containing info about the rotation.
+        """
+        return ", ".join([demon[0].name for demon in self.order])
 
 
 class Party:
-    def __init__(self, demons):
-        self.demons = sorted(demons, key=operator.attrgetter('ag'), reverse=True)  # sorts by agility
+    """
+    Represents a party of demons. Mainly a wrapper for a list of demons, but also contains info such as a stock
+    and a rotation. Methods primarily get info about the demons.
+    """
+
+    def __init__(self, demons: List[Demon]) -> None:
+        """
+        Constructor for Party.
+
+        :param demons: A list of demons to include in the Party.
+        """
+        self.demons = sorted(demons, key=lambda x: x.ag, reverse=True)  # sorts by agility
+        # sets the demon's party attributes
         for demon in self.demons:
             demon.party = self
-        self.stock = []  # can take in stock demons later
-        for demon in self.stock:
-            demon.party = self
+        self.stock = []
         self.party_stat_calc()  # defines party lv/ag/luck
         self.rotation = Rotation(self)
 
-    def list_demon_names(self):
+    def list_demon_names(self) -> List[str]:
+        """
+        Gets a list of the names of the demons in the Party.
+
+        :return: A list containing the names of each demon in the Party.
+        """
         return [demon.name for demon in self.demons]
 
-    def party_stat_calc(self):
-        '''used to calculate party-wide stats for selecting random demons (level) and who_goes_first
-           (agility+luck). Separate from __init__ to call when adding/removing demons.'''
+    def party_stat_calc(self) -> None:
+        """
+        Used to calculate party-wide stats for selecting random demons (level) and who_goes_first
+        (agility+luck). Separate from __init__ in order to call when adding/removing demons.
+        """
         level = 0
         ag = 0
         luck = 0
@@ -2782,54 +3559,75 @@ class Party:
             self.ag = ag / len(self.demons)
             self.luck = luck / len(self.demons)
         else:
+            # if party is empty: default to zeroes
             self.level = level
             self.ag = ag
             self.luck = luck
 
-    def demifiend_in_party(self):
+    def demifiend_in_party(self) -> bool:
+        """
+        Checks if one or more Demi-Fiends are in the Party.
+
+        :return: True if a Demi-Fiend is in the Party, False otherwise.
+        """
         df_in_party = False
         for demon in self.demons:
-            if demon.magatama != 'None':
+            if demon.magatama is not None:
                 df_in_party = True
         return df_in_party
 
-    def add_demon(self, demon):
+    def add_demon(self, demon: Demon) -> bool:
+        """
+        Adds a demon to the active demons list. Updates party info based on the demon.
+
+        :param demon: The demon to add to the active party.
+        :return: True if the demon was added successfully, False if the demon was already in the active party.
+        """
         if demon not in self.demons:
             self.demons.append(demon)
             demon.party = self
             self.party_stat_calc()
-            self.demons.sort(key=operator.attrgetter('ag'), reverse=True)
+            self.demons.sort(key=lambda x: x.ag, reverse=True)
+            self.rotation.update()
             return True
         return False
 
     def remove_demon(self, demon):
-        if demon in self.demons:
-            self.demons.remove(demon)
-            demon.party = 'None'
-            self.party_stat_calc()
-            return True
-        return False
+        """
+        Removes a demon from the active party. Updates party info.
 
-    def remove_active_demon(self, demon):
+        :param demon: The demon to remove from the active party.
+        :return: True if the demon was removed successfully, False if the demon was not found in the active party.
+        """
         if demon in self.demons:
             self.demons.remove(demon)
             self.party_stat_calc()
+            self.rotation.update()
             return True
         return False
 
-    def random_targets(self, max_hits):
+    def random_targets(self, max_hits: int) -> List[Demon]:
+        """
+        Gets a list of random demons. Called when a random-target move is used and targets this Party. Isn't strictly
+        random; method varies based on the number of demons in the party and the input value.
+
+        :param max_hits: The maximum number of hits for the move.
+        :return: A list of random targets, no longer than max_hits.
+        """
         targets = []
         target_lists = []
         for demon in self.demons:
             target_lists.append([demon, 0])
         # decide how many hits actually happen
         if len(target_lists) == 1:
+            # if only one possible target: chance to hit either one or two times
             random_target_num = random.randint(1, 2)
         elif max_hits == 4:
             # does this also depend on number of enemies? no data about it
             random_target_num = random.randint(2, 4)
         elif max_hits == 5:
-            # formula approximation
+            # not strictly random: weighted slightly
+            # formula is an approximation
             random_target_value = random.randint(1, 100 + (20 * (len(target_lists) - 4)))
             if random_target_value <= 33:
                 random_target_num = 3
@@ -2843,14 +3641,19 @@ class Party:
             break_counter = 0
             while choosing:
                 max_target_check = [target_list[1] for target_list in target_lists]
+                # if each demon has two targets, stop
                 if 0 not in max_target_check or 1 not in max_target_check:
                     choosing = False
                 random_index = random.randint(0, len(target_lists) - 1)
+                # each demon can't be targeted more than twice
                 if target_lists[random_index][1] < 2:
                     target_lists[random_index][1] += 1
                     choosing = False
                 break_counter += 1
                 if break_counter > 255:
+                    # occurs when can't select targets
+                    # old cause should be fixed, but leaving just in case
+                    # not throwing an error to avoid breaking experiments
                     print('multi-target break!')
                     break
         for target_list in target_lists:
@@ -2858,51 +3661,72 @@ class Party:
                 targets.append(target_list[0])
         return targets
 
-    def summonable_demons(self):
-        alive_demons = []
-        for demon in self.stock:
-            if demon.dead == False:
-                alive_demons.append(demon)
-        return alive_demons
+    def summonable_demons(self) -> List[Demon]:
+        """
+        Gets all summonable demons.
 
-    def dead_demons(self):
-        dead_demon_list = []
-        for demon in self.stock:
-            if demon.dead:
-                dead_demon_list.append(demon)
-        return dead_demon_list
+        :return: A list of all non-dead demons in the stock.
+        """
+        return [demon for demon in self.stock if not demon.dead]
 
-    def summon(self, demon):
-        if demon in self.stock and demon.dead == False:
+    def dead_demons(self) -> List[Demon]:
+        """
+        Gets all dead demons.
+
+        :return: A list of all dead demons in the stock.
+        """
+        return [demon for demon in self.stock if demon.dead]
+
+    def summon(self, demon: Demon) -> None:
+        """
+        Moves a demon from the stock to the active party. If demon is dead or is not in the stock, does nothing.
+
+        :param demon: The demon to summon.
+        """
+        if demon in self.stock and not demon.dead:
             self.stock.remove(demon)
             self.add_demon(demon)
-            self.demons.sort(key=operator.attrgetter('ag'), reverse=True)
 
-    def unsummon(self, demon):
+    def unsummon(self, demon: Demon) -> None:
+        """
+        Moves a demon from the active party to the stock.
+
+        :param demon: The demon to unsummon.
+        """
         if demon in self.demons:
-            self.remove_active_demon(demon)
+            self.remove_demon(demon)
             self.stock.append(demon)
 
-    def death_update(self):
+    def death_update(self) -> None:
+        """
+        Moves all dead demons in the active party to the stock.
+        """
         for demon in self.demons:
             if demon.dead:
                 self.stock.append(demon)
 
         for demon in self.stock:
             if demon in self.demons:
-                self.remove_active_demon(demon)
-        self.rotation.update()
+                self.remove_demon(demon)
 
-    def lose_check(self):
+    def lose_check(self) -> bool:
+        """
+        Checks if the party has lost.
+
+        :return: True if the party has no demons active, False otherwise.
+        """
         if len(self) == 0:
             return True
         return False
 
-    def heal(self):
+    def heal(self) -> None:
+        """
+        Fully heals and summons all demons. Mainly used between games.
+        """
         dead_demons = []
         for demon in self.stock:
             dead_demons.append(demon)
-        # necessary to avoid iteration skips
+        # necessary to avoid iteration skips, since summon removes from stock
         for demon in dead_demons:
             demon.hp = 1
             demon.dead = False
@@ -2910,67 +3734,158 @@ class Party:
         for demon in self.demons:
             demon.heal()
 
-    def __len__(self):
+    def soft_reset(self) -> None:
+        """
+        Gets rid of buffs/debuffs, temporary statuses, etc. Calls the soft_reset method for each demon in the party.
+        Mainly used between games.
+        """
+        for demon in self.demons + self.stock:
+            demon.soft_reset()
+
+    def __len__(self) -> int:
+        """
+        Overrides the len() method to return the length of the active party list.
+
+        :return: The length of self.demons
+        """
         return len(self.demons)
 
-    def quick_view(self, start_label=1):
-        for demon in self.demons:
-            output = f'[{self.demons.index(demon) + start_label}] '
-            output += f'{demon.name} HP: {demon.hp}/{demon.max_hp} MP: {demon.mp}/{demon.max_mp}'
-            if len(demon.statuses) >= 1:
-                output += f' Status: {demon.list_statuses()}'
-            print(output)
+    def view_targets(self) -> str:
+        """
+        Generates a string that lists the valid alive targets in the active party.
 
-    def __str__(self):
+        :return: A string containing info on the party.
+        """
+        target_string = f'Valid targets: '
+        target_info = [f'[{i}] {demon.name} (HP: {demon.hp}/{demon.max_hp})' for i, demon in enumerate(self.demons, 1)]
+        if len(target_info) >= 1:
+            target_string += ', '.join(target_info) + '\n'
+        else:
+            target_string += 'None\n'
+        return target_string
+
+    def view_dead_targets(self) -> str:
+        """
+        Generates a string that lists the valid dead targets in the party.
+
+        :return: A string containing info on the party.
+        """
+        target_string = f'Valid targets: '
+        target_info = [f'[{i}] {demon.name}' for i, demon in enumerate(self.dead_demons(), 1)]
+        if len(target_info) >= 1:
+            target_string += ', '.join(target_info) + '\n'
+        else:
+            target_string += 'None\n'
+        return target_string
+
+    def view_stock_targets(self) -> str:
+        """
+        Generates a string that lists the valid alive targets in the stock.
+
+        :return: A string containing info on the party.
+        """
+        target_string = f'Valid targets: '
+        target_info = [f'[{i}] {demon.name} (HP: {demon.hp}/{demon.max_hp})'
+                       for i, demon
+                       in enumerate(self.summonable_demons(), 1)]
+        if len(target_info) >= 1:
+            target_string += ', '.join(target_info) + '\n'
+        else:
+            target_string += 'None\n'
+        return target_string
+
+    def quick_view(self, start_label=1) -> str:
+        """
+        Generates a string with a short description of each demon in the active party. Called mainly during the
+        "View" command.
+
+        :param start_label: The number at which to start labeling the demons.
+        :return: A string containing info about the party.
+        """
+        output = ''
+        for demon in self.demons:
+            demon_desc = f'[{self.demons.index(demon) + start_label}] '
+            demon_desc += f'{demon.name} HP: {demon.hp}/{demon.max_hp} MP: {demon.mp}/{demon.max_mp}'
+            if len(demon.statuses) >= 1:
+                demon_desc += f' Status: {demon.list_statuses()}'
+            output += demon_desc + '\n'
+        return output
+
+    def __str__(self) -> str:
+        """
+        Overrides string representation of a Party. Prints each demon in the active party.
+
+        :return: A string containing info about the party.
+        """
         output = ''
         for demon in self.demons:
             output += f'{demon}\n'
         return output
 
 
-# In[21]:
-
-
 class PressTurns:
-    def __init__(self, party):
+    """
+    Represents a cycle of press turns, used during a party's turn. Includes methods for interacting with the press
+    turns.
+    """
+
+    def __init__(self, party: Party) -> None:
+        """
+        Constructor for PressTurns.
+
+        :param party: The party for which to create the PressTurns object.
+        """
         self.max_turns = len(party)
         self.full_turns = len(party)
         self.half_turns = 0
 
-    def subtract_turns(self, n):
-        while n > 0:
-            if self.half_turns > 0:
-                if self.half_turns >= n:
-                    self.half_turns -= n
-                    n = 0
-                else:
-                    n -= self.half_turns
-                    self.half_turns = 0
-            elif self.full_turns > 0:
-                if self.full_turns >= n:
-                    self.full_turns -= n
-                    n = 0
-                else:
-                    n -= self.full_turns
-                    self.full_turns = 0
-            else:
-                n = 0
+    def subtract_turns(self, n: int) -> None:
+        """
+        Consumes a given number of full turns. Not compatible with half turns (use subtract_half_turn).
 
-    def subtract_half_turn(self):
+        :param n: The number of turns to take away.
+        """
+        while n > 0:
+            # prioritizes taking away half turns
+            if self.half_turns > 0:
+                self.half_turns -= 1
+                n -= 1
+            # if no half turns, moves to full turns
+            elif self.full_turns > 0:
+                self.full_turns -= 1
+                n -= 1
+            else:
+                break
+
+    def subtract_half_turn(self) -> None:
+        """
+        Turns a full turn into a half turn. If there are no full turns, consumes a half turn.
+        """
+        # change full turns to half turns.
         if self.full_turns > 0:
             self.full_turns -= 1
             self.half_turns += 1
         elif self.half_turns > 0:
             self.half_turns -= 1
 
-    def pass_turn(self):
+    def pass_turn(self) -> None:
+        """
+        Turns a full turn into a half turn. Unlike subtract_half_turn, prioritises taking away half-turns
+        over converting full turns.
+        """
         if self.half_turns > 0:
             self.half_turns -= 1
         elif self.full_turns > 0:
             self.full_turns -= 1
             self.half_turns += 1
 
-    def use_turn(self, turns_used):
+    def use_turn(self, turns_used: Union[str, float]) -> None:
+        """
+        Consumes the given number of turns. Use this method for external calls to update PressTurns;
+        relegates specific tasks to the other methods.
+
+        :param turns_used: The number of turns used. Can be the strings 'All' or 'Pass', the float 0.5, or an integer.
+        """
         if turns_used == 'All':
             self.subtract_turns(self.max_turns)
         elif turns_used == 'Pass':
@@ -2980,14 +3895,24 @@ class PressTurns:
         else:
             self.subtract_turns(turns_used)
 
-    def check_turns(self):
+    def check_turns(self) -> bool:
+        """
+        Checks if the object has turns remaining.
+
+        :return: True if there are turns left, False otherwise.
+        """
         if self.full_turns == 0 and self.half_turns == 0:
             return False
         return True
 
     def __str__(self):
+        """
+        String representation of PressTurns. Indicates how many full turns and half turns remain out of the total.
+
+        :return: A string containing info about the PressTurns object.
+        """
         output = []
-        for i in range(self.max_turns - (self.full_turns + self.half_turns)):
+        for i in range(self.max_turns - (self.full_turns + self.half_turns)):  # used turns
             output.append('O')
         for i in range(self.half_turns):
             output.append('*')
@@ -2996,12 +3921,18 @@ class PressTurns:
         return str(output)
 
 
-# In[23]:
-
-
 class FourVsFour:
-    # not actually four vs four— changes based on demons inputted
-    def __init__(self, kagutsuchi=Kagutsuchi()):
+    """
+    Represents a game as an object. Methods allow for party creation, parameter setting, and gameplay (through turn
+    cycle control). Not necessarily four demons vs four demons— can vary based on input.
+    """
+
+    def __init__(self, kagutsuchi: Kagutsuchi = Kagutsuchi()) -> None:
+        """
+        Constructor for a FourVsFour game.
+
+        :param kagutsuchi: The Kagutsuchi at which to start the game. Random if not specified.
+        """
         self.kagutsuchi = kagutsuchi
         self.party1 = Party([])
         self.party2 = Party([])
@@ -3012,23 +3943,28 @@ class FourVsFour:
         self.match_party1_length = False
         self.stopped_game = False
 
-    def select_players(self):
+    def select_players(self) -> None:
+        """
+        Selects the controllers (player or comp) and the difficulty of the comp based on player input. Updates
+        internal attributes.
+        """
         player_options = ['Player vs. Comp', 'Player vs. Player', 'Comp vs. Comp']
-        print(f'The current player options are as follows: {print_list(player_options)}')
+        print(f'The current player options are as follows: {", ".join(player_options)}')
         selected_mode = h_input('Select a mode: ', "Player Select")
-        if selected_mode != '':  # defaults to pvc (defined in init)
+        if selected_mode != '':  # defaults to player vs comp (defined in init)
             selected_mode = process.extractOne(selected_mode, player_options)[0]
             if selected_mode == 'Player vs. Player':
                 self.controllers[1] = 'Player'
             elif selected_mode == 'Comp vs. Comp':
                 self.controllers[0] = 'Comp'
+        # set difficulties
         for i in range(len(self.controllers)):
             if self.controllers[i] == 'Comp':
                 if len(self.difficulties) > 1:
                     input_str = 'Select the difficulty of the '
                     if self.controllers.count('Comp') > 1:
                         input_str += ordinal(i + 1)
-                    input_str += f'comp ({print_list(self.difficulties)}): '
+                    input_str += f'comp ({", ".join(self.difficulties)}): '
                     selected_difficulty = h_input(input_str, 'Difficulty')
                     if selected_difficulty == '':
                         # defaults to previous difficulty if choosing for second player (2 comps)
@@ -3039,6 +3975,7 @@ class FourVsFour:
                             else:
                                 selected_difficulty = self.difficulties[0]
                         else:
+                            # if this is the first controller, picks a random difficulty
                             selected_difficulty = random.choice(self.difficulties)
                     else:
                         selected_difficulty = process.extractOne(selected_difficulty, self.difficulties)[0]
@@ -3047,38 +3984,65 @@ class FourVsFour:
                     # doesn't ask player if only 1 difficulty implemented
                     self.controllers[i] = self.difficulties[0]
 
-    def create_player_party(self, party, target_lv='None'):
+    def create_player_party(self, party: Party, target_lv: Optional[int] = None) -> None:
+        """
+        Creates a party based on player input.
+
+        :param party: The party to add demons to.
+        :param target_lv: The target level for any random demons added. Default is random.
+        """
         demons = []
         random_party = False
-        demon_count = 4 - len(party)
+        if self.match_party1_length:
+            demon_count = len(self.party1)
+        else:
+            demon_count = 4 - len(party)
         for i in range(demon_count):
             player_input = h_input(f'Choose the {ordinal(i + 1)} demon in your party: ', 'Choosing a Party').lower()
+            # choose randomly
             if player_input == 'random':
                 random_party = True
                 break
             elif player_input == '':
                 if len(demons) < 1:
+                    # shortcut for random party (if no demons selected)
                     random_party = True
                 else:
+                    # ends demon selection (party can't be empty)
+                    # when true, future create party calls will match the length of party 1 instead of defaulting to 4
                     self.match_party1_length = True
                 break
+            # if number, use that as the target level in random generation
             elif player_input.isnumeric() and 1 <= int(player_input) <= 99:
                 target_lv = int(player_input)
                 random_party = True
                 break
+            # choose demon
             else:
                 player_input = process.extractOne(player_input, master_list)[0]
+                # find devolution
                 player_input, evolve = find_evolve_count(player_input)
                 if player_input in demon_dict:
                     demons.append(Demon(player_input, evolutions=evolve))
-                else:
+                    print(f'{player_input} added.')
+                elif player_input in magatama_dict:
                     demons.append(DemiFiend(player_input))
+                    print(f'Demi-Fiend {f"({player_input}) " if player_input else ""}added.')
+                else:
+                    # shouldn't really happen since the extractOne is being run from the master_list
+                    raise ValueError(f'Input could not be found in the database: {player_input}')
         for demon in demons:
             party.add_demon(demon)
         if random_party:
             self.create_random_party(party, target_lv=target_lv)
 
-    def create_random_party(self, party, target_lv='None'):
+    def create_random_party(self, party: Party, target_lv: Optional[int] = None) -> None:
+        """
+        Creates a party randomly. Can add on to partially-filled parties as well.
+
+        :param party: The party to add demons to.
+        :param target_lv: The target level for the random demons added. Default is random.
+        """
         if self.match_party1_length:
             party_length = len(self.party1)
         else:
@@ -3086,7 +4050,7 @@ class FourVsFour:
         if len(party) == 0:
             party.add_demon(DemiFiend(target_lv=target_lv, party=party))
         # following if statement is to make sure level selection adheres to parameter instead of current party lv
-        if target_lv == 'None':  # unspecified target level: uses party level average
+        if target_lv is None:  # unspecified target level: uses party level average
             if len(party) < party_length and not party.demifiend_in_party():
                 party.add_demon(DemiFiend(target_lv=party.level, party=party))
             while len(party) < party_length:
@@ -3097,31 +4061,49 @@ class FourVsFour:
             while len(party) < party_length:
                 party.add_demon(Demon(target_lv=target_lv, party=party))
 
-    def who_goes_first(self):
-        # normally: base value = 72, capped between 85 and 50
+    def who_goes_first(self) -> int:
+        """
+        Decides randomly which party will go first.
+
+        :return: 1 if party 1 goes fist, 2 if party 2 goes first.
+        """
+        # this formula is adjusted to give an even chance to both teams
+        # for the in-game formula, see the Endurance overriden version
         party1_chance = 50 + self.party1.level + (self.party1.luck / 2) + self.party1.ag
         party1_chance -= self.party2.level + (self.party2.luck / 2) + self.party2.ag
         if random.randint(0, 100) <= party1_chance:
             return 1
         return 2
 
-    def player_turn(self, party, other_party):
+    def player_turn(self, party: Party, other_party: Party) -> bool:
+        """
+        Runs a turn where the player is in control. Takes in player input. Calls Demon.action until a PressTurns object
+        is empty.
+
+        :param party: The acting party, to be controlled by player input.
+        :param other_party: The opposing party.
+        :return: True if the game should end, False otherwise.
+        """
         press_turns = PressTurns(party)
         if self.controllers[0] == 'Player' and self.controllers[1] in self.difficulties:
             print('Your turn!\n')
         else:
+            # doesn't print "your turn" if there are two players or two comps
             if party == self.party1:
                 print("Player 1's turn!\n")
             else:
                 print("Player 2's turn!\n")
+        # cure statuses and reset rotation
         for demon in party.demons:
             demon.tick_statuses()
         party.rotation.reset()
-        while press_turns.check_turns() and self.check_victory() == False:
+        while press_turns.check_turns() and not self.check_victory():
             print(f'Press turns: {press_turns}   Kagutsuchi: {str(self.kagutsuchi)}')
             print('Demon order:', party.rotation)
+            # main call: updates rotation and takes action
             used_turns = party.rotation.next().action(party, other_party, 'Player', self.kagutsuchi)
             if used_turns == 'Stop':
+                # break out of loop if "Stop" was inputted
                 self.stopped_game = True
                 break
             else:
@@ -3133,7 +4115,17 @@ class FourVsFour:
         print(f'Press turns: {press_turns}\n')
         return False
 
-    def comp_turn(self, party, other_party, difficulty):
+    def comp_turn(self, party: Party, other_party: Party, difficulty: str) -> bool:
+        """
+        Runs a turn where the computer is in control. Calls Demon.action until a PressTurns object is empty.
+
+        :param party: The acting party.
+        :param other_party: The opposing party.
+        :param difficulty: Specifies the type of AI to use in action selection.
+        :return: True if the game should end, False otherwise.
+        """
+        # mainly differs from player turn in the difficulty specification to action()
+        # also cuts some player-only logic, such as the "Stop" catch
         press_turns = PressTurns(party)
         if self.controllers[0] == 'Player' and self.controllers[1] in self.difficulties:
             print('Enemy turn!\n')
@@ -3145,7 +4137,7 @@ class FourVsFour:
         for demon in party.demons:
             demon.tick_statuses()
         party.rotation.reset()
-        while press_turns.check_turns() and self.check_victory() == False:
+        while press_turns.check_turns() and not self.check_victory():
             print(f'Press turns: {press_turns}    Kagutsuchi: {str(self.kagutsuchi)}')
             press_turns.use_turn(party.rotation.next().action(party, other_party, difficulty, self.kagutsuchi))
             other_party.death_update()
@@ -3155,7 +4147,18 @@ class FourVsFour:
         print(f'Press turns: {press_turns}\n')
         return False
 
-    def turn(self, party, other_party, controller):
+    def turn(self, party: Party, other_party: Party, controller: str) -> bool:
+        """
+        Runs a turn. Use this method instead of player_turn or comp_turn. Relegates to those methods based on
+        controller parameter.
+
+        :param party: The acting party.
+        :param other_party: The opposing party.
+        :param controller: The controller of the acting party.
+        :return: True if the game should end, False otherwise.
+        """
+        # stops infinite games
+        # can occur without bugs, ex: two demons left absorb phys and have 0 MP
         self.turns += 1
         if self.turns > 255:
             print('Turn limit (255) reached!')
@@ -3165,54 +4168,68 @@ class FourVsFour:
         else:
             return self.comp_turn(party, other_party, controller)
 
-    def check_victory(self):
+    def check_victory(self) -> bool:
+        """
+        Checks if a party has lost. Used for checking when to end the game.
+
+        :return: True if either party has lost, False otherwise.
+        """
         if self.party1.lose_check() or self.party2.lose_check():
             return True
         return False
 
-    def heal_parties(self):
+    def heal_parties(self) -> None:
+        """
+        Heals all parties in the game. Generally used between games, if using the same FourVsFour object.
+        """
         self.party1.heal()
         self.party2.heal()
 
-    def run(self):
+    def run(self) -> dict:
+        """
+        Sets up and runs the game. Alternates turn calls between parties until one loses.
+
+        :return: A dictionary containing the number of wins for each player, the number of ties, the Kagutsuchi,
+            and if the game was force-stopped or not.
+        """
         if self.ran:
+            # reset between runs if already ran
             self.heal_parties()
             self.turns = 0
             self.stopped_game = False
             self.match_party1_length = False
         else:
+            # if first run: select teams
             self.select_players()
             if self.controllers[0] == 'Player':
                 self.create_player_party(self.party1)
             else:
                 self.create_random_party(self.party1)
             if self.controllers[1] == 'Player':
+                # use party 1 level as target
                 self.create_player_party(self.party2, target_lv=self.party1.level)
             else:
                 self.create_random_party(self.party2, target_lv=self.party1.level)
             self.ran = True
-        print(f"party: df: {str([demon.level for demon in self.party1.demons if demon.magatama != 'None'])}")
-        print(f"party: df mag: {str([demon.magatama for demon in self.party1.demons if demon.magatama != 'None'])}")
-        print(f'party: avg: {self.party1.level}')
-        print(f"comp: df: {str([demon.level for demon in self.party2.demons if demon.magatama != 'None'])}")
-        print(f"comp: df mag: {str([demon.magatama for demon in self.party2.demons if demon.magatama != 'None'])}")
-        print(f'comp: avg: {self.party2.level}')
         current_turn = self.who_goes_first()
         victory = False
-        while victory == False:
+        # alternate between turn calls until one returns True
+        while not victory:
             if current_turn == 1:
                 victory = self.turn(self.party1, self.party2, self.controllers[0])
                 current_turn = 2
             elif current_turn == 2:
                 victory = self.turn(self.party2, self.party1, self.controllers[1])
                 current_turn = 1
+        # output
         output_dict = {'Player 1 Wins': 0,
                        'Player 2 Wins': 0,
                        'Ties': 0,
                        'Kagutsuchi': self.kagutsuchi,
                        'Stop': self.stopped_game}
-        self.kagutsuchi += 1
+        self.kagutsuchi += 1  # increment kagutsuchi
         if self.party1.lose_check():
+            # conditional prints based on controllers (like in player_turn and comp_turn)
             if self.controllers[0] == 'Player' and self.controllers[1] in self.difficulties:
                 print('You lost.')
             else:
@@ -3230,21 +4247,30 @@ class FourVsFour:
         return output_dict
 
 
-# In[24]:
-
-
 class AutoFourVsFour(FourVsFour):
-    def __init__(self, info, kagutsuchi=Kagutsuchi()):
+    """
+    Modified FourVsFour subclass to allow for automated runs without any player input.
+    """
+
+    def __init__(self, info: dict, kagutsuchi: Kagutsuchi = Kagutsuchi()) -> None:
+        """
+        Constructor for AutoFourVsFour.
+
+        :param info: A dict containing info about how the game should be run. Should contain info about demons,
+            controllers, and target levels. Created in experiment().
+        :param kagutsuchi: The Kagutsuchi at which to start the game. Random if not specified.
+        """
+
         super().__init__(kagutsuchi)
         self.info = info
-        for demon in self.info['Demons 1']:
-            self.party1.add_demon(demon)
-        for demon in self.info['Demons 2']:
-            self.party2.add_demon(demon)
         self.party1.heal()
         self.party2.heal()
 
-    def select_players(self):
+    def select_players(self) -> None:
+        """
+        Selects the players involved in the game based on the info attribute. Overriden from base class to remove
+        player input.
+        """
         if 'Controller 1' in self.info:
             self.controllers[0] = self.info['Controller 1']
         else:
@@ -3254,23 +4280,56 @@ class AutoFourVsFour(FourVsFour):
         else:
             self.controllers[1] = self.difficulties[0]
 
-    def create_random_party(self, party, target_lv='None'):
-        if party == self.party1 and self.info['Target Level 1'] != 'None':
+    def create_random_party(self, party: Party, target_lv: Optional[int] = None):
+        """
+        Creates a party randomly. Can add on to partially-filled parties as well. Overriden from base class to
+        use demons and target levels from the info attribute (if specified).
+
+        :param party: The party to add demons to.
+        :param target_lv: The target level for the random demons added. Will be overriden by the info attribute
+            if that is specified. Default is random.
+        """
+        # adds demons to parties based on info dict
+        for demon in self.info['Demons 1']:
+            self.party1.add_demon(demon)
+        for demon in self.info['Demons 2']:
+            self.party2.add_demon(demon)
+        if party == self.party1 and self.info['Target Level 1'] is not None:
             super().create_random_party(party, target_lv=self.info['Target Level 1'])
-        elif party == self.party2 and self.info['Target Level 2'] != 'None':
+        elif party == self.party2 and self.info['Target Level 2'] is not None:
             super().create_random_party(party, target_lv=self.info['Target Level 2'])
         else:
             super().create_random_party(party, target_lv=target_lv)
 
 
 class Endurance(FourVsFour):
+    """
+    Extends the FourVsFour class. Changes the rules so that Party 1's demons are not healed between battles
+    and the game continues until Party 1 loses.
+    """
 
-    def heal_parties(self):
-        # overridden to create new p2 party instead of healing both
+    def heal_parties(self) -> None:
+        """
+        Creates a new party for Party 2. Overrides the base class to remove healing for Party 1 and to remake Party 2
+        each game instead of healing the same party. Generally used between games.
+        """
+        # removes temp statuses, debuffs, etc. from Party 1 (but no full reset or heal)
+        self.party1.soft_reset()
+        # ticks poison once between games
+        for demon in self.party1.demons:
+            demon.apply_poison_dmg()
+        # creates new Party 2
+        self.party2 = Party([])
         self.create_random_party(self.party2, target_lv=self.party1.level)
 
-    def who_goes_first(self):
-        # overridden to favor player 1; matches base game
+    def who_goes_first(self) -> int:
+        """
+        Decides randomly which party will go first. Overriden from base class to favor Party 1.
+
+        :return: 1 if party 1 goes fist, 2 if party 2 goes first.
+        """
+        # this formula matches the base game, except for back attacks
+        # higher base chance (72) and chance is clamped between 50 and 85
         party1_chance = 72 + self.party1.level + (self.party1.luck / 2) + self.party1.ag
         party1_chance -= self.party2.level + (self.party2.luck / 2) + self.party2.ag
         if party1_chance > 85:
@@ -3281,7 +4340,13 @@ class Endurance(FourVsFour):
             return 1
         return 2
 
-    def run(self):
+    def run(self) -> dict:
+        """
+        Sets up and runs the game. Overriden from the base class in order to keep running games until Party 1 loses.
+
+        :return: A dictionary containing the number of wins for each player, the number of ties, the Kagutsuchi,
+            and if the game was force-stopped or not.
+        """
         party1_alive = True
         output_dict = {'Player 1 Wins': 0, 'Player 2 Wins': 0, 'Ties': 0}
         while party1_alive:
@@ -3298,57 +4363,62 @@ class Endurance(FourVsFour):
         output_dict['Stop'] = self.stopped_game
         return output_dict
 
+
 class AutoEndurance(Endurance, AutoFourVsFour):
+    """
+    Allows the Endurance game mode to run without player input, similarly to AutoFourVsFour.
+    """
+    # neither of the methods overriden by the classes override each other, so this just works
     pass
 
 
-
-# In[25]:
-
-
-def experiment(game_modes):
+def experiment() -> None:
+    """
+    Runs an experiment. Reads the external file database/experiment-settings.json and takes in user input to set
+    experiment parameters, and then runs games automatically according to those parameters.
+    """
     print('\nEntering experiment mode...\n')
-    game_modes.remove('Experiment')
+    # when adding new game modes, add them to this list
+    # different from the main() list because they have to be separately implemented into experiment
+    game_modes = ['4 vs. 4', 'Endurance']
     p1_wins = 0
     p2_wins = 0
     ties = 0
-    default_test_info = {
-        'Trials': 2500,
-        'Game Mode': '4 vs. 4',
-        'Same Teams': False,
-        'Target Level 1': 75,
-        'Target Level 2': 'None',
-        'Demons 1': [],
-        'Demons 2': [],
-        'Kagutsuchi': Kagutsuchi(),
-        'Log Games': True,
-        'File Name': 'gamelog'
-    }
-    test_info = copy.deepcopy(default_test_info)
+    # create one copy to change and one copy to hold defaults (avoid loading each time)
+    with open('database/experiment-settings.json') as f:
+        default_test_info = json.load(f)
+    # don't need a deepcopy since all values in the json are primitives
+    test_info = copy.copy(default_test_info)
     # setting changing
     settings_names = list(test_info.keys())
     while True:
+        # print settings and values
         settings_display = ''
         for s_name in settings_names:
             if 'Demons' in s_name:
-                names = [f'Demi-Fiend ({x.magatama})' if x.magatama != 'None' else x.name for x in test_info[s_name]]
+                names = [f'Demi-Fiend ({x.magatama})' if x.magatama is not None else x.name for x in test_info[s_name]]
                 settings_display += f'{s_name}: {names}\n'
             else:
                 settings_display += f'{s_name}: {test_info[s_name]}\n'
         print(f'Settings:\n{settings_display}')
+        # select setting to change
         changing_setting = h_input('Choose a setting to change or press enter: ', 'Settings Overview')
         if changing_setting == '':
             break
         else:
             changing_setting = process.extractOne(changing_setting, settings_names + ['Default'])[0]
+        # set the number of trials
+        # each elif clause sets the variable setting_val— it will be assigned to the dict at the end
         if changing_setting == 'Trials':
             valid_input = False
             while not valid_input:
                 setting_val = h_input('Enter the number of trials: ', 'Set Trials')
+                # empty input goes to default
                 if setting_val == '':
                     setting_val = default_test_info['Trials']
                     print(f'The number of trials will be set to the default value.')
                     valid_input = True
+                # check if positive integer
                 elif setting_val.isnumeric():
                     setting_val = int(setting_val)
                     if setting_val >= 1:
@@ -3358,12 +4428,14 @@ def experiment(game_modes):
                 else:
                     print('The input must be numeric.\n')
             print(f'Trial number set to {setting_val}.')
+        # set the game mode
         elif changing_setting == 'Game Mode':
             if len(game_modes) > 1:
                 valid_input = False
                 while not valid_input:
-                    print(f'The current game modes are as follows: {print_list(game_modes)}')
+                    print(f'The current game modes are as follows: {", ".join(game_modes)}')
                     setting_val = h_input('Enter a game mode: ', 'Set Game Mode')
+                    # empty default
                     if setting_val == '':
                         setting_val = default_test_info['Game Modes']
                         print(f'The game mode will be set to the default.')
@@ -3372,17 +4444,21 @@ def experiment(game_modes):
                         setting_val = process.extractOne(setting_val, game_modes)[0]
                         valid_input = True
             else:
+                # if there is only one game mode, don't bother asking
                 print(f'Only one game mode is available ({game_modes[0]}).')
                 setting_val = game_modes[0]
             print(f'Game mode set to {setting_val}.')
+        # set whether teams remain the same between games
         elif changing_setting == 'Same Teams':
             valid_input = False
             while not valid_input:
                 setting_val = h_input('Use the same teams every battle? (y/n): ', 'Set Same Teams').lower()
+                # default
                 if setting_val == '':
                     setting_val = default_test_info['Same Teams']
                     print(f'Team carry-over will be set to the default.')
                     valid_input = True
+                # parse y/yes as True and n/no as False
                 elif setting_val == 'y' or setting_val == 'yes':
                     setting_val = True
                     valid_input = True
@@ -3391,7 +4467,9 @@ def experiment(game_modes):
                     valid_input = True
                 else:
                     print('The input must be "y", "yes", "n", or "no".\n')
+            # for boolean settings, using inline if else to print info
             print(f'Teams set to {"carry over" if setting_val else "remake"} after each battle.')
+        # set the target level of Party 1
         elif changing_setting == 'Target Level 1':
             valid_input = False
             while not valid_input:
@@ -3404,10 +4482,11 @@ def experiment(game_modes):
                         print('The number must be between 1 and 99, inclusive.\n')
                 elif setting_val.title() == 'None' or setting_val == '':
                     valid_input = True
-                    setting_val = 'None'
+                    setting_val = None
                 else:
                     print('The input must be numeric or "None".\n')
             print(f'Target level for party 1 set to {setting_val}.')
+        # set the target level of Party 2 (same as Target Level 1)
         elif changing_setting == 'Target Level 2':
             valid_input = False
             while not valid_input:
@@ -3420,26 +4499,35 @@ def experiment(game_modes):
                         print('The number must be between 1 and 99, inclusive.\n')
                 elif setting_val.title() == 'None' or setting_val == '':
                     valid_input = True
-                    setting_val = 'None'
+                    setting_val = None
                 else:
                     print('The input must be numeric or "None".\n')
             print(f'Target level for party 2 set to {setting_val}.')
+        # set the specific demons to be included in Party 1
+        # note that since this creates non-primitives, the json default can't be changed (has to be empty list)
+        # would be doable with the demon-string creator in the below todo
         elif changing_setting == 'Demons 1':
             setting_val = []
             while len(setting_val) < 4:
                 demon_input = h_input(f'Choose the {ordinal(len(setting_val) + 1)} demon in party 1: ', 'Set Demons')
+                # end selection if blank input
                 if demon_input == '':
                     break
+                # create demon based on input (like in create random party)
+                # TODO: make a function that creates a demon from a string
+                # prevent repetition between here and FourVsFour class
                 demon_input = process.extractOne(demon_input, master_list)[0]
                 demon_input, evolve = find_evolve_count(demon_input)
                 if demon_input in demon_dict:
                     setting_val.append(Demon(demon_input, evolutions=evolve))
                     print(f'{setting_val[-1].name} was added to party 1.')
-                else:
+                elif demon_input in magatama_dict:
                     setting_val.append(DemiFiend(demon_input))
                     print(f'{setting_val[-1].name} ({setting_val[-1].magatama}) was added to party 1.')
-            sv_demon_names = [f'Demi-Fiend ({x.magatama})' if x.magatama != 'None' else x.name for x in setting_val]
-            print(f'Specified demons in party 1: {print_list(sv_demon_names)}')
+            # list comp: get names of demons; note demi-fiend's magatama if the demon is a demi-fiend
+            sv_demon_names = [f'Demi-Fiend ({x.magatama})' if x.magatama is not None else x.name for x in setting_val]
+            print(f'Specified demons in party 1: {", ".join(sv_demon_names)}')
+        # set the demons to be included in Party 2 (same as Demons 1)
         elif changing_setting == 'Demons 2':
             setting_val = []
             while len(setting_val) < 4:
@@ -3454,39 +4542,45 @@ def experiment(game_modes):
                 else:
                     setting_val.append(DemiFiend(demon_input))
                     print(f'{setting_val[-1].name} ({setting_val[-1].magatama}) was added to party 2.')
-            sv_demon_names = [f'Demi-Fiend ({x.magatama})' if x.magatama != 'None' else x.name for x in setting_val]
-            print(f'Specified demons in party 2: {print_list(sv_demon_names)}')
-        elif changing_setting == 'Kagutsuchi':
+            sv_demon_names = [f'Demi-Fiend ({x.magatama})' if x.magatama is not None else x.name for x in setting_val]
+            print(f'Specified demons in party 2: {", ".join(sv_demon_names)}')
+        # set the kagutsuchi phase
+        elif changing_setting == 'Kagutsuchi Phase':
             valid_phase_input = False
             while not valid_phase_input:
-                setting_kg_phase = h_input('Enter the kagutsuchi phase (0-8): ', 'Set Kagutsuchi')
-                if setting_kg_phase.isnumeric():
-                    setting_kg_phase = int(setting_kg_phase)
-                    if 0 <= setting_kg_phase <= 8:
+                setting_val = h_input('Enter the kagutsuchi phase (0-8): ', 'Set Kagutsuchi Phase')
+                # check if number between 0 and 8
+                if setting_val.isnumeric():
+                    setting_val = int(setting_val)
+                    if 0 <= setting_val <= 8:
                         valid_phase_input = True
                     else:
                         print('The number must be between 0 and 8 (inclusive).\n')
-                elif setting_kg_phase.title() == 'Dead':
+                # also check for "dead" and "random" strings
+                elif setting_val.title() == 'Dead':
                     valid_phase_input = True
-                    setting_kg_phase = 'Dead'
-                elif setting_kg_phase.title() == 'Random' or setting_kg_phase == '':
+                    setting_val = 'Dead'
+                elif setting_val.title() == 'Random' or setting_val == '':
                     valid_phase_input = True
-                    setting_kg_phase = 'Random'
+                    setting_val = 'Random'
                 else:
                     print('The input must be numeric, "Dead", or "Random".\n')
+            print(f'Kagutsuchi phase set to {setting_val}.')
+        # set whether kagutsuchi rotates or not
+        elif changing_setting == 'Kagutsuchi Freeze':
             valid_frozen_input = False
             while not valid_frozen_input:
-                setting_kg_frozen = h_input('Prevent kagutsuchi phase changes? (y/n): ', 'Set Kagutsuchi').lower()
-                if setting_kg_frozen == 'y' or setting_kg_frozen == 'yes':
-                    setting_kg_frozen = True
+                setting_val = h_input('Prevent kagutsuchi phase changes? (y/n): ', 'Set Kagutsuchi Freeze').lower()
+                if setting_val == 'y' or setting_val == 'yes':
+                    setting_val = True
                     valid_frozen_input = True
-                elif setting_kg_frozen == 'n' or setting_kg_frozen == 'no' or setting_kg_frozen == '':
-                    setting_kg_frozen = False
+                elif setting_val == 'n' or setting_val == 'no' or setting_val == '':
+                    setting_val = False
                     valid_frozen_input = True
                 else:
                     print('The input must be "y", "yes", "n", or "no".\n')
-            setting_val = Kagutsuchi(setting_kg_phase, setting_kg_frozen)
-            print(f'Kagutsuchi set to: {setting_val.more_info()}')
+            print(f'Kagutsuchi set to {"stay the same" if setting_val else "rotate"} between games.')
+        # sets whether game info is printed or saved to a file
         elif changing_setting == 'Log Games':
             valid_input = False
             while not valid_input:
@@ -3507,6 +4601,7 @@ def experiment(game_modes):
                 print(f'The game logs will be saved to {test_info["File Name"]}.txt.')
             else:
                 print('Game output will be displayed in the console.')
+        # sets the name of the file to save logs to
         elif changing_setting == 'File Name':
             valid_input = False
             while not valid_input:
@@ -3516,40 +4611,46 @@ def experiment(game_modes):
                     setting_val = default_test_info['File Name']
                     print(f'The file name will be set to the default value.')
                 else:
+                    # ensure given file name is only letters, numbers, hyphens, and underscores
                     for char in setting_val:
                         if not char.isalpha() and not char.isnumeric():
-                            if char != "_":
+                            if char != '_' and char != '-':
                                 valid_input = False
                 if not valid_input:
                     print('The file name must contain only letters and numbers.\n')
-            print(f'The game log file will be called "{setting_val}".txt.')
+            print(f'The game log file will be called "{setting_val}.txt".')
+        # reset all settings to their defaults (as loaded in from experiment-settings.json)
         if changing_setting == 'Default':
             print('All settings will be restored to the defaults.')
             confirm_reset = h_input('Type "back" to return or anything else to proceed: ', 'Default Settings')
             if confirm_reset != 'back':
-                test_info = copy.deepcopy(default_test_info)
+                test_info = copy.copy(default_test_info)
                 print('Settings reset to default.')
         else:
+            # assign setting_val to the main settings dict
+            # if/else here because default doesn't use setting_val
             test_info[changing_setting] = setting_val
         print()
     # game initiation
+    exp_kagutsuchi = Kagutsuchi(test_info['Kagutsuchi Phase'], test_info['Kagutsuchi Freeze'])
     if test_info['Game Mode'] == '4 vs. 4':
-        game = AutoFourVsFour(test_info, kagutsuchi=test_info['Kagutsuchi'])
+        game = AutoFourVsFour(test_info, kagutsuchi=exp_kagutsuchi)
     elif test_info['Game Mode'] == 'Endurance':
-        game = AutoEndurance(test_info, kagutsuchi=test_info['Kagutsuchi'])
+        game = AutoEndurance(test_info, kagutsuchi=exp_kagutsuchi)
     # redirect standard output to file
     if test_info['Log Games']:
         orig_stdout = sys.stdout
         f = open(f'{test_info["File Name"]}.txt', 'w')
         sys.stdout = f
-        start_time = timeit.default_timer()
+    # start timer to track elapsed time
+    start_time = timeit.default_timer()
     # run games
     for i in range(test_info['Trials']):
         game_info = game.run()
         p1_wins += game_info['Player 1 Wins']
         p2_wins += game_info['Player 2 Wins']
         ties += game_info['Ties']
-        # print update
+        # print update (if logging to file)
         if test_info['Log Games']:
             sys.stdout = orig_stdout
             current_time = timeit.default_timer()
@@ -3557,19 +4658,18 @@ def experiment(game_modes):
             info_str += f'\tElapsed time: {round(current_time - start_time, 3)}s'
             print(info_str, end='')
             sys.stdout = f
-        # remake game
         if not test_info['Same Teams']:
-            if test_info['Game Mode'] == '4 vs. 4':
-                game = AutoFourVsFour(test_info, kagutsuchi=test_info['Kagutsuchi'])
-            elif test_info['Game Mode'] == 'Endurance':
-                game = AutoEndurance(test_info, kagutsuchi=test_info['Kagutsuchi'])
-            else:
-                raise RuntimeError('Missing game mode')
+            # recreate teams
+            game.party1 = Party([])
+            game.create_random_party(game.party1)
+            game.party2 = Party([])
+            game.create_random_party(game.party2, game.party1.level)
     # close/reset output
     if test_info['Log Games']:
         sys.stdout = orig_stdout
         f.close()
         print()
+    # print results
     summary_str = f'Total score: {p1_wins} to {p2_wins} ('
     if p1_wins > p2_wins:
         summary_str += 'Player 1 leading'
@@ -3579,14 +4679,18 @@ def experiment(game_modes):
         summary_str += 'tied'
     if ties > 0:
         summary_str += f', {ties} ties'
-    summary_str += ') \n'
+    summary_str += ')'
+    # give final time if not in Log Games mode (where time would always be visible)
+    if not test_info['Log Games']:
+        summary_str += f'\nTotal time: {round(timeit.default_timer() - start_time, 3)}s'
     print(summary_str)
 
 
-# In[26]:
-
-
-def main():
+def main() -> None:
+    """
+    The main function. Allows players to choose game modes and then initializes and runs games. Also controls the
+    decision to play again.
+    """
     game_modes = ['4 vs. 4', 'Endurance', 'Experiment']
     playing = True
     runback = False
@@ -3596,10 +4700,12 @@ def main():
     kagutsuchi = Kagutsuchi()
     print('Welcome to NocturneTS!\nAt any time, type "help" for commands and rule explanations.\n')
     while playing:
-        if runback == False:
-            print(f'The current game modes are as follows: {print_list(game_modes)}')
+        if not runback:
+            # select game mode
+            print(f'The current game modes are as follows: {", ".join(game_modes)}')
             selected_mode = h_input('Choose a game mode: ', 'Game Modes')
             if selected_mode == '':
+                # default to first mode (4 vs 4)
                 selected_mode = game_modes[0]
             else:
                 selected_mode = process.extractOne(selected_mode, game_modes)[0]
@@ -3608,12 +4714,15 @@ def main():
             elif selected_mode == 'Endurance':
                 game = Endurance(kagutsuchi=kagutsuchi)
             elif selected_mode == 'Experiment':
-                experiment(game_modes)
+                experiment()
                 break
+        # run game; capture output
         game_info = game.run()
+        # tracks wins of each player
         p1_wins += game_info['Player 1 Wins']
         p2_wins += game_info['Player 2 Wins']
         ties += game_info['Ties']
+        # print current standings
         summary_str = f'Total score: {p1_wins} to {p2_wins} ('
         if p1_wins > p2_wins:
             summary_str += 'Player 1 leading'
@@ -3627,26 +4736,26 @@ def main():
                 summary_str += 's'
         summary_str += ')'
         print(summary_str)
+        # auto break if game was manually stopped
         if game_info['Stop']:
             playing = False
         else:
+            # ask to play again
             print()
             repeat_decision = h_input('Play again? (y/n) ', 'Game End').lower()
             # could incorporate fuzzywuzzy
             if repeat_decision == 'y' or repeat_decision == 'yes':
+                # ask to keep same settings
                 runback_decision = h_input('Same teams? (y/n) ', 'Game End').lower()
                 if runback_decision == 'y' or runback_decision == 'yes':
+                    # if yes: skips setup, just runs game again
                     runback = True
                 else:
+                    # if no: goes back to the beginning
                     runback = False
             else:
                 playing = False
 
 
-# In[29]:
-
-
 if __name__ == "__main__":
     main()
-
-# In[27]:

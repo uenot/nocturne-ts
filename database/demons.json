@@ -36,7 +36,7 @@
         ],
         "Weaknesses": [],
         "Race": "Tyrant",
-        "Evolution": "None"
+        "Evolution": null
     },
     "Metatron": {
         "Base Moves": [
@@ -84,7 +84,7 @@
         "Reflect": [],
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Shiva": {
         "Base Moves": [
@@ -135,7 +135,7 @@
         "Reflect": [],
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Vishnu": {
         "Base Moves": [
@@ -187,7 +187,7 @@
         "Attack": {},
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Mot": {
         "Base Moves": [
@@ -234,7 +234,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Michael": {
         "Base Moves": [
@@ -279,7 +279,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Gabriel": {
         "Base Moves": [
@@ -324,7 +324,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Beelzebub": {
         "Base Moves": [
@@ -413,7 +413,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Mada": {
         "Base Moves": [
@@ -458,7 +458,7 @@
         "Attack": {},
         "Reflect": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Ongyo-Ki": {
         "Base Moves": [
@@ -508,7 +508,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Lilith": {
         "Base Moves": [
@@ -555,7 +555,7 @@
         "Reflect": [],
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Raidou Kuzunoha XIV": {
         "Base Moves": [
@@ -611,7 +611,7 @@
         "Reflect": [],
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Mithra": {
         "Base Moves": [
@@ -661,7 +661,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Aciel": {
         "Learned Moves": [
@@ -705,7 +705,7 @@
         "Attack": {},
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Trumpeter": {
         "Base Moves": [
@@ -752,7 +752,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Thor": {
         "Base Moves": [
@@ -797,7 +797,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Hresvelgr": {
         "Base Moves": [
@@ -842,7 +842,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Skadi": {
         "Learned Moves": [
@@ -883,7 +883,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Surt": {
         "Base Moves": [
@@ -935,7 +935,7 @@
         ],
         "Race": "Tyrant",
         "Reflect": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Samael": {
         "Base Moves": [
@@ -979,7 +979,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Uriel": {
         "Learned Moves": [
@@ -1018,7 +1018,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Bishamon": {
         "Base Moves": [
@@ -1066,7 +1066,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Rangda": {
         "Base Moves": [
@@ -1109,7 +1109,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Nyx": {
         "Base Moves": [
@@ -1153,7 +1153,7 @@
         "Absorb": [],
         "Void": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Abaddon": {
         "Base Moves": [
@@ -1254,7 +1254,7 @@
         "Race": "Fiend",
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Flauros": {
         "Base Moves": [
@@ -1301,7 +1301,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Kali": {
         "Base Moves": [
@@ -1346,7 +1346,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Atropos": {
         "Base Moves": [
@@ -1393,7 +1393,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Yurlungur": {
         "Base Moves": [
@@ -1441,7 +1441,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Fuu-Ki": {
         "Base Moves": [
@@ -1482,7 +1482,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Black Frost": {
         "Base Moves": [
@@ -1530,7 +1530,7 @@
         "Race": "Night",
         "Attack": {},
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Odin": {
         "Base Moves": [
@@ -1577,7 +1577,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Tao Tie": {
         "Base Moves": [
@@ -1620,7 +1620,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Scathach": {
         "Base Moves": [
@@ -1759,7 +1759,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Futomimi": {
         "Base Moves": [
@@ -1801,7 +1801,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Lachesis": {
         "Base Moves": [
@@ -1848,7 +1848,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Rakshasa": {
         "Base Moves": [
@@ -1895,7 +1895,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Garuda": {
         "Learned Moves": [
@@ -1937,7 +1937,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Gurr": {
         "Base Moves": [
@@ -1988,7 +1988,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Pale Rider": {
         "Base Moves": [
@@ -2033,7 +2033,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Sui-Ki": {
         "Base Moves": [
@@ -2077,7 +2077,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Beiji-Weng": {
         "Base Moves": [
@@ -2123,7 +2123,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Cerberus": {
         "Base Moves": [
@@ -2168,7 +2168,7 @@
         "Attack": {},
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Black Rider": {
         "Base Moves": [
@@ -2218,7 +2218,7 @@
         "Reflect": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Barong": {
         "Base Moves": [
@@ -2262,7 +2262,7 @@
         "Attack": {},
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Kin-Ki": {
         "Base Moves": [
@@ -2305,7 +2305,7 @@
         "Reflect": [],
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Decarabia": {
         "Base Moves": [
@@ -2355,7 +2355,7 @@
         "Reflect": [],
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Clotho": {
         "Base Moves": [
@@ -2397,7 +2397,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Girimehkala": {
         "Base Moves": [
@@ -2439,7 +2439,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Ganesha": {
         "Learned Moves": [
@@ -2480,7 +2480,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Parvati": {
         "Learned Moves": [
@@ -2521,7 +2521,7 @@
         "Attack": {},
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Titania": {
         "Base Moves": [
@@ -2571,7 +2571,7 @@
         "Absorb": [],
         "Void": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Amaterasu": {
         "Base Moves": [
@@ -2613,7 +2613,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Queen Mab": {
         "Base Moves": [
@@ -2661,7 +2661,7 @@
         "Absorb": [],
         "Void": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Chimera": {
         "Base Moves": [
@@ -2707,7 +2707,7 @@
         "Attack": {},
         "Reflect": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Quetzacoatl": {
         "Base Moves": [
@@ -2756,7 +2756,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Gogmagog": {
         "Base Moves": [
@@ -2850,7 +2850,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Lakshmi": {
         "Base Moves": [
@@ -2900,7 +2900,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Wu Kong": {
         "Learned Moves": [
@@ -2939,7 +2939,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Sparna": {
         "Base Moves": [
@@ -3033,7 +3033,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Loa": {
         "Base Moves": [
@@ -3082,7 +3082,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Jikoku": {
         "Base Moves": [
@@ -3130,7 +3130,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Efreet": {
         "Base Moves": [
@@ -3176,7 +3176,7 @@
         "Reflect": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Dakini": {
         "Base Moves": [
@@ -3222,7 +3222,7 @@
         "Reflect": [],
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Loki": {
         "Base Moves": [
@@ -3273,7 +3273,7 @@
         "Absorb": [],
         "Void": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Shadow": {
         "Base Moves": [
@@ -3326,7 +3326,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Cu Chulainn": {
         "Learned Moves": [
@@ -3369,7 +3369,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "White Rider": {
         "Base Moves": [
@@ -3412,7 +3412,7 @@
         "Reflect": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Dominion": {
         "Base Moves": [
@@ -3459,7 +3459,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Titan": {
         "Base Moves": [
@@ -3502,7 +3502,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Legion": {
         "Base Moves": [
@@ -3549,7 +3549,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Sati": {
         "Base Moves": [
@@ -3692,7 +3692,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Kaiwan": {
         "Base Moves": [
@@ -3744,7 +3744,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Oberon": {
         "Base Moves": [
@@ -3791,7 +3791,7 @@
         "Reflect": [],
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Hanuman": {
         "Learned Moves": [
@@ -3872,7 +3872,7 @@
         "Void": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Mikazuchi": {
         "Base Moves": [
@@ -3916,7 +3916,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Ose": {
         "Base Moves": [
@@ -3963,7 +3963,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Pazuzu": {
         "Base Moves": [
@@ -4006,7 +4006,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Sakahagi": {
         "Base Moves": [
@@ -4048,7 +4048,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Dionysus": {
         "Base Moves": [
@@ -4092,7 +4092,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Jinn": {
         "Base Moves": [
@@ -4181,7 +4181,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Long": {
         "Learned Moves": [
@@ -4220,7 +4220,7 @@
         "Reflect": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Baihu": {
         "Base Moves": [
@@ -4268,7 +4268,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Setanta": {
         "Base Moves": [
@@ -4362,7 +4362,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Mothman": {
         "Base Moves": [
@@ -4405,7 +4405,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Phantom": {
         "Base Moves": [
@@ -4454,7 +4454,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Hell Biker": {
         "Base Moves": [
@@ -4493,7 +4493,7 @@
         "Reflect": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Kushinada": {
         "Base Moves": [
@@ -4536,7 +4536,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Virtue": {
         "Base Moves": [
@@ -4580,7 +4580,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Okuninushi": {
         "Base Moves": [
@@ -4622,7 +4622,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Horus": {
         "Base Moves": [
@@ -4670,7 +4670,7 @@
         "Attack": {},
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Troll": {
         "Base Moves": [
@@ -4716,7 +4716,7 @@
         "Reflect": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Kurama": {
         "Learned Moves": [
@@ -4759,7 +4759,7 @@
         "Reflect": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Onkot": {
         "Base Moves": [
@@ -4861,7 +4861,7 @@
         "Race": "Fallen",
         "Attack": {},
         "Reflect": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Raja Naga": {
         "Base Moves": [
@@ -4909,7 +4909,7 @@
         "Attack": {},
         "Reflect": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Succubus": {
         "Base Moves": [
@@ -4952,7 +4952,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Daisoujou": {
         "Base Moves": [
@@ -4994,7 +4994,7 @@
         "Attack": {},
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Feng Huang": {
         "Base Moves": [
@@ -5039,7 +5039,7 @@
         "Attack": {},
         "Reflect": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Sarutahiko": {
         "Base Moves": [
@@ -5086,7 +5086,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Saki Mitama": {
         "Base Moves": [
@@ -5136,7 +5136,7 @@
         "Reflect": [],
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Mizuchi": {
         "Base Moves": [
@@ -5227,7 +5227,7 @@
         "Reflect": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Komoku": {
         "Base Moves": [
@@ -5271,7 +5271,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Power": {
         "Base Moves": [
@@ -5315,7 +5315,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Baphomet": {
         "Base Moves": [
@@ -5358,7 +5358,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Valkyrie": {
         "Learned Moves": [
@@ -5397,7 +5397,7 @@
         "Reflect": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Shikome": {
         "Base Moves": [
@@ -5443,7 +5443,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Kusi Mitama": {
         "Base Moves": [
@@ -5493,7 +5493,7 @@
         "Reflect": [],
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Nue": {
         "Base Moves": [
@@ -5536,7 +5536,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Sarasvati": {
         "Base Moves": [
@@ -5581,7 +5581,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Arahabaki": {
         "Learned Moves": [
@@ -5633,7 +5633,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Gui Xian": {
         "Learned Moves": [
@@ -5674,7 +5674,7 @@
         "Attack": {},
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Matador": {
         "Base Moves": [
@@ -5719,7 +5719,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Eligor": {
         "Base Moves": [
@@ -5768,7 +5768,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Nigi Mitama": {
         "Base Moves": [
@@ -5818,7 +5818,7 @@
         "Reflect": [],
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Karasu": {
         "Base Moves": [
@@ -5910,7 +5910,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Naga": {
         "Base Moves": [
@@ -6004,7 +6004,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Black Ooze": {
         "Base Moves": [
@@ -6053,7 +6053,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Zouchou": {
         "Base Moves": [
@@ -6098,7 +6098,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Senri": {
         "Learned Moves": [
@@ -6139,7 +6139,7 @@
         "Attack": {},
         "Reflect": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Kelpie": {
         "Base Moves": [
@@ -6182,7 +6182,7 @@
         "Reflect": [],
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Cai-Zhi": {
         "Base Moves": [
@@ -6228,7 +6228,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Oni": {
         "Base Moves": [
@@ -6275,7 +6275,7 @@
         "Reflect": [],
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Incubus": {
         "Base Moves": [
@@ -6321,7 +6321,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Raiju": {
         "Base Moves": [
@@ -6365,7 +6365,7 @@
         "Attack": {},
         "Reflect": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Ara Mitama": {
         "Base Moves": [
@@ -6415,7 +6415,7 @@
         "Reflect": [],
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Kikuri-Hime": {
         "Base Moves": [
@@ -6460,7 +6460,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Makami": {
         "Learned Moves": [
@@ -6499,7 +6499,7 @@
         "Absorb": [],
         "Resist": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Dis": {
         "Base Moves": [
@@ -6585,7 +6585,7 @@
         "Reflect": [],
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Unicorn": {
         "Base Moves": [
@@ -6634,7 +6634,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Forneus": {
         "Base Moves": [
@@ -6681,7 +6681,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Momunofu": {
         "Base Moves": [
@@ -6775,7 +6775,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Chatterskull": {
         "Base Moves": [
@@ -6820,7 +6820,7 @@
         "Attack": {},
         "Reflect": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Flaemis": {
         "Base Moves": [
@@ -6865,7 +6865,7 @@
         "Attack": {},
         "Reflect": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Koppa": {
         "Base Moves": [
@@ -6957,7 +6957,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Uzume": {
         "Base Moves": [
@@ -7004,7 +7004,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Archangel": {
         "Base Moves": [
@@ -7051,7 +7051,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Nekomata": {
         "Base Moves": [
@@ -7143,7 +7143,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Minakata": {
         "Base Moves": [
@@ -7193,7 +7193,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Yaka": {
         "Base Moves": [
@@ -7240,7 +7240,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Blob": {
         "Base Moves": [
@@ -7285,7 +7285,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Bicorn": {
         "Base Moves": [
@@ -7335,7 +7335,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Aquans": {
         "Base Moves": [
@@ -7380,7 +7380,7 @@
         "Attack": {},
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Isora": {
         "Base Moves": [
@@ -7422,7 +7422,7 @@
         "Reflect": [],
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Nozuchi": {
         "Base Moves": [
@@ -7515,7 +7515,7 @@
         "Attack": {},
         "Reflect": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Inugami": {
         "Base Moves": [
@@ -7607,7 +7607,7 @@
         "Reflect": [],
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Angel": {
         "Base Moves": [
@@ -7654,7 +7654,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Choronzon": {
         "Base Moves": [
@@ -7701,7 +7701,7 @@
         "Race": "Haunt",
         "Attack": {},
         "Reflect": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "High Pixie": {
         "Base Moves": [
@@ -7795,7 +7795,7 @@
         "Reflect": [],
         "Absorb": [],
         "Weaknesses": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Apsaras": {
         "Base Moves": [
@@ -7838,7 +7838,7 @@
         "Reflect": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Lilim": {
         "Base Moves": [
@@ -7926,7 +7926,7 @@
         "Reflect": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Datsue-Ba": {
         "Base Moves": [
@@ -7969,7 +7969,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Mou-Ryo": {
         "Base Moves": [
@@ -8011,7 +8011,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Erthys": {
         "Base Moves": [
@@ -8054,7 +8054,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Zhen": {
         "Base Moves": [
@@ -8104,7 +8104,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Slime": {
         "Base Moves": [
@@ -8152,7 +8152,7 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Hua Po": {
         "Base Moves": [
@@ -8198,7 +8198,7 @@
         "Reflect": [],
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Shikigami": {
         "Base Moves": [
@@ -8240,7 +8240,7 @@
         "Absorb": [],
         "Void": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Preta": {
         "Base Moves": [
@@ -8286,7 +8286,7 @@
         "Reflect": [],
         "Absorb": [],
         "Resist": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Kodama": {
         "Base Moves": [
@@ -8328,7 +8328,7 @@
         "Reflect": [],
         "Absorb": [],
         "Void": [],
-        "Evolution": "None"
+        "Evolution": null
     },
     "Pixie": {
         "Base Moves": [
@@ -8422,6 +8422,6 @@
         "Attack": {},
         "Reflect": [],
         "Absorb": [],
-        "Evolution": "None"
+        "Evolution": null
     }
 }

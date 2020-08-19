@@ -1,121 +1,4 @@
 from __future__ import annotations
-
-# to do:
-
-# add hard ai thru reinforcement q-learning
-
-# do bind or stun affect crit rate?
-
-# check if lakshmi has "h"
-
-# crit rate of divine shot is definitely off
-# db says 30, putting in 55
-# probably off for others?
-
-# anti-expel/death are weird
-# https://gamefaqs.gamespot.com/ps2/582958-shin-megami-tensei-nocturne/faqs/35024
-# stack with innate resistance
-# don't affect direct damage (test)
-# how do they affect thunderclap?
-
-# passives give double instances of resistances demon has natively
-# should this be removed? or just in display?
-
-# focus doesn't work with multihits?
-# check exactly how in-game (deathbound? andalucia?)
-
-# does dekaja effect of hell exhaust trigger on dodge? void?
-
-# does karasu have "base moves"? same as koppa base moves
-
-# setting ice breath to 5 hits instead of 4 to match fire breath/shock/wing buffet
-# check?
-
-# sacrifice+endure?
-
-# check how voids/absorbs work if target is stoned
-
-# does guillotine inflict stun?
-
-# check if god's bow misses
-
-# check if last resort misses
-
-# check how queen mab evolution works with base skills
-
-# test if pestilence (pale rider) can miss (listed accuracy is 255)
-
-# missing info on correction/limits of kamikaze/last resort/sacrifice
-# check if sacrifice is 4-hit or 5-hit
-# rn, guessing missing values
-
-# verify that evil gaze straight misses instead of proccing
-# also check print msg
-
-# does recarmdra revive? or just heal?
-
-# dia and diarama formulas are unknown— rn, using agilao/agidyne numbers
-# fix print messages to print (health full)
-
-# does drain attack trigger on counter?
-
-# do sleeping demons wake up on any kind of hit?
-
-# check drain attack heal% and crit%
-
-# double-check life stone/chakra drop heal percentage
-
-# can 200 accuracy moves miss? (earthquake, yoshitsune)
-# xn site says hit and evasion are calculated differently?
-
-# does freeze chance increase on ice-weak enemies?
-
-# does freezing stop fire repel on surt's attack? (check category or element when redefining effectiveness?)
-
-# fix mp/hp recovery
-# mp: should print the actual amount restored, not the hypothetical
-# hp: rounding errors?
-# combine "heal" and "hp recovery" into effect
-# maybe use new attribute in sfx (type? tag? calc?) to differentiate between 3 types
-# percentage-based, defined amount, power-based
-# calculate in use_move (so we can use the user power), pass into proc_effect
-# would have to change how proc_effect works from calculating percentage to adding finite value
-
-# check if tetrakarn reflects all multihits
-
-# normal attack might not trigger counters
-
-# counter doesn't work when user has multihit normals: have to link crits
-
-# check tekisatsu (stinger) crit rate? felt like higher than 4
-
-# check what message displays on 5th debilitate or 3rd taunt
-
-# because extra parameters were added into use_move (hit/crit), some processes can probably be streamlined
-# moves that always hit: always-hits? reflects?
-# could also be easier to keep as is for a lot of these
-# also: go through and fix other apps of use_move
-
-# ui improvements:
-# add way to view all demons during selection
-# add help function to all user inputs
-
-# make dictionary with effect (in move_dict) as key, long desc as values (for Move.__str__)
-# add convo skills?? (later)
-
-# passives (voids, pierce, etc.) that give demons/moves attributes need to reset (if going to implement multi-battles)
-
-# links:
-# english skills: https://aqiu384.github.io/megaten-fusion-tool/smt3/skills
-# data notes: https://web.archive.org/web/20160216231006/http://xn--ehqs60c2gs6ptzjh.jp/archives/shin3_skill001.html
-# dmg formulas: https://web.archive.org/web/20160216231125/http://xn--ehqs60c2gs6ptzjh.jp/archives/shin3_skill002.html
-# mag skills: https://web.archive.org/web/20160415172534/http://xn--ehqs60c2gs6ptzjh.jp/archives/shin3_skill003.html
-# phys skills: https://web.archive.org/web/20160515005157/http://xn--ehqs60c2gs6ptzjh.jp/archives/shin3_skill004.html
-# more mag formula info: https://web.archive.org/web/20160216231208/http://xn--ehqs60c2gs6ptzjh.jp/archives/shin3_skill006.html
-# same: https://web.archive.org/web/20150919135330/http://xn--ehqs60c2gs6ptzjh.jp/archives/shin3_skill007.html
-# misc info: https://web.archive.org/web/20160316012050/http://xn--ehqs60c2gs6ptzjh.jp/archives/shin3_skill008.html
-# other wiki: https://w.atwiki.jp/noctan/pages/85.html
-
 import sys
 import timeit
 from fuzzywuzzy import process
@@ -125,10 +8,7 @@ import numpy as np
 import json
 from typing import Optional, Union, Tuple, List
 
-
-# global utility functions
-
-
+# global utility function
 def ordinal(n: int) -> str:
     """
     Returns an ordinal phrase (first, second, etc.) given a number. Not related to ord().
@@ -136,6 +16,7 @@ def ordinal(n: int) -> str:
     :param n: Number between 0 and 16 (inclusive)
     :return: Ordinal string
     """
+    # could pretty easily add more, just not necessary
     ordinals = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh',
                 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth',
                 'fifteenth', 'sixteenth']
@@ -563,9 +444,6 @@ class Kagutsuchi:
             return 'Full'
         else:
             return f'{self.phase}/8'
-
-
-# In[14]:
 
 
 class Move:
@@ -1066,7 +944,7 @@ class Passive:
         for ability in self.abilities:
             ability.attack_apply(move)
 
-    def counter_apply(self, user: Demon, target: Demon, kagutsuchi: Kagutsuchi = Kagutsuchi('Dead')) -> None:
+    def counter_apply(self, user: Demon, target: Demon, kagutsuchi: Kagutsuchi = Kagutsuchi('Dead')) -> bool:
         """
         Initiates counter-attacks. Called when a counter-attack is meant to be initiated. Checks for if the
         effect of the ability is "Counter".
@@ -1074,13 +952,15 @@ class Passive:
         :param user: The demon who was attacked and is countering.
         :param target: The attacking demon to be counter-attacked.
         :param kagutsuchi: The current Kagutsuchi phase. Defaults to "Dead" if not specified.
+        :return: True if a counter-attack was initiated, False otherwise.
         """
         for ability in self.abilities:
             # ensures that only one counter is triggered
             # this catches multiple counter PassiveAbilities— multiple counter Passives must be caught elsewhere
             # would occur as the result of a strange entry in passives_dict
             if ability.counter_apply(user, target, kagutsuchi):
-                break
+                return True
+        return False
 
     def unknown_str(self) -> str:
         """
@@ -2800,13 +2680,15 @@ class Demon:
                     for passive in demon.passives:
                         # always a 50% chance to trigger
                         if random.randint(0, 1) == 1:
-                            passive.counter_apply(demon, self, kagutsuchi)
-                            self.check_dead()
-                            break  # necessary to stop multiple counters from triggering
+                            # only proceed to break if counter was actually executed
+                            if passive.counter_apply(demon, self, kagutsuchi):
+                                self.check_dead()
+                                break  # necessary to stop multiple counters from triggering
 
             # also trigger poison damage
             # poison can't kill, so check dead isn't necessary
-            self.apply_poison_dmg()
+            if not self.dead:
+                self.apply_poison_dmg()
         if self.dead:
             print(f'{self.name} died!')
         # scans for relevant press turn value to return

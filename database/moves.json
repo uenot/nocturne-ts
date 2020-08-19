@@ -5,12 +5,20 @@
         "Target": "Single Enemy",
         "Hits": 1,
         "Power": 32,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "Accuracy": 97,
         "MP": 0,
         "HP": 0,
-        "Special Effects": {},
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
         "Crit": 4,
         "Damage Calc": "Level"
     },
@@ -24,10 +32,18 @@
         "Crit": 24,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Feral Claw": {
         "Category": "Physical",
@@ -39,10 +55,18 @@
         "Crit": 25,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Lunge": {
         "Category": "Physical",
@@ -54,10 +78,18 @@
         "Crit": 24,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Needle Rush": {
         "Category": "Physical",
@@ -69,10 +101,18 @@
         "Crit": 24,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Hell Thrust": {
         "Category": "Physical",
@@ -84,10 +124,18 @@
         "Crit": 33,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Toxic Sting": {
         "Category": "Physical",
@@ -102,14 +150,21 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 24,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Venom Bite": {
@@ -125,14 +180,21 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 24,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Venom Claw": {
@@ -148,14 +210,21 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 24,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Charm Bite": {
@@ -171,14 +240,21 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 24,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Mighty Gust": {
@@ -191,10 +267,18 @@
         "Crit": 26,
         "Damage Calc": "HP",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Stun Claw": {
         "Category": "Physical",
@@ -209,14 +293,21 @@
                 "Element": "Nerve",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 30,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Stun Needle": {
@@ -232,14 +323,21 @@
                 "Element": "Nerve",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 24,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Berserk": {
@@ -252,10 +350,18 @@
         "HP": 13,
         "Crit": 13,
         "Damage Calc": "Level",
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Brutal Slash": {
         "Category": "Physical",
@@ -267,10 +373,18 @@
         "Crit": 26,
         "Damage Calc": "HP",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Stun Bite": {
         "Category": "Physical",
@@ -285,14 +399,21 @@
                 "Element": "Nerve",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 26,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Arid Needle": {
@@ -308,14 +429,21 @@
                 "Element": "Death",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 26,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Guillotine": {
@@ -328,10 +456,18 @@
         "Crit": 33,
         "Damage Calc": "HP",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Iron Claw": {
         "Category": "Physical",
@@ -343,10 +479,18 @@
         "Crit": 45,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Stone Bite": {
         "Category": "Physical",
@@ -361,14 +505,21 @@
                 "Element": "Death",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 26,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Heat Wave": {
@@ -381,10 +532,18 @@
         "Crit": 26,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Dark Sword": {
         "Category": "Physical",
@@ -399,14 +558,21 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 40,
         "Damage Calc": "HP",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Hell Fang": {
@@ -419,10 +585,18 @@
         "Crit": 45,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Tempest": {
         "Category": "Physical",
@@ -434,10 +608,18 @@
         "Crit": 30,
         "Damage Calc": "HP",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Stasis Blade": {
         "Category": "Physical",
@@ -452,14 +634,21 @@
                 "Element": "Nerve",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 40,
         "Damage Calc": "HP",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Blight": {
@@ -475,14 +664,21 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 36,
         "Damage Calc": "HP",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Chaos Blade": {
@@ -499,13 +695,20 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 20,
         "Damage Calc": "HP",
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Deathbound": {
@@ -518,10 +721,18 @@
         "HP": 25,
         "Crit": 21,
         "Damage Calc": "HP",
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Hades Blast": {
         "Category": "Physical",
@@ -533,10 +744,18 @@
         "Crit": 43,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Hassohappa": {
         "Category": "Physical",
@@ -548,10 +767,18 @@
         "Crit": 46,
         "Damage Calc": "HP",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Andalucia": {
         "Category": "Physical",
@@ -563,9 +790,9 @@
         "HP": 6,
         "Crit": 1,
         "Damage Calc": "Level",
-        "Element": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Element": null,
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
         "Special Effects": {}
     },
@@ -579,10 +806,18 @@
         "MP": 3,
         "Crit": 13,
         "Damage Calc": "Level",
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Deadly Fury": {
         "Category": "Physical",
@@ -594,10 +829,18 @@
         "Crit": 50,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Divine Shot": {
         "Category": "Physical",
@@ -609,10 +852,18 @@
         "Crit": 55,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Earthquake": {
         "Category": "Physical",
@@ -623,11 +874,19 @@
         "HP": 45,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Gaea Rage": {
         "Category": "Physical",
@@ -639,10 +898,18 @@
         "Crit": 30,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Hell Spin": {
         "Category": "Physical",
@@ -654,10 +921,18 @@
         "Crit": 5,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Javelin Rain": {
         "Category": "Physical",
@@ -672,14 +947,21 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 30,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Mokoi Boomerang": {
@@ -694,15 +976,22 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 4,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0
     },
     "Oni-Kagura": {
@@ -715,10 +1004,18 @@
         "Crit": 30,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Spiral Viper": {
         "Category": "Physical",
@@ -730,10 +1027,18 @@
         "Crit": 30,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Terrorblade": {
         "Category": "Physical",
@@ -749,13 +1054,20 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 4,
         "Damage Calc": "Level",
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "HP": 0
     },
     "Xeros Beat": {
@@ -771,14 +1083,21 @@
                 "Element": "Nerve",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
             }
         },
         "Crit": 30,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Yoshitsune Show-Up": {
@@ -791,10 +1110,18 @@
         "Crit": 50,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
-        "Special Effects": {}
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 50,
+                "Condition": "Target Stone",
+                "Element": "Phys",
+                "Value": 0,
+                "Target": "Same"
+            }
+        }
     },
     "Freikugel": {
         "Category": "Physical",
@@ -806,8 +1133,8 @@
         "Crit": 30,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0,
         "Special Effects": {}
     },
@@ -824,14 +1151,14 @@
                 "Element": "Almighty",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
         "Crit": 4,
         "Damage Calc": "Level",
         "Hits": 1,
-        "Correction": "None",
-        "Limit": "None",
+        "Correction": null,
+        "Limit": null,
         "MP": 0
     },
     "Agi": {
@@ -843,11 +1170,11 @@
         "Limit": 104,
         "Accuracy": 100,
         "MP": 3,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Agilao": {
         "Category": "Magic",
@@ -858,11 +1185,11 @@
         "Limit": 155,
         "Accuracy": 100,
         "MP": 6,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Maragi": {
         "Category": "Magic",
@@ -873,11 +1200,11 @@
         "Limit": 85,
         "Accuracy": 100,
         "MP": 8,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Fire Breath": {
         "Category": "Magic",
@@ -889,10 +1216,10 @@
         "Limit": 85,
         "Accuracy": 100,
         "MP": 9,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Agidyne": {
         "Category": "Magic",
@@ -903,11 +1230,11 @@
         "Limit": 220,
         "Accuracy": 100,
         "MP": 10,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Hellfire": {
         "Category": "Magic",
@@ -919,10 +1246,10 @@
         "Limit": 140,
         "Accuracy": 100,
         "MP": 20,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Maragion": {
         "Category": "Magic",
@@ -933,11 +1260,11 @@
         "Limit": 126,
         "Accuracy": 100,
         "MP": 15,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Maragidyne": {
         "Category": "Magic",
@@ -948,11 +1275,11 @@
         "Limit": 183,
         "Accuracy": 100,
         "MP": 25,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Prominence": {
         "Category": "Magic",
@@ -964,10 +1291,10 @@
         "Limit": 253,
         "Accuracy": 100,
         "MP": 30,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Hell Burner": {
         "Category": "Magic",
@@ -978,11 +1305,11 @@
         "Limit": 85,
         "Accuracy": 100,
         "MP": 8,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Magma Axis": {
         "Category": "Magic",
@@ -993,11 +1320,11 @@
         "Limit": 470,
         "Accuracy": 100,
         "HP": 15,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "MP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Ragnarok": {
         "Category": "Magic",
@@ -1008,11 +1335,11 @@
         "Limit": 800,
         "Accuracy": 100,
         "MP": 30,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Bufu": {
         "Category": "Magic",
@@ -1029,13 +1356,13 @@
                 "Element": "Ice",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Bufula": {
         "Category": "Magic",
@@ -1052,13 +1379,13 @@
                 "Element": "Ice",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mabufu": {
         "Category": "Magic",
@@ -1075,13 +1402,13 @@
                 "Element": "Ice",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Ice Breath": {
         "Category": "Magic",
@@ -1099,12 +1426,12 @@
                 "Element": "Ice",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Bufudyne": {
         "Category": "Magic",
@@ -1121,13 +1448,13 @@
                 "Element": "Ice",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mabufula": {
         "Category": "Magic",
@@ -1144,13 +1471,13 @@
                 "Element": "Ice",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Glacial Blast": {
         "Category": "Magic",
@@ -1168,12 +1495,12 @@
                 "Element": "Ice",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mabufudyne": {
         "Category": "Magic",
@@ -1190,13 +1517,13 @@
                 "Element": "Ice",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Zio": {
         "Category": "Magic",
@@ -1213,13 +1540,13 @@
                 "Element": "Elec",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Zionga": {
         "Category": "Magic",
@@ -1236,13 +1563,13 @@
                 "Element": "Elec",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mazio": {
         "Category": "Magic",
@@ -1259,13 +1586,13 @@
                 "Element": "Elec",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Shock": {
         "Category": "Magic",
@@ -1283,12 +1610,12 @@
                 "Element": "Elec",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mazionga": {
         "Category": "Magic",
@@ -1305,13 +1632,13 @@
                 "Element": "Elec",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Ziodyne": {
         "Category": "Magic",
@@ -1328,13 +1655,13 @@
                 "Element": "Elec",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Bolt Storm": {
         "Category": "Magic",
@@ -1352,12 +1679,12 @@
                 "Element": "Elec",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Maziodyne": {
         "Category": "Magic",
@@ -1374,13 +1701,13 @@
                 "Element": "Elec",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mishaguji Thunder": {
         "Category": "Magic",
@@ -1397,13 +1724,13 @@
                 "Element": "Elec",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Zan": {
         "Category": "Magic",
@@ -1414,11 +1741,19 @@
         "Limit": 104,
         "Accuracy": 100,
         "MP": 3,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Zanma": {
         "Category": "Magic",
@@ -1429,11 +1764,19 @@
         "Limit": 155,
         "Accuracy": 100,
         "MP": 6,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Mazan": {
         "Category": "Magic",
@@ -1444,11 +1787,19 @@
         "Limit": 84,
         "Accuracy": 100,
         "MP": 8,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Wing Buffet": {
         "Category": "Magic",
@@ -1460,10 +1811,18 @@
         "Limit": 84,
         "Accuracy": 100,
         "MP": 9,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "HP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Mazanma": {
         "Category": "Magic",
@@ -1474,11 +1833,19 @@
         "Limit": 112,
         "Accuracy": 100,
         "MP": 15,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Tornado": {
         "Category": "Magic",
@@ -1490,10 +1857,18 @@
         "Limit": 183,
         "Accuracy": 100,
         "MP": 25,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "HP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Zandyne": {
         "Category": "Magic",
@@ -1504,11 +1879,19 @@
         "Limit": 220,
         "Accuracy": 100,
         "MP": 10,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Wind Cutter": {
         "Category": "Magic",
@@ -1519,11 +1902,19 @@
         "Limit": 330,
         "Accuracy": 100,
         "MP": 13,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Mazandyne": {
         "Category": "Magic",
@@ -1534,11 +1925,19 @@
         "Limit": 183,
         "Accuracy": 100,
         "MP": 25,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Hell Exhaust": {
         "Category": "Magic",
@@ -1551,17 +1950,24 @@
         "MP": 15,
         "Special Effects": {
             "Dekaja": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Hitokoto Gust": {
         "Category": "Magic",
@@ -1572,11 +1978,19 @@
         "Limit": 183,
         "Accuracy": 100,
         "MP": 25,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Special Effects": {},
-        "Crit": "None"
+        "Special Effects": {
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
+            }
+        },
+        "Crit": null
     },
     "Wet Wind": {
         "Category": "Magic",
@@ -1593,13 +2007,20 @@
                 "Element": "Nerve",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
+            },
+            "Shatter": {
+                "Accuracy": 75,
+                "Condition": "Target Stone",
+                "Element": "Force",
+                "Value": 0,
+                "Target": "Same"
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Hama": {
         "Category": "Magic",
@@ -1613,16 +2034,16 @@
                 "Element": "Expel",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Hamaon": {
         "Category": "Magic",
@@ -1636,16 +2057,16 @@
                 "Element": "Expel",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mahama": {
         "Category": "Magic",
@@ -1659,16 +2080,16 @@
                 "Element": "Expel",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Thunderclap": {
         "Category": "Magic",
@@ -1682,16 +2103,16 @@
                 "Element": "Expel",
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Violet Flash": {
         "Category": "Magic",
@@ -1702,11 +2123,11 @@
         "Limit": 220,
         "Accuracy": 100,
         "MP": 10,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Mahamaon": {
         "Category": "Magic",
@@ -1720,16 +2141,16 @@
                 "Element": "Expel",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Holy Wrath": {
         "Category": "Magic",
@@ -1743,16 +2164,16 @@
                 "Element": "Expel",
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Radiance": {
         "Category": "Magic",
@@ -1763,11 +2184,11 @@
         "Limit": 211,
         "Accuracy": 100,
         "MP": 30,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "God's Bow": {
         "Category": "Magic",
@@ -1780,17 +2201,17 @@
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Godly Light": {
         "Category": "Magic",
@@ -1804,16 +2225,16 @@
                 "Element": "Expel",
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Starlight": {
         "Category": "Magic",
@@ -1824,11 +2245,11 @@
         "Limit": 140,
         "Accuracy": 100,
         "MP": 22,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Mudo": {
         "Category": "Magic",
@@ -1842,16 +2263,16 @@
                 "Element": "Death",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mamudo": {
         "Category": "Magic",
@@ -1865,16 +2286,16 @@
                 "Element": "Death",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mudoon": {
         "Category": "Magic",
@@ -1888,16 +2309,16 @@
                 "Element": "Death",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Stone Gaze": {
         "Category": "Magic",
@@ -1911,16 +2332,16 @@
                 "Element": "Death",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Evil Gaze": {
         "Category": "Magic",
@@ -1934,16 +2355,16 @@
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Hell Gaze": {
         "Category": "Magic",
@@ -1957,16 +2378,16 @@
                 "Element": "Death",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mamudoon": {
         "Category": "Magic",
@@ -1980,16 +2401,16 @@
                 "Element": "Death",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mute Gaze": {
         "Category": "Magic",
@@ -2003,16 +2424,16 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Toxic Cloud": {
         "Category": "Magic",
@@ -2029,13 +2450,13 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Makajam": {
         "Category": "Magic",
@@ -2049,16 +2470,16 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Dismal Tune": {
         "Category": "Magic",
@@ -2075,13 +2496,13 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Makajamon": {
         "Category": "Magic",
@@ -2095,16 +2516,16 @@
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Soul Divide": {
         "Category": "Magic",
@@ -2118,23 +2539,23 @@
                 "Element": "Curse",
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             },
             "Mute": {
                 "Accuracy": 30,
                 "Element": "Curse",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Shibaboo": {
         "Category": "Magic",
@@ -2148,16 +2569,16 @@
                 "Element": "Nerve",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Stun Gaze": {
         "Category": "Magic",
@@ -2171,16 +2592,16 @@
                 "Element": "Nerve",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Binding Cry": {
         "Category": "Magic",
@@ -2194,16 +2615,16 @@
                 "Element": "Nerve",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Pulinpa": {
         "Category": "Magic",
@@ -2217,16 +2638,16 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Sexy Gaze": {
         "Category": "Magic",
@@ -2240,16 +2661,16 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Dormina": {
         "Category": "Magic",
@@ -2263,16 +2684,16 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Marin Karin": {
         "Category": "Magic",
@@ -2286,16 +2707,16 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Sonic Wave": {
         "Category": "Magic",
@@ -2309,16 +2730,16 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Eternal Rest": {
         "Category": "Magic",
@@ -2335,13 +2756,13 @@
                 "Target": "Same"
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Panic Voice": {
         "Category": "Magic",
@@ -2355,16 +2776,16 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Allure": {
         "Category": "Magic",
@@ -2378,16 +2799,16 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Tentarafoo": {
         "Category": "Magic",
@@ -2404,13 +2825,13 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Death Lust": {
         "Category": "Magic",
@@ -2427,13 +2848,13 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Intoxicate": {
         "Category": "Magic",
@@ -2447,16 +2868,16 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Preach": {
         "Category": "Magic",
@@ -2473,27 +2894,27 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             },
             "Panic": {
                 "Accuracy": 13.333333333333334,
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             },
             "Charm": {
                 "Accuracy": 13.333333333333334,
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Wild Dance": {
         "Category": "Magic",
@@ -2507,16 +2928,16 @@
                 "Element": "Mind",
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Deathtouch": {
         "Category": "Magic",
@@ -2533,13 +2954,13 @@
                 "Element": "Almighty",
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mana Drain": {
         "Category": "Magic",
@@ -2556,13 +2977,13 @@
                 "Element": "Almighty",
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Life Drain": {
         "Category": "Magic",
@@ -2579,20 +3000,20 @@
                 "Element": "Almighty",
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             },
             "MP Drain": {
                 "Value": 0.5,
                 "Element": "Almighty",
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Kamikaze": {
         "Category": "Magic",
@@ -2608,14 +3029,14 @@
                 "Element": "Almighty",
                 "Accuracy": 100,
                 "Value": 0,
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "MP": 0,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Sacrifice": {
         "Category": "Magic",
@@ -2632,13 +3053,13 @@
                 "Element": "Almighty",
                 "Accuracy": 100,
                 "Value": 0,
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "MP": 0,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Last Resort": {
         "Category": "Magic",
@@ -2653,15 +3074,15 @@
                 "Element": "Almighty",
                 "Accuracy": 100,
                 "Value": 0,
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Accuracy": "None",
+        "Accuracy": null,
         "MP": 0,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Megido": {
         "Category": "Magic",
@@ -2672,11 +3093,11 @@
         "Limit": 197,
         "Accuracy": 100,
         "MP": 30,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Megidola": {
         "Category": "Magic",
@@ -2687,11 +3108,11 @@
         "Limit": 225,
         "Accuracy": 100,
         "MP": 37,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Megidolaon": {
         "Category": "Magic",
@@ -2702,11 +3123,11 @@
         "Limit": 253,
         "Accuracy": 100,
         "MP": 50,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Beast Roar": {
         "Category": "Magic",
@@ -2723,13 +3144,13 @@
                 "Target": "Self",
                 "Element": "Almighty",
                 "Accuracy": 100,
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Death Flies": {
         "Category": "Magic",
@@ -2746,13 +3167,13 @@
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Fire of Sinai": {
         "Category": "Magic",
@@ -2764,10 +3185,10 @@
         "Limit": 253,
         "Accuracy": 100,
         "MP": 50,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Jiraiya Tarantella": {
         "Category": "Magic",
@@ -2777,12 +3198,12 @@
         "Correction": 26,
         "Limit": 253,
         "MP": 40,
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Accuracy": "None",
+        "Accuracy": null,
         "HP": 0,
         "Special Effects": {},
-        "Crit": "None"
+        "Crit": null
     },
     "Meditation": {
         "Category": "Magic",
@@ -2799,20 +3220,20 @@
                 "Element": "Almighty",
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             },
             "MP Drain": {
                 "Value": 0.5,
                 "Element": "Almighty",
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Pestilence": {
         "Category": "Magic",
@@ -2831,11 +3252,11 @@
                 "Target": "Same"
             }
         },
-        "Damage Calc": "None",
+        "Damage Calc": "Mag",
         "Hits": 1,
-        "Accuracy": "None",
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Evil Melody": {
         "Category": "Magic",
@@ -2843,22 +3264,22 @@
         "MP": 1,
         "Special Effects": {
             "Kill": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Dia": {
         "Category": "Magic",
@@ -2869,19 +3290,19 @@
         "MP": 3,
         "Special Effects": {
             "Heal": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Accuracy": "None",
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Media": {
         "Category": "Magic",
@@ -2892,19 +3313,19 @@
         "MP": 12,
         "Special Effects": {
             "Heal": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Accuracy": "None",
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Diarama": {
         "Category": "Magic",
@@ -2915,19 +3336,19 @@
         "MP": 7,
         "Special Effects": {
             "Heal": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Accuracy": "None",
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mediarama": {
         "Category": "Magic",
@@ -2938,19 +3359,19 @@
         "MP": 20,
         "Special Effects": {
             "Heal": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Accuracy": "None",
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Diarahan": {
         "Category": "Magic",
@@ -2958,22 +3379,22 @@
         "MP": 15,
         "Special Effects": {
             "Heal": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mediarahan": {
         "Category": "Magic",
@@ -2981,22 +3402,22 @@
         "MP": 35,
         "Special Effects": {
             "Heal": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Prayer": {
         "Category": "Magic",
@@ -3004,29 +3425,29 @@
         "MP": 50,
         "Special Effects": {
             "Heal": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             },
             "Cure Ailments": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Mutudi": {
         "Category": "Magic",
@@ -3034,22 +3455,22 @@
         "MP": 5,
         "Special Effects": {
             "Cure Mute": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Patra": {
         "Category": "Magic",
@@ -3057,22 +3478,22 @@
         "MP": 5,
         "Special Effects": {
             "Cure Bind/Sleep/Panic": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Posumudi": {
         "Category": "Magic",
@@ -3080,22 +3501,22 @@
         "MP": 5,
         "Special Effects": {
             "Cure Poison": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Paraladi": {
         "Category": "Magic",
@@ -3103,22 +3524,22 @@
         "MP": 5,
         "Special Effects": {
             "Cure Stun": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Petradi": {
         "Category": "Magic",
@@ -3126,22 +3547,22 @@
         "MP": 5,
         "Special Effects": {
             "Cure Stone": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Me Patra": {
         "Category": "Magic",
@@ -3149,22 +3570,22 @@
         "MP": 12,
         "Special Effects": {
             "Cure Bind/Sleep/Panic": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Recarm": {
         "Category": "Magic",
@@ -3173,21 +3594,21 @@
         "Special Effects": {
             "Revive": {
                 "Value": 0.5,
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Samarecarm": {
         "Category": "Magic",
@@ -3196,21 +3617,21 @@
         "Special Effects": {
             "Revive": {
                 "Value": 1,
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Recarmdra": {
         "Category": "Magic",
@@ -3218,36 +3639,36 @@
         "MP": 1,
         "Special Effects": {
             "Heal": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             },
             "MP Recover": {
                 "Value": 1,
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             },
             "Kill": {
                 "Target": "Self",
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Holy Melody": {
         "Category": "Magic",
@@ -3255,29 +3676,29 @@
         "MP": 1,
         "Special Effects": {
             "Heal": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             },
             "MP Recover": {
                 "Value": 1,
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Focus": {
         "Category": "Magic",
@@ -3285,22 +3706,22 @@
         "MP": 5,
         "Special Effects": {
             "Focus": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Tarukaja": {
         "Category": "Magic",
@@ -3308,22 +3729,22 @@
         "MP": 12,
         "Special Effects": {
             "Tarukaja": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Makakaja": {
         "Category": "Magic",
@@ -3331,22 +3752,22 @@
         "MP": 12,
         "Special Effects": {
             "Makakaja": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Rakukaja": {
         "Category": "Magic",
@@ -3354,22 +3775,22 @@
         "MP": 12,
         "Special Effects": {
             "Rakukaja": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Sukukaja": {
         "Category": "Magic",
@@ -3377,22 +3798,22 @@
         "MP": 12,
         "Special Effects": {
             "Sukukaja": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Tarunda": {
         "Category": "Magic",
@@ -3400,22 +3821,22 @@
         "MP": 20,
         "Special Effects": {
             "Tarunda": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Rakunda": {
         "Category": "Magic",
@@ -3423,22 +3844,22 @@
         "MP": 12,
         "Special Effects": {
             "Rakunda": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Sukunda": {
         "Category": "Magic",
@@ -3446,22 +3867,22 @@
         "MP": 12,
         "Special Effects": {
             "Sukunda": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Fog Breath": {
         "Category": "Magic",
@@ -3469,22 +3890,22 @@
         "MP": 30,
         "Special Effects": {
             "Fog Breath": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "War Cry": {
         "Category": "Magic",
@@ -3492,22 +3913,22 @@
         "MP": 40,
         "Special Effects": {
             "War Cry": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Debilitate": {
         "Category": "Magic",
@@ -3515,22 +3936,22 @@
         "MP": 48,
         "Special Effects": {
             "Debilitate": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Taunt": {
         "Category": "Magic",
@@ -3538,22 +3959,22 @@
         "MP": 20,
         "Special Effects": {
             "Taunt": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Dekunda": {
         "Category": "Magic",
@@ -3561,22 +3982,22 @@
         "MP": 10,
         "Special Effects": {
             "Dekunda": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Dekaja": {
         "Category": "Magic",
@@ -3584,22 +4005,22 @@
         "MP": 10,
         "Special Effects": {
             "Dekaja": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Makarakarn": {
         "Category": "Magic",
@@ -3607,22 +4028,22 @@
         "MP": 45,
         "Special Effects": {
             "Reflect Magic": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Tetrakarn": {
         "Category": "Magic",
@@ -3630,22 +4051,22 @@
         "MP": 45,
         "Special Effects": {
             "Reflect Phys": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Tetraja": {
         "Category": "Magic",
@@ -3653,22 +4074,22 @@
         "MP": 15,
         "Special Effects": {
             "Void Expel/Death": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Guardian Raptor": {
         "Category": "Magic",
@@ -3676,52 +4097,52 @@
         "MP": 10,
         "Special Effects": {
             "Dekunda": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Provoke": {
         "Category": "Magic",
         "Target": "All Enemies",
         "Special Effects": {
             "Taunt": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             },
             "MP Recover": {
                 "Value": 0.25,
                 "Target": "Self",
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "MP": 0,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Red Capote": {
         "Category": "Magic",
@@ -3729,22 +4150,22 @@
         "MP": 36,
         "Special Effects": {
             "Red Capote": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Analyze": {
         "Category": "Magic",
@@ -3752,22 +4173,22 @@
         "MP": 2,
         "Special Effects": {
             "Analyze": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Makatora": {
         "Category": "Magic",
@@ -3776,21 +4197,21 @@
         "Special Effects": {
             "Share MP": {
                 "Value": 10,
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Beckon Call": {
         "Category": "Magic",
@@ -3798,45 +4219,45 @@
         "MP": 20,
         "Special Effects": {
             "Summon": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Summon": {
         "Category": "Magic",
         "Target": "Stock Ally",
         "Special Effects": {
             "Summon": {
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Value": 0,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": "Mag",
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "MP": 0,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Life Stone": {
         "Category": "Item",
@@ -3844,22 +4265,22 @@
         "Special Effects": {
             "HP Recover": {
                 "Value": 0.25,
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": null,
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "MP": 0,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     },
     "Chakra Drop": {
         "Category": "Item",
@@ -3867,21 +4288,21 @@
         "Special Effects": {
             "MP Recover": {
                 "Value": 0.25,
-                "Element": "None",
+                "Element": null,
                 "Accuracy": 100,
                 "Target": "Same",
-                "Condition": "None"
+                "Condition": null
             }
         },
-        "Damage Calc": "None",
-        "Element": "None",
+        "Damage Calc": null,
+        "Element": null,
         "Hits": 1,
-        "Power": "None",
-        "Correction": "None",
-        "Limit": "None",
-        "Accuracy": "None",
+        "Power": null,
+        "Correction": null,
+        "Limit": null,
+        "Accuracy": null,
         "MP": 0,
         "HP": 0,
-        "Crit": "None"
+        "Crit": null
     }
 }

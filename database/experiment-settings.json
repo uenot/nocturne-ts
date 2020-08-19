@@ -1,0 +1,13 @@
+{
+    "Trials": 2500,
+    "Game Mode": "4 vs. 4",
+    "Same Teams": false,
+    "Target Level 1": 75,
+    "Target Level 2": null,
+    "Demons 1": [],
+    "Demons 2": [],
+    "Kagutsuchi Phase": "Random",
+    "Kagutsuchi Freeze": false,
+    "Log Games": true,
+    "File Name": "gamelog"
+}

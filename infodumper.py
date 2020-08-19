@@ -10,7 +10,7 @@ def fill_defaults():
         demon_info.setdefault('Void', [])
         demon_info.setdefault('Resist', [])
         demon_info.setdefault('Weaknesses', [])
-        demon_info.setdefault('Evolution', 'None')
+        demon_info.setdefault('Evolution', None)
     for magatama_info in magatama_dict.values():
         magatama_info.setdefault('Moves', [])
         magatama_info.setdefault('Strength', 0)
@@ -24,27 +24,34 @@ def fill_defaults():
         magatama_info.setdefault('Resist', [])
         magatama_info.setdefault('Weaknesses', [])
     for move_info in moves_dict.values():
-        move_info.setdefault('Damage Calc', 'None')
-        move_info.setdefault('Element', 'None')
+        move_info.setdefault('Damage Calc', None)
+        if move_info['Damage Calc'] is None and move_info['Category'] == 'Magic':
+            move_info['Damage Calc'] = 'Mag'
+        move_info.setdefault('Element', None)
         move_info.setdefault('Hits', 1)
-        move_info.setdefault('Power', 'None')
-        move_info.setdefault('Correction', 'None')
-        move_info.setdefault('Limit', 'None')
-        move_info.setdefault('Accuracy', 'None')
+        move_info.setdefault('Power', None)
+        move_info.setdefault('Correction', None)
+        move_info.setdefault('Limit', None)
+        move_info.setdefault('Accuracy', None)
         move_info.setdefault('MP', 0)
         move_info.setdefault('HP', 0)
         move_info.setdefault('Special Effects', {})
+        # real shatter percentage is unknown
+        if move_info['Element'] == 'Phys':
+            move_info['Special Effects']['Shatter'] = {'Accuracy': 50, 'Condition': 'Target Stone'}
+        if move_info['Element'] == 'Force':
+            move_info['Special Effects']['Shatter'] = {'Accuracy': 75, 'Condition': 'Target Stone'}
         for effect_info in move_info['Special Effects'].values():
             effect_info.setdefault('Element', move_info['Element'])
             effect_info.setdefault('Accuracy', 100)
             effect_info.setdefault('Value', 0)
             effect_info.setdefault('Target', 'Same')
-            effect_info.setdefault('Condition', 'None')
-        move_info.setdefault('Crit', 'None')
+            effect_info.setdefault('Condition', None)
+        move_info.setdefault('Crit', None)
     for passive_info in passives_dict.values():
         for ability in passive_info:
-            ability.setdefault('Element', 'None')
-            ability.setdefault('Value', 'None')
+            ability.setdefault('Element', None)
+            ability.setdefault('Value', None)
 
 def save_jsons():
 
@@ -82,7 +89,7 @@ demon_dict = {'Beelzebub Fly': {'Base Moves': [],
                                 'Resist': ['Phys', 'Ice', 'Elec', 'Force'],
                                 'Weaknesses': [],
                                 'Race': 'Tyrant',
-                                'Evolution': 'None'
+                                'Evolution': None
                                 },
               'Metatron': {'Base Moves': ['Mahamaon', 'Tarukaja', 'Makakaja', 'Debilitate', 'Megidolaon'],
                            'Learned Moves': [('Holy Wrath', 96), ('Fire of Sinai', 97), ('Victory Cry', 98)],
@@ -1221,7 +1228,7 @@ magatama_dict = {'Masakados': {'Moves': [('Radiance', 1), ('Megidolaon', 1), ('F
 # for others: hits = hits
 # mandatory: category, target
 # optional: element, hits, power, correction, limit, accuracy, MP, HP, special effect/chance, crit, damage calc
-# note: default accuracy is 'None' (always hit), not 100
+# note: default accuracy is None (always hit), not 100
 # "Heal" uses power/makakaja of user; "MP Recover" is only percentage (float) or finite amount (int)
 # for recarm effects: use keyword "dead" (as opposed to "stock" for summon/beckon call)
 
@@ -1232,8 +1239,8 @@ moves_dict = {'Attack': {'Category': 'Physical',
                          'Target': 'Single Enemy',
                          'Hits': 1,
                          'Power': 32,
-                         'Correction': 'None',
-                         'Limit': 'None',
+                         'Correction': None,
+                         'Limit': None,
                          'Accuracy': 97,
                          'MP': 0,
                          'HP': 0,
@@ -1460,7 +1467,7 @@ moves_dict = {'Attack': {'Category': 'Physical',
                             'Correction': 19, 'Limit': 183, 'Accuracy': 100, 'MP': 25},
               'Hell Exhaust': {'Category': 'Magic', 'Element': 'Force', 'Target': 'All Enemies', 'Power': 40,
                                'Correction': 11, 'Limit': 112, 'Accuracy': 100, 'MP': 15,
-                               'Special Effects': {'Dekaja': {'Element': 'None'}}},
+                               'Special Effects': {'Dekaja': {'Element': None}}},
               'Hitokoto Gust': {'Category': 'Magic', 'Element': 'Force', 'Target': 'All Enemies', 'Power': 65,
                                 'Correction': 19, 'Limit': 183, 'Accuracy': 100, 'MP': 25},
               'Wet Wind': {'Category': 'Magic', 'Element': 'Force', 'Target': 'All Enemies', 'Power': 65,
